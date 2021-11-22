@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ProgressBarThemer"
+           TargetType="ProgressBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ProgressBar">
+                    <Border BorderBrush="#D9DCE1" BorderThickness="0" Background="#FF0C0B0B" CornerRadius="0" Padding="0">
+                        <Grid x:Name="PART_Track">
+                            <Grid x:Name="PART_Indicator" HorizontalAlignment="Left" Background="#FF2BA9FF">
+                                <Polygon Points="0,20 20,0 20,20" Stroke="#FF0C0B0B" Fill="#FF0C0B0B" HorizontalAlignment="Right" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

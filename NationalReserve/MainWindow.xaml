@@ -1,0 +1,170 @@
+﻿<Window x:Class="NationalReserve.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NationalReserve"
+        xmlns:viewModel="clr-namespace:NationalReserve.ViewModel"
+        mc:Ignorable="d"
+        Height="600" Width="900"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#293322"
+            CornerRadius="20">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Заповедник"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="22"/>
+
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <StackPanel>
+                    <Separator Margin="10,0,10,0"/>
+
+                    <RadioButton Content="Человек"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding HomeViewCommand}"/>
+                    <RadioButton Content="Документы сотрудника"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Роль"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <Separator Margin="10,0,10,0"/>
+
+                    <RadioButton Content="Спонсорство"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Тип оплаты"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <Separator Margin="10,0,10,0"/>
+
+                    <RadioButton Content="КПП"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Учет прохода через КПП"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Смена в КПП"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Зона заповедника"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <Separator Margin="10,0,10,0"/>
+
+                    <RadioButton Content="Поставка"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Поставщик"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Материал"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Тип материала"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <Separator Margin="10,0,10,0"/>
+
+                    <RadioButton Content="Животное"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding AnimalViewCommand}"/>
+                    <RadioButton Content="Тип животного"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <RadioButton Content="Кормежка животного"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                    <Separator Margin="10,0,10,0"/>
+
+                    <RadioButton Content="Учет растений"
+                                 Height="50"
+                                 Foreground="White"
+                                 FontSize="14"
+                                 Style="{StaticResource MenuButtonTheme}"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Width="400"
+                         Height="75"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Style="{StaticResource ModernTextBox}"/>
+                <TextBlock Text="×"
+                           Grid.Column="2"
+                           FontSize="40"
+                           Width="50"
+                           TextAlignment="Center"
+                           Padding="0,5,0,0"
+                           Background="Transparent" 
+                           Foreground="DarkGray"
+                           MouseDown="CloseApplication"/>
+            </Grid>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10,10,0,10"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Border>
+</Window>

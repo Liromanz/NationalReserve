@@ -1,0 +1,31 @@
+﻿<Application x:Class="NationalReserve.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NationalReserve"
+             xmlns:viewModel="clr-namespace:NationalReserve.ViewModel"
+             xmlns:view="clr-namespace:NationalReserve.View"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Theme/MenuButtonTeme.xaml"/>
+                <ResourceDictionary Source="View/Theme/TextBoxTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/TextInputTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/ComboBoxTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/ButtonControlTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/ProgressBarTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/CheckBoxTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/ListViewTheme.xaml"/>
+                <ResourceDictionary Source="View/Converters/Converters.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:AnimalViewModel}">
+                <view:AnimalView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:HumanViewModel}">
+                <view:HumanView />
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
