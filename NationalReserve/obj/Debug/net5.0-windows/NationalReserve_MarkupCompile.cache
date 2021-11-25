@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\App.xaml
-12-97809124
+13-2093197505
 
 35-2105939325
 214-2000927759
-MainWindow.xaml;View\AnimalView.xaml;View\Converters\Converters.xaml;View\HumanView.xaml;View\Theme\ButtonControlTheme.xaml;View\Theme\CheckBoxTheme.xaml;View\Theme\ComboBoxTheme.xaml;View\Theme\ListViewTheme.xaml;View\Theme\MenuButtonTeme.xaml;View\Theme\ProgressBarTheme.xaml;View\Theme\TextBoxTheme.xaml;View\Theme\TextInputTheme.xaml;
+MainWindow.xaml;View\AnimalView.xaml;View\Converters\Converters.xaml;View\HumanView.xaml;View\Theme\ButtonControlTheme.xaml;View\Theme\CheckBoxTheme.xaml;View\Theme\ComboBoxTheme.xaml;View\Theme\DatePickerTheme.xaml;View\Theme\ListViewTheme.xaml;View\Theme\MenuButtonTeme.xaml;View\Theme\ProgressBarTheme.xaml;View\Theme\TextBoxTheme.xaml;View\Theme\TextInputTheme.xaml;
 
 False
 

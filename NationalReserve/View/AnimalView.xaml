@@ -107,7 +107,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Человек"
+            <TextBlock Text="Животное"
                        Foreground="White"
                        FontSize="28"
                        Width="280"
@@ -181,7 +181,7 @@
                     <CheckBox Content="Имеет потомство" 
                               Style="{StaticResource CircleCheckbox}" 
                               Foreground="White"
-                              Width="200"
+                              Width="150"
                               Margin="0,10,0,10"
                               FontSize="14"
                               IsChecked="{Binding Animal.HasFamily, Mode=TwoWay}">
@@ -189,11 +189,19 @@
                     <CheckBox Content="Болен" 
                               Style="{StaticResource CircleCheckbox}" 
                               Foreground="White"
-                              Width="200"
+                              Width="80"
                               Margin="0,10,0,10"
                               FontSize="14"
                               IsChecked="{Binding Animal.IsSick, Mode=TwoWay}">
                     </CheckBox>
+
+                    <TextBlock Text="Дата регистрации"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <DatePicker Text="{Binding Animal.DateRegistration}"
+                        Style="{StaticResource DatePickerTheme}"/>
                     <TextBlock Text="Зона"
                                Foreground="White"
                                FontSize="14"
@@ -207,6 +215,13 @@
                               ItemsSource="{Binding Zones}"
                               SelectedItem="{Binding Zone, Mode=TwoWay}"  
                               DisplayMemberPath="Name"/>
+                    <TextBlock Text="Последняя проверка"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <DatePicker Text="{Binding Animal.LastCheck}"
+                                Style="{StaticResource DatePickerTheme}"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

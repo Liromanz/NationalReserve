@@ -6,8 +6,8 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Grid>
                         <Border CornerRadius="10,0,0,10"
-                            BorderThickness="1"
-                            Background="#161D11"
+                                BorderThickness="1"
+                                Background="#161D11"
                                 BorderBrush="#161D11">
                             <ScrollViewer x:Name="PART_ContentHost"/>
                         </Border>
@@ -32,7 +32,7 @@
                                  IsEnabled="False"
 
                                  Height="{TemplateBinding Height}"/>
-                        <ToggleButton Grid.Column="1" Margin="0"
+                        <ToggleButton Grid.Column="1"
                                      Height="{TemplateBinding Height}"
                                      Focusable="False"
                                      IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"

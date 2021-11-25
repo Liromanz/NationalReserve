@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="View/Theme/ProgressBarTheme.xaml"/>
                 <ResourceDictionary Source="View/Theme/CheckBoxTheme.xaml"/>
                 <ResourceDictionary Source="View/Theme/ListViewTheme.xaml"/>
+                <ResourceDictionary Source="View/Theme/DatePickerTheme.xaml"/>
                 <ResourceDictionary Source="View/Converters/Converters.xaml" />
             </ResourceDictionary.MergedDictionaries>
 

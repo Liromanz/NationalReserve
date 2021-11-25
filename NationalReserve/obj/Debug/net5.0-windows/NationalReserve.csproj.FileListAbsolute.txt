@@ -73,3 +73,4 @@ C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-win
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\Theme\ListViewTheme.baml
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\AnimalView.g.cs
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\AnimalView.baml
+C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\Theme\DatePickerTheme.baml

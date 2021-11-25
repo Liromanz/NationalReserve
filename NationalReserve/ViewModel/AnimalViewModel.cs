@@ -174,6 +174,7 @@ namespace NationalReserve.ViewModel
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
             AnimalTypes = await ApiConnector.GetAll<AnimalType>("AnimalTypes");
+            Zones = await ApiConnector.GetAll<Zone>("Zones");
         }
 
         #region CRUD
@@ -185,7 +186,7 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<Animal>();
 
             Animal = new Animal();
-            Animals = await ApiConnector.GetAll<Animal>("Humen");
+            Animals = await ApiConnector.GetAll<Animal>("Animals");
 
             IsBusy = false;
         }
@@ -236,20 +237,20 @@ namespace NationalReserve.ViewModel
             try
             {
                 StringBuilder allMessageBuilder = new StringBuilder();
-                foreach (var addedHuman in AddedCollection)
+                foreach (var added in AddedCollection)
                 {
-                    var addMessage = await ApiConnector.AddData<Animal>("Humen", addedHuman);
-                    allMessageBuilder.Append($"{addedHuman.Name}: {addMessage}\n");
+                    var addMessage = await ApiConnector.AddData<Animal>("Animals", added);
+                    allMessageBuilder.Append($"{added.Name}: {addMessage}\n");
                 }
-                foreach (var updatedHuman in UpdatedCollection.Where(x => x.IdAnimal != null))
+                foreach (var updated in UpdatedCollection.Where(x => x.IdAnimal != null))
                 {
-                    var updateMessage = await ApiConnector.UpdateData("Humen", updatedHuman, updatedHuman.IdAnimal.Value);
-                    allMessageBuilder.Append($"{updatedHuman.Name}: {updateMessage}\n");
+                    var updateMessage = await ApiConnector.UpdateData("Animals", updated, updated.IdAnimal.Value);
+                    allMessageBuilder.Append($"{updated.Name}: {updateMessage}\n");
                 }
-                foreach (var deletedHuman in DeletedCollection)
+                foreach (var deleted in DeletedCollection)
                 {
-                    var deleteMessage = await ApiConnector.DeleteData("Humen", deletedHuman.IdAnimal.Value);
-                    allMessageBuilder.Append($"{deletedHuman.Name}: {deleteMessage}\n");
+                    var deleteMessage = await ApiConnector.DeleteData("Animals", deleted.IdAnimal.Value);
+                    allMessageBuilder.Append($"{deleted.Name}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();

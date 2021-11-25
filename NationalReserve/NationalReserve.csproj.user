@@ -36,6 +36,9 @@
     <Page Update="View\Theme\ComboBoxTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\Theme\DatePickerTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Theme\ListViewTheme.xaml">
       <SubType>Designer</SubType>
     </Page>
