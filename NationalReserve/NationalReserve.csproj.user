@@ -19,6 +19,9 @@
     <Compile Update="View\HumanView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\RoleView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\HumanView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RoleView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Theme\ButtonControlTheme.xaml">

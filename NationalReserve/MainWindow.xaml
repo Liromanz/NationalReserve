@@ -44,7 +44,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding HomeViewCommand}"/>
+                                 Command="{Binding HumanViewCommand}"/>
                     <RadioButton Content="Документы сотрудника"
                                  Height="50"
                                  Foreground="White"
@@ -54,7 +54,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding RoleViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
                     <RadioButton Content="Спонсорство"

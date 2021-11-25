@@ -6,12 +6,12 @@ using NationalReserve.ViewModel;
 namespace NationalReserve.View
 {
     /// <summary>
-    /// Логика взаимодействия для AnimalTypeView.xaml
+    /// Логика взаимодействия для RoleView.xaml
     /// </summary>
-    public partial class AnimalTypeView : UserControl
+    public partial class RoleView : UserControl
     {
-        public AnimalTypeViewModel ViewModel => DataContext as AnimalTypeViewModel;
-        public AnimalTypeView()
+        public RoleViewModel ViewModel => DataContext as RoleViewModel;
+        public RoleView()
         {
             InitializeComponent();
         }
@@ -19,7 +19,7 @@ namespace NationalReserve.View
         private void MouseRightButtonDownCommand(object sender, MouseButtonEventArgs e)
         {
             (sender as ListView).SelectedItems.Clear();
-            ViewModel.Selected = new AnimalType();
+            ViewModel.Selected = new Role();
         }
     }
 }

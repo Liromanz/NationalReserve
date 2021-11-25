@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using NationalReserve.Helpers;
 using NationalReserve.Helpers.Interface;
@@ -12,7 +10,7 @@ using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
 {
-    public class AnimalTypeViewModel : ObservableObject, IDataHandler
+    public class RoleViewModel : ObservableObject, IDataHandler
     {
         #region Команды
         public RelayCommand AddCommand { get; set; }
@@ -24,11 +22,11 @@ namespace NationalReserve.ViewModel
 
         #region Измененные данные
 
-        public ObservableCollection<AnimalType> UpdatedCollection { get; set; }
-        public ObservableCollection<AnimalType> AddedCollection { get; set; }
+        public ObservableCollection<Role> UpdatedCollection { get; set; }
+        public ObservableCollection<Role> AddedCollection { get; set; }
 
-        private ObservableCollection<AnimalType> _deletedCollection;
-        public ObservableCollection<AnimalType> DeletedCollection
+        private ObservableCollection<Role> _deletedCollection;
+        public ObservableCollection<Role> DeletedCollection
         {
             get => _deletedCollection;
             set
@@ -38,8 +36,8 @@ namespace NationalReserve.ViewModel
             }
         }
 
-        private AnimalType _deleted;
-        public AnimalType Deleted
+        private Role _deleted;
+        public Role Deleted
         {
             get => _deleted;
             set
@@ -52,33 +50,33 @@ namespace NationalReserve.ViewModel
 
         #region Данные с верстки
 
-        private ObservableCollection<AnimalType> _animalTypes;
-        public ObservableCollection<AnimalType> AnimalTypes
+        private ObservableCollection<Role> _roles;
+        public ObservableCollection<Role> Roles
         {
-            get => _animalTypes;
+            get => _roles;
             set
             {
-                _animalTypes = value;
+                _roles = value;
                 OnPropertyChanged();
             }
         }
 
-        private AnimalType _animalType;
-        public AnimalType AnimalType
+        private Role _role;
+        public Role Role
         {
-            get => _animalType;
+            get => _role;
             set
             {
                 if (value != null)
                     UpdatedCollection.Add(value);
 
-                _animalType = value;
+                _role = value;
                 OnPropertyChanged();
             }
         }
 
-        private AnimalType _selected;
-        public AnimalType Selected
+        private Role _selected;
+        public Role Selected
         {
             get => _selected;
             set
@@ -86,7 +84,7 @@ namespace NationalReserve.ViewModel
                 _selected = value;
                 if (value != null)
                 {
-                    AnimalType = value;
+                    Role = value;
                 }
                 OnPropertyChanged();
             }
@@ -106,7 +104,7 @@ namespace NationalReserve.ViewModel
 
         #endregion
 
-        public AnimalTypeViewModel()
+        public RoleViewModel()
         {
             IsBusy = true;
             InitAsync();
@@ -125,12 +123,12 @@ namespace NationalReserve.ViewModel
 
         public async void ReadAsync()
         {
-            AddedCollection = new ObservableCollection<AnimalType>();
-            UpdatedCollection = new ObservableCollection<AnimalType>();
-            DeletedCollection = new ObservableCollection<AnimalType>();
+            AddedCollection = new ObservableCollection<Role>();
+            UpdatedCollection = new ObservableCollection<Role>();
+            DeletedCollection = new ObservableCollection<Role>();
 
-            AnimalType = new AnimalType();
-            AnimalTypes = await ApiConnector.GetAll<AnimalType>("AnimalTypes");
+            Role = new Role();
+            Roles = await ApiConnector.GetAll<Role>("Roles");
 
             IsBusy = false;
         }
@@ -143,11 +141,11 @@ namespace NationalReserve.ViewModel
                 return;
             }
 
-            AnimalType.Id = null;
-            AnimalTypes.Add(AnimalType);
-            AddedCollection.Add(AnimalType);
+            Role.Id = null;
+            Roles.Add(Role);
+            AddedCollection.Add(Role);
 
-            Selected = new AnimalType();
+            Selected = new Role();
         }
 
         public void LogicalDelete()
@@ -155,9 +153,9 @@ namespace NationalReserve.ViewModel
             if (Selected?.Id != null)
             {
                 DeletedCollection.Add(Selected);
-                AnimalTypes.Remove(Selected);
+                Roles.Remove(Selected);
 
-                Selected = new AnimalType();
+                Selected = new Role();
             }
         }
 
@@ -165,7 +163,7 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
-                AnimalTypes.Add(Deleted);
+                Roles.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
         }
@@ -183,17 +181,17 @@ namespace NationalReserve.ViewModel
                 StringBuilder allMessageBuilder = new StringBuilder();
                 foreach (var added in AddedCollection)
                 {
-                    var addMessage = await ApiConnector.AddData<AnimalType>("AnimalTypes", added);
+                    var addMessage = await ApiConnector.AddData<Role>("Roles", added);
                     allMessageBuilder.Append($"{added.Name}: {addMessage}\n");
                 }
                 foreach (var updated in UpdatedCollection.Where(x => x.Id != null))
                 {
-                    var updateMessage = await ApiConnector.UpdateData("AnimalTypes", updated, updated.Id.Value);
+                    var updateMessage = await ApiConnector.UpdateData("Roles", updated, updated.Id.Value);
                     allMessageBuilder.Append($"{updated.Name}: {updateMessage}\n");
                 }
                 foreach (var deleted in DeletedCollection)
                 {
-                    var deleteMessage = await ApiConnector.DeleteData("AnimalTypes", deleted.Id.Value);
+                    var deleteMessage = await ApiConnector.DeleteData("Roles", deleted.Id.Value);
                     allMessageBuilder.Append($"{deleted.Name}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
@@ -208,9 +206,9 @@ namespace NationalReserve.ViewModel
 
         public string ValidationErrorMessage()
         {
-            if (AnimalType == null) return String.Empty;
+            if (Role == null) return String.Empty;
 
-            if (String.IsNullOrWhiteSpace(AnimalType.Name)) return "Поле \"Наименование\" не заполнено";
+            if (String.IsNullOrWhiteSpace(Role.Name)) return "Поле \"Наименование\" не заполнено";
 
             return String.Empty;
         }
