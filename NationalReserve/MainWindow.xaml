@@ -128,7 +128,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding AnimalFeedViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
                     <RadioButton Content="Учет растений"

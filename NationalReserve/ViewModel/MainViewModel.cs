@@ -11,11 +11,13 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand AnimalViewCommand { get; set; }
+        public RelayCommand AnimalFeedViewCommand { get; set; }
         #endregion
 
         #region Верстки
-        public HumanViewModel HomeVM { get; set; }
-        public AnimalViewModel AnimalVM { get; set; }
+        public HumanViewModel HumanVm { get; set; }
+        public AnimalViewModel AnimalVm { get; set; }
+        public AnimalFeedViewModel AnimalFeedVm { get; set; }
         #endregion
 
         private object _currentView;
@@ -31,12 +33,14 @@ namespace NationalReserve.ViewModel
 
         public MainViewModel()
         {
-            HomeVM = new HumanViewModel();
-            AnimalVM = new AnimalViewModel();
-            ChangeCurrentView(HomeVM);
+            HumanVm = new HumanViewModel();
+            AnimalVm = new AnimalViewModel();
+            AnimalFeedVm = new AnimalFeedViewModel();
+            ChangeCurrentView(HumanVm);
 
-            HomeViewCommand = new RelayCommand(o => { ChangeCurrentView(HomeVM); });
-            AnimalViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalVM); });
+            HomeViewCommand = new RelayCommand(o => { ChangeCurrentView(HumanVm); });
+            AnimalViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalVm); });
+            AnimalFeedViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalFeedVm); });
         }
 
         private void ChangeCurrentView(object viewToChange)

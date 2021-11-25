@@ -37,15 +37,6 @@
                         <GridViewColumn Header="Последняя проверка" Width="auto" DisplayMemberBinding="{Binding LastCheck}" />
                     </GridView>
                 </ListView.View>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=DeleteButton, Path=IsPressed}" Value="True">
-                                <Setter Property="Background" Value="Green"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.ItemContainerStyle>
             </ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button
@@ -84,15 +75,6 @@
                         <GridViewColumn Header="Последняя проверка" Width="auto" DisplayMemberBinding="{Binding LastCheck}" />
                     </GridView>
                 </ListView.View>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=DeleteButton, Path=IsPressed}" Value="True">
-                                <Setter Property="Background" Value="Green"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.ItemContainerStyle>
             </ListView>
             <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Width="130"
@@ -201,7 +183,7 @@
                                TextAlignment="Center"
                                Margin="0 5 0 0"/>
                     <DatePicker Text="{Binding Animal.DateRegistration}"
-                        Style="{StaticResource DatePickerTheme}"/>
+                                Style="{StaticResource DatePickerTheme}" FirstDayOfWeek="Monday"/>
                     <TextBlock Text="Зона"
                                Foreground="White"
                                FontSize="14"

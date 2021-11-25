@@ -73,9 +73,6 @@ namespace NationalReserve.ViewModel
                         AnimalType = AnimalTypes.FirstOrDefault(x => x.Id == value.IdAnimal);
                     if (Zones != null && Zones.Any())
                         Zone = Zones.FirstOrDefault(x => x.IdZone == value.IdZone);
-
-                    if (ValidationErrorMessage() is string message && !string.IsNullOrWhiteSpace(message))
-                        MessageBox.Show(message);
                     else
                         UpdatedCollection.Add(value);
                 }
@@ -208,7 +205,7 @@ namespace NationalReserve.ViewModel
 
         public void LogicalDelete()
         {
-            if (SelectedAnimal != null)
+            if (SelectedAnimal?.IdAnimal != null)
             {
                 DeletedCollection.Add(SelectedAnimal);
                 Animals.Remove(SelectedAnimal);

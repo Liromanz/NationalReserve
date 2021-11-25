@@ -73,9 +73,6 @@ namespace NationalReserve.ViewModel
                         _human.Password = SecureData.Hash(value.Password);
                     if (Roles != null && Roles.Any())
                         Role = Roles.FirstOrDefault(x => x.Id == value.IdRole);
-
-                    if (ValidationErrorMessage() is string message && !string.IsNullOrWhiteSpace(message))
-                        MessageBox.Show(message);
                     else
                         UpdatedCollection.Add(value);
                 }
@@ -186,7 +183,7 @@ namespace NationalReserve.ViewModel
 
         public void LogicalDelete()
         {
-            if (SelectedHuman != null)
+            if (SelectedHuman?.IdHuman != null)
             {
                 DeletedCollection.Add(SelectedHuman);
                 Humans.Remove(SelectedHuman);

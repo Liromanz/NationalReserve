@@ -1,0 +1,276 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using NationalReserve.Helpers;
+using NationalReserve.Helpers.Interface;
+using NationalReserve.Model;
+using NationalReserve.View.Core;
+
+namespace NationalReserve.ViewModel
+{
+    public class AnimalFeedViewModel : ObservableObject, IDataHandler
+    {
+        #region Команды
+        public RelayCommand AddCommand { get; set; }
+        public RelayCommand SaveCommand { get; set; }
+        public RelayCommand LogicalDeleteCommand { get; set; }
+        public RelayCommand LogicalRecoverCommand { get; set; }
+
+        #endregion
+
+        #region Измененные данные
+
+        public ObservableCollection<AnimalFeed> UpdatedCollection { get; set; }
+        public ObservableCollection<AnimalFeed> AddedCollection { get; set; }
+
+        private ObservableCollection<AnimalFeed> _deletedCollection;
+        public ObservableCollection<AnimalFeed> DeletedCollection
+        {
+            get => _deletedCollection;
+            set
+            {
+                _deletedCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private AnimalFeed _deleted;
+        public AnimalFeed Deleted
+        {
+            get => _deleted;
+            set
+            {
+                _deleted = value;
+                OnPropertyChanged();
+            }
+        }
+        #endregion
+
+        #region Данные с верстки
+
+        private ObservableCollection<AnimalFeed> _animalFeeds;
+        public ObservableCollection<AnimalFeed> AnimalFeeds
+        {
+            get => _animalFeeds;
+            set
+            {
+                _animalFeeds = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private AnimalFeed _animalFeed;
+        public AnimalFeed AnimalFeed
+        {
+            get => _animalFeed;
+            set
+            {
+                if (value != null)
+                {
+                    if (Animals != null && Animals.Any())
+                        Animal = Animals.FirstOrDefault(x => x.IdAnimal == value.IdAnimal);
+                    if (Supplies != null && Supplies.Any())
+                        Supply = Supplies.FirstOrDefault(x => x.IdSupply == value.IdSupply);
+                    else
+                        UpdatedCollection.Add(value);
+                }
+                _animalFeed = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private AnimalFeed _selected;
+        public AnimalFeed Selected
+        {
+            get => _selected;
+            set
+            {
+                _selected = value;
+                if (value != null)
+                {
+                    AnimalFeed = value;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Animal> _animals;
+        public ObservableCollection<Animal> Animals
+        {
+            get => _animals;
+            set
+            {
+                _animals = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Animal _animal;
+        public Animal Animal
+        {
+            get => _animal;
+            set
+            {
+                _animal = value;
+                Animal.IdType = value?.IdAnimal ?? 1;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<Supply> _supplies;
+        public ObservableCollection<Supply> Supplies
+        {
+            get => _supplies;
+            set
+            {
+                _supplies = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Supply _supply;
+        public Supply Supply
+        {
+            get => _supply;
+            set
+            {
+                _supply = value;
+                Animal.IdZone = value?.IdSupply ?? 1;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isBusy;
+
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
+        public AnimalFeedViewModel()
+        {
+            IsBusy = true;
+            InitAsync();
+            ReadAsync();
+        }
+
+        private async void InitAsync()
+        {
+            AddCommand = new RelayCommand(o => { AddObject(); });
+            SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
+            LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+
+            Animals = await ApiConnector.GetAll<Animal>("Animals");
+            Supplies = await ApiConnector.GetAll<Supply>("Supplies");
+        }
+
+        #region CRUD
+
+        public async void ReadAsync()
+        {
+            AddedCollection = new ObservableCollection<AnimalFeed>();
+            UpdatedCollection = new ObservableCollection<AnimalFeed>();
+            DeletedCollection = new ObservableCollection<AnimalFeed>();
+
+            AnimalFeed = new AnimalFeed();
+            AnimalFeeds = await ApiConnector.GetAll<AnimalFeed>("AnimalFeeds");
+
+            IsBusy = false;
+        }
+
+        public void AddObject()
+        {
+            if (ValidationErrorMessage() is string message && !string.IsNullOrWhiteSpace(message))
+            {
+                MessageBox.Show(message);
+                return;
+            }
+
+            AnimalFeed.IdFeed = null;
+            AnimalFeeds.Add(AnimalFeed);
+            AddedCollection.Add(AnimalFeed);
+
+            Selected = new AnimalFeed();
+        }
+
+        public void LogicalDelete()
+        {
+            if (Selected?.IdFeed != null)
+            {
+                DeletedCollection.Add(Selected);
+                AnimalFeeds.Remove(Selected);
+
+                Selected = new AnimalFeed();
+            }
+        }
+
+        public void LogicalRecover()
+        {
+            if (Deleted != null)
+            {
+                AnimalFeeds.Add(Deleted);
+                DeletedCollection.Remove(Deleted);
+            }
+        }
+
+        public async void SaveAsync()
+        {
+            IsBusy = true;
+            if (!AddedCollection.Any() && !UpdatedCollection.Any() && !DeletedCollection.Any())
+            {
+                IsBusy = false;
+                return;
+            }
+            try
+            {
+                StringBuilder allMessageBuilder = new StringBuilder();
+                foreach (var added in AddedCollection)
+                {
+                    var addMessage = await ApiConnector.AddData<AnimalFeed>("AnimalFeeds", added);
+                    allMessageBuilder.Append($"{addMessage}\n");
+                }
+                foreach (var updated in UpdatedCollection.Where(x => x.IdFeed != null))
+                {
+                    var updateMessage = await ApiConnector.UpdateData("AnimalFeeds", updated, updated.IdFeed.Value);
+                    allMessageBuilder.Append($"{updateMessage}\n");
+                }
+                foreach (var deleted in DeletedCollection)
+                {
+                    var deleteMessage = await ApiConnector.DeleteData("AnimalFeeds", deleted.IdFeed.Value);
+                    allMessageBuilder.Append($"{deleteMessage}\n");
+                }
+                MessageBox.Show(allMessageBuilder.ToString());
+                ReadAsync();
+            }
+            catch (Exception e)
+            {
+                IsBusy = false;
+                MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
+            }
+        }
+
+        public string ValidationErrorMessage()
+        {
+            if (AnimalFeed == null) return String.Empty;
+
+            if (!Animals.Select(x => x.IdAnimal).Contains(AnimalFeed.IdAnimal)) return "Поле \"Животное\" не выбрано";
+            if (!Supplies.Select(x => x.IdSupply).Contains(AnimalFeed.IdSupply)) return "Поле \"Поставка\" не выбрано";
+
+            return String.Empty;
+        }
+
+        #endregion
+    }
+}

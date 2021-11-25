@@ -36,15 +36,6 @@
                         <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IdRole, FallbackValue=-, TargetNullValue=-}" />
                     </GridView>
                 </ListView.View>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=DeleteButton, Path=IsPressed}" Value="True">
-                                <Setter Property="Background" Value="Green"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.ItemContainerStyle>
             </ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button
@@ -83,15 +74,6 @@
                         <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IdRole, FallbackValue=-, TargetNullValue=-}" />
                     </GridView>
                 </ListView.View>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=DeleteButton, Path=IsPressed}" Value="True">
-                                <Setter Property="Background" Value="Green"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListView.ItemContainerStyle>
             </ListView>
             <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Width="130"
