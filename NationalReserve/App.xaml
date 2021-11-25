@@ -26,6 +26,9 @@
             <DataTemplate DataType="{x:Type viewModel:AnimalFeedViewModel}">
                 <view:AnimalFeedView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:AnimalTypeViewModel}">
+                <view:AnimalTypeView />
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:HumanViewModel}">
                 <view:HumanView />

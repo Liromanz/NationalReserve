@@ -10,6 +10,9 @@
     <Compile Update="View\AnimalFeedView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\AnimalTypeView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\AnimalView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AnimalFeedView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AnimalTypeView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AnimalView.xaml">
