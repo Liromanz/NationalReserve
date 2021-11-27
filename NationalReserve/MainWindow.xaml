@@ -74,7 +74,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding CheckpointViewCommand}"/>
                     <RadioButton Content="Учет прохода через КПП"
                                  Height="50"
                                  Foreground="White"

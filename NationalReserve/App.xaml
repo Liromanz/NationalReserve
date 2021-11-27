@@ -37,6 +37,10 @@
                 <view:RoleView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:CheckpointViewModel}">
+                <view:CheckpointVIew />
+            </DataTemplate>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
