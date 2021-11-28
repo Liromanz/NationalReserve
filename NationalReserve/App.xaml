@@ -41,6 +41,9 @@
                 <view:CheckpointVIew />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewModel:CheckpointPassViewModel}">
+                <view:CheckpointPassView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -265,7 +265,7 @@ namespace NationalReserve.ViewModel
 
             if (string.IsNullOrWhiteSpace(Animal.Name)) return "Поле \"Имя\" незаполнено";
             if (!AnimalTypes.Select(x => x.Id).Contains(Animal.IdType)) return "Поле \"Тип\" не выбрано";
-            if (Animal.Age < 0) return "Поле \"Пол\" не должно быть отрицательным";
+            if (Animal.Age < 0) return "Поле \"Возраст\" не должно быть отрицательным";
             if (!Zones.Select(x => x.IdZone).Contains(Animal.IdZone)) return "Поле \"Зона\" не выбрано";
             if (Animal.DateRegistration > DateTime.Now) return "Поле \"Дата регистрации\" не может быть в будущем";
             if (Animal.LastCheck > DateTime.Now) return "Поле \"Последняя проверка\" не может быть в будущем";

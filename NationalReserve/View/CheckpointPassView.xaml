@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="NationalReserve.View.CheckpointPassView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NationalReserve.View"
+             xmlns:viewModel="clr-namespace:NationalReserve.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:CheckpointPassViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListView ItemsSource="{Binding CheckpointPasses, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IdHuman}" />
+                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}"/>
+                        <GridViewColumn Header="Тип прохода" Width="auto" DisplayMemberBinding="{Binding PassType}"/>
+                        <GridViewColumn Header="Время прохода потомство" Width="auto" DisplayMemberBinding="{Binding PassTime}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button
+                    Width="130"
+                    Content="Добавить запись"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding AddCommand}"/>
+                <Button
+                    Width="130"
+                    Content="Удалить запись"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding LogicalDeleteCommand}"/>
+                <Button Width="130"
+                        Content="Сохранить всё"
+                        Style="{StaticResource ButtonControlTheme}"
+                        Command="{Binding SaveCommand}"/>
+            </StackPanel>
+
+            <TextBlock Text="Корзина"
+                       Foreground="White"
+                       FontSize="20"
+                       Width="280"
+                       TextAlignment="Center"
+                       Margin="0,0,0,10"
+                       Grid.Row="2"/>
+            <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IdHuman}" />
+                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}"/>
+                        <GridViewColumn Header="Тип прохода" Width="auto" DisplayMemberBinding="{Binding PassType}"/>
+                        <GridViewColumn Header="Время прохода потомство" Width="auto" DisplayMemberBinding="{Binding PassTime}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="130"
+                    Content="Восстановить запись"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding LogicalRecoverCommand}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Width="280"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Учет прохода КПП"
+                       Foreground="White"
+                       FontSize="28"
+                       Width="280"
+                       TextAlignment="Center"
+                       Margin="0,0,0,10"/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <StackPanel>
+                    <TextBlock Text="Человек"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <ComboBox Width="250"
+                              VerticalContentAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Height="40"
+                              Foreground="White"
+                              ItemsSource="{Binding Humans}"
+                              SelectedItem="{Binding Human, Mode=TwoWay}"  
+                              DisplayMemberPath="Name"/>
+                    <TextBlock Text="КПП"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <ComboBox Width="250"
+                              VerticalContentAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Height="40"
+                              Foreground="White"
+                              ItemsSource="{Binding Checkpoints}"
+                              SelectedItem="{Binding Checkpoint, Mode=TwoWay}"  
+                              DisplayMemberPath="Name"/>
+
+                    <TextBlock Text="Тип прохода"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <ComboBox Width="250"
+                              VerticalContentAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Height="40"
+                              Foreground="White"
+                              SelectedIndex="0"
+                              SelectedItem="{Binding CheckpointPass.PassType, Mode=TwoWay}" >
+                        <ComboBoxItem Content="Вход"/>
+                        <ComboBoxItem Content="Выход"/>
+                    </ComboBox>
+                    <TextBlock Text="Дата прохода"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <DatePicker Text="{Binding CheckpointPass.PassTime}"
+                                Style="{StaticResource DatePickerTheme}" FirstDayOfWeek="Monday"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Column="0" Background="#33000000" Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+            <ProgressBar Grid.Row="0" Height="20" IsIndeterminate="True" Orientation="Horizontal" Foreground="#FF276433" />
+            <ProgressBar Grid.Row="1" Height="20" Margin="0 50 0 0" IsIndeterminate="True" Orientation="Horizontal" Foreground="#FF276433" />
+        </Grid>
+    </Grid>
+</UserControl>

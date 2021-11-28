@@ -16,6 +16,9 @@
     <Compile Update="View\AnimalView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\CheckpointPassView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\CheckpointVIew.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\AnimalView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\CheckpointPassView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\CheckpointVIew.xaml">

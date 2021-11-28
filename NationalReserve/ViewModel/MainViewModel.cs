@@ -10,6 +10,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand AnimalFeedViewCommand { get; set; }
         public RelayCommand AnimalTypeViewCommand { get; set; }
         public RelayCommand CheckpointViewCommand { get; set; }
+        public RelayCommand CheckpointPassViewCommand { get; set; }
         public RelayCommand HumanViewCommand { get; set; }
         public RelayCommand RoleViewCommand { get; set; }
         #endregion
@@ -19,6 +20,7 @@ namespace NationalReserve.ViewModel
         public AnimalFeedViewModel AnimalFeedVm { get; set; }
         public AnimalTypeViewModel AnimalTypeVm { get; set; }
         public CheckpointViewModel CheckpointVm { get; set; }
+        public CheckpointPassViewModel CheckpointPassVm { get; set; }
         public HumanViewModel HumanVm { get; set; }
         public RoleViewModel RoleVm { get; set; }
         #endregion
@@ -40,6 +42,7 @@ namespace NationalReserve.ViewModel
             AnimalFeedVm = new AnimalFeedViewModel();
             AnimalTypeVm = new AnimalTypeViewModel();
             CheckpointVm = new CheckpointViewModel();
+            CheckpointPassVm = new CheckpointPassViewModel();
             HumanVm = new HumanViewModel();
             RoleVm = new RoleViewModel();
             ChangeCurrentView(HumanVm);
@@ -48,6 +51,7 @@ namespace NationalReserve.ViewModel
             AnimalFeedViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalFeedVm); });
             AnimalTypeViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalTypeVm); });
             CheckpointViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointVm); });
+            CheckpointPassViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointPassVm); });
             HumanViewCommand = new RelayCommand(o => { ChangeCurrentView(HumanVm); });
             RoleViewCommand = new RelayCommand(o => { ChangeCurrentView(RoleVm); });
         }

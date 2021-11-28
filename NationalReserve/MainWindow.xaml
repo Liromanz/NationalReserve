@@ -80,7 +80,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding CheckpointPassViewCommand}"/>
                     <RadioButton Content="Смена в КПП"
                                  Height="50"
                                  Foreground="White"
