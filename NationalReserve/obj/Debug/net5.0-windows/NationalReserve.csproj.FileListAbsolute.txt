@@ -84,3 +84,5 @@ C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-win
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\CheckpointVIew.baml
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\CheckpointPassView.g.cs
 C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\CheckpointPassView.baml
+C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\MaterialView.g.cs
+C:\Users\kiss_\source\repos\NationalReserve\NationalReserve\obj\Debug\net5.0-windows\View\MaterialView.baml

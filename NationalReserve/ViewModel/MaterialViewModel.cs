@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using NationalReserve.Helpers;
-using NationalReserve.Helpers.Interface;
 using NationalReserve.Model;
 using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
 {
-    public class AnimalFeedViewModel : ObservableObject, IDataHandler
+    public class MaterialViewModel : ObservableObject
     {
         #region Команды
         public RelayCommand AddCommand { get; set; }
@@ -22,11 +23,11 @@ namespace NationalReserve.ViewModel
 
         #region Измененные данные
 
-        public ObservableCollection<AnimalFeed> UpdatedCollection { get; set; }
-        public ObservableCollection<AnimalFeed> AddedCollection { get; set; }
+        public ObservableCollection<Material> UpdatedCollection { get; set; }
+        public ObservableCollection<Material> AddedCollection { get; set; }
 
-        private ObservableCollection<AnimalFeed> _deletedCollection;
-        public ObservableCollection<AnimalFeed> DeletedCollection
+        private ObservableCollection<Material> _deletedCollection;
+        public ObservableCollection<Material> DeletedCollection
         {
             get => _deletedCollection;
             set
@@ -36,8 +37,8 @@ namespace NationalReserve.ViewModel
             }
         }
 
-        private AnimalFeed _deleted;
-        public AnimalFeed Deleted
+        private Material _deleted;
+        public Material Deleted
         {
             get => _deleted;
             set
@@ -50,39 +51,37 @@ namespace NationalReserve.ViewModel
 
         #region Данные с верстки
 
-        private ObservableCollection<AnimalFeed> _animalFeeds;
-        public ObservableCollection<AnimalFeed> AnimalFeeds
+        private ObservableCollection<Material> _materials;
+        public ObservableCollection<Material> Materials
         {
-            get => _animalFeeds;
+            get => _materials;
             set
             {
-                _animalFeeds = value;
+                _materials = value;
                 OnPropertyChanged();
             }
         }
 
-        private AnimalFeed _animalFeed;
-        public AnimalFeed AnimalFeed
+        private Material _material;
+        public Material Material
         {
-            get => _animalFeed;
+            get => _material;
             set
             {
                 if (value != null)
                 {
-                    if (Animals != null && Animals.Any())
-                        Animal = Animals.FirstOrDefault(x => x.IdAnimal == value.IdAnimal);
-                    if (Supplies != null && Supplies.Any())
-                        Supply = Supplies.FirstOrDefault(x => x.IdSupply == value.IdSupply);
+                    if (MaterialTypes != null && MaterialTypes.Any())
+                        MaterialType = MaterialTypes.FirstOrDefault(x => x.Id == value.IdType);
                     else
                         UpdatedCollection.Add(value);
                 }
-                _animalFeed = value;
+                _material = value;
                 OnPropertyChanged();
             }
         }
 
-        private AnimalFeed _selected;
-        public AnimalFeed Selected
+        private Material _selected;
+        public Material Selected
         {
             get => _selected;
             set
@@ -90,54 +89,31 @@ namespace NationalReserve.ViewModel
                 _selected = value;
                 if (value != null)
                 {
-                    AnimalFeed = value;
+                    Material = value;
                 }
                 OnPropertyChanged();
             }
         }
 
-        private ObservableCollection<Animal> _animals;
-        public ObservableCollection<Animal> Animals
+        private ObservableCollection<MaterialType> _materialTypes;
+        public ObservableCollection<MaterialType> MaterialTypes
         {
-            get => _animals;
+            get => _materialTypes;
             set
             {
-                _animals = value;
+                _materialTypes = value;
                 OnPropertyChanged();
             }
         }
 
-        private Animal _animal;
-        public Animal Animal
+        private MaterialType _materialType;
+        public MaterialType MaterialType
         {
-            get => _animal;
+            get => _materialType;
             set
             {
-                _animal = value;
-                Animal.IdType = value?.IdAnimal ?? 1;
-                OnPropertyChanged();
-            }
-        }
-
-        private ObservableCollection<Supply> _supplies;
-        public ObservableCollection<Supply> Supplies
-        {
-            get => _supplies;
-            set
-            {
-                _supplies = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private Supply _supply;
-        public Supply Supply
-        {
-            get => _supply;
-            set
-            {
-                _supply = value;
-                Animal.IdZone = value?.IdSupply ?? 1;
+                _materialType = value;
+                Material.IdType = value?.Id ?? 1;
                 OnPropertyChanged();
             }
         }
@@ -156,7 +132,7 @@ namespace NationalReserve.ViewModel
 
         #endregion
 
-        public AnimalFeedViewModel()
+        public MaterialViewModel()
         {
             IsBusy = true;
             InitAsync();
@@ -170,20 +146,19 @@ namespace NationalReserve.ViewModel
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
-            Animals = await ApiConnector.GetAll<Animal>("Animals");
-            Supplies = await ApiConnector.GetAll<Supply>("Supplies");
+            MaterialTypes = await ApiConnector.GetAll<MaterialType>("MaterialTypes");
         }
 
         #region CRUD
 
         public async void ReadAsync()
         {
-            AddedCollection = new ObservableCollection<AnimalFeed>();
-            UpdatedCollection = new ObservableCollection<AnimalFeed>();
-            DeletedCollection = new ObservableCollection<AnimalFeed>();
+            AddedCollection = new ObservableCollection<Material>();
+            UpdatedCollection = new ObservableCollection<Material>();
+            DeletedCollection = new ObservableCollection<Material>();
 
-            AnimalFeed = new AnimalFeed();
-            AnimalFeeds = await ApiConnector.GetAll<AnimalFeed>("AnimalFeeds");
+            Material = new Material();
+            Materials = await ApiConnector.GetAll<Material>("Materials");
 
             IsBusy = false;
         }
@@ -196,21 +171,21 @@ namespace NationalReserve.ViewModel
                 return;
             }
 
-            AnimalFeed.IdFeed = null;
-            AnimalFeeds.Add(AnimalFeed);
-            AddedCollection.Add(AnimalFeed);
+            Material.IdMaterial = null;
+            Materials.Add(Material);
+            AddedCollection.Add(Material);
 
-            Selected = new AnimalFeed();
+            Selected = new Material();
         }
 
         public void LogicalDelete()
         {
-            if (Selected?.IdFeed != null)
+            if (Selected?.IdType != null)
             {
                 DeletedCollection.Add(Selected);
-                AnimalFeeds.Remove(Selected);
+                Materials.Remove(Selected);
 
-                Selected = new AnimalFeed();
+                Selected = new Material();
             }
         }
 
@@ -218,7 +193,7 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
-                AnimalFeeds.Add(Deleted);
+                Materials.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
         }
@@ -236,18 +211,18 @@ namespace NationalReserve.ViewModel
                 StringBuilder allMessageBuilder = new StringBuilder();
                 foreach (var added in AddedCollection)
                 {
-                    var addMessage = await ApiConnector.AddData<AnimalFeed>("AnimalFeeds", added);
-                    allMessageBuilder.Append($"{addMessage}\n");
+                    var addMessage = await ApiConnector.AddData<Material>("Materials", added);
+                    allMessageBuilder.Append($"{added.Name}: {addMessage}\n");
                 }
-                foreach (var updated in UpdatedCollection.Where(x => x.IdFeed != null))
+                foreach (var updated in UpdatedCollection.Where(x => x.IdMaterial != null))
                 {
-                    var updateMessage = await ApiConnector.UpdateData("AnimalFeeds", updated, updated.IdFeed.Value);
-                    allMessageBuilder.Append($"{updateMessage}\n");
+                    var updateMessage = await ApiConnector.UpdateData("Materials", updated, updated.IdMaterial.Value);
+                    allMessageBuilder.Append($"{updated.Name}: {updateMessage}\n");
                 }
                 foreach (var deleted in DeletedCollection)
                 {
-                    var deleteMessage = await ApiConnector.DeleteData("AnimalFeeds", deleted.IdFeed.Value);
-                    allMessageBuilder.Append($"{deleteMessage}\n");
+                    var deleteMessage = await ApiConnector.DeleteData("Materials", deleted.IdMaterial.Value);
+                    allMessageBuilder.Append($"{deleted.Name}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();
@@ -261,11 +236,11 @@ namespace NationalReserve.ViewModel
 
         public string ValidationErrorMessage()
         {
-            if (AnimalFeed == null) return String.Empty;
+            if (Material == null) return String.Empty;
 
-            if (!Animals.Select(x => x.IdAnimal).Contains(AnimalFeed.IdAnimal)) return "Поле \"Животное\" не выбрано";
-            if (!Supplies.Select(x => x.IdSupply).Contains(AnimalFeed.IdSupply)) return "Поле \"Поставка\" не выбрано";
-            if (AnimalFeed.Amount <= 0) return "Поле \"Количество\" не может быть отрицательным или равным нулю";
+            if (string.IsNullOrWhiteSpace(Material.Name)) return "Поле \"Наименование\" незаполнено";
+            if (!MaterialTypes.Select(x => x.Id).Contains(Material.IdType)) return "Поле \"Тип материала\" не выбрано";
+            if (Material.CostPerOne <= 0) return "Поле \"Цена за единицу\" не может быть отрицательным или равным нулю";
 
             return String.Empty;
         }

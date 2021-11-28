@@ -13,6 +13,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand CheckpointPassViewCommand { get; set; }
         public RelayCommand HumanViewCommand { get; set; }
         public RelayCommand RoleViewCommand { get; set; }
+        public RelayCommand MaterialViewCommand { get; set; }
         #endregion
 
         #region Верстки
@@ -23,6 +24,7 @@ namespace NationalReserve.ViewModel
         public CheckpointPassViewModel CheckpointPassVm { get; set; }
         public HumanViewModel HumanVm { get; set; }
         public RoleViewModel RoleVm { get; set; }
+        public MaterialViewModel MaterialVm { get; set; }
         #endregion
 
         private object _currentView;
@@ -45,6 +47,7 @@ namespace NationalReserve.ViewModel
             CheckpointPassVm = new CheckpointPassViewModel();
             HumanVm = new HumanViewModel();
             RoleVm = new RoleViewModel();
+            MaterialVm = new MaterialViewModel();
             ChangeCurrentView(HumanVm);
 
             AnimalViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalVm); });
@@ -54,6 +57,7 @@ namespace NationalReserve.ViewModel
             CheckpointPassViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointPassVm); });
             HumanViewCommand = new RelayCommand(o => { ChangeCurrentView(HumanVm); });
             RoleViewCommand = new RelayCommand(o => { ChangeCurrentView(RoleVm); });
+            MaterialViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialVm); });
         }
 
         private void ChangeCurrentView(object viewToChange)
