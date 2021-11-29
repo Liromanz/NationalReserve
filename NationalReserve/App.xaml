@@ -54,6 +54,10 @@
             <DataTemplate DataType="{x:Type viewModel:PaymentTypeViewModel}">
                 <view:PaymentTypeView />
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:PlantListViewModel}">
+                <view:PlantListView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

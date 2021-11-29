@@ -16,6 +16,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand MaterialViewCommand { get; set; }
         public RelayCommand MaterialTypeViewCommand { get; set; }
         public RelayCommand PaymentTypeCommand { get; set; }
+        public RelayCommand PlantListCommand { get; set; }
         #endregion
 
         #region Верстки
@@ -29,6 +30,7 @@ namespace NationalReserve.ViewModel
         public MaterialViewModel MaterialVm { get; set; }
         public MaterialTypeViewModel MaterialTypeVm { get; set; }
         public PaymentTypeViewModel PaymentTypeVm { get; set; }
+        public PlantListViewModel PlantListVm { get; set; }
         #endregion
 
         private object _currentView;
@@ -54,6 +56,7 @@ namespace NationalReserve.ViewModel
             MaterialVm = new MaterialViewModel();
             MaterialTypeVm = new MaterialTypeViewModel();
             PaymentTypeVm = new PaymentTypeViewModel();
+            PlantListVm = new PlantListViewModel();
 
             ChangeCurrentView(HumanVm);
 
@@ -67,6 +70,7 @@ namespace NationalReserve.ViewModel
             MaterialViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialVm); });
             MaterialTypeViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialTypeVm); });
             PaymentTypeCommand = new RelayCommand(o => { ChangeCurrentView(PaymentTypeVm); });
+            PlantListCommand = new RelayCommand(o => { ChangeCurrentView(PlantListVm); });
         }
 
         private void ChangeCurrentView(object viewToChange)

@@ -96,7 +96,7 @@
                                     <Grid>
                                         <Rectangle StrokeThickness="1"></Rectangle>
                                         <TextBox Margin="1"
-                                                 Text="{Binding AnimalType.Name, Mode=TwoWay}"
+                                                 Text="{Binding Role.Name, Mode=TwoWay}"
                                                  BorderThickness="0"
                                                  Background="Transparent"
                                                  VerticalContentAlignment="Center"
