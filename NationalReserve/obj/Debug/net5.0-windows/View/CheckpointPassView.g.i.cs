@@ -54,7 +54,7 @@ namespace NationalReserve.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/NationalReserve;component/view/checkpointpassview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/NationalReserve;V1.0.0.0;component/view/checkpointpassview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\CheckpointPassView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
