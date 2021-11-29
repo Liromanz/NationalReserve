@@ -142,8 +142,8 @@ namespace NationalReserve.ViewModel
             }
 
             Role.Id = null;
-            Roles.Add(Role);
-            AddedCollection.Add(Role);
+            Roles.Add((Role)Role.Clone());
+            AddedCollection.Add((Role)Role.Clone());
 
             Selected = new Role();
         }
@@ -181,6 +181,7 @@ namespace NationalReserve.ViewModel
                 StringBuilder allMessageBuilder = new StringBuilder();
                 foreach (var added in AddedCollection)
                 {
+
                     var addMessage = await ApiConnector.AddData<Role>("Roles", added);
                     allMessageBuilder.Append($"{added.Name}: {addMessage}\n");
                 }

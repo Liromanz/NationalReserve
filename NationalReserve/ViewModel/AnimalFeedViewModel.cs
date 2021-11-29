@@ -197,8 +197,8 @@ namespace NationalReserve.ViewModel
             }
 
             AnimalFeed.IdFeed = null;
-            AnimalFeeds.Add(AnimalFeed);
-            AddedCollection.Add(AnimalFeed);
+            AnimalFeeds.Add((AnimalFeed)AnimalFeed.Clone());
+            AddedCollection.Add((AnimalFeed)AnimalFeed.Clone());
 
             Selected = new AnimalFeed();
         }

@@ -143,8 +143,8 @@ namespace NationalReserve.ViewModel
             }
 
             MaterialType.Id = null;
-            MaterialTypes.Add(MaterialType);
-            AddedCollection.Add(MaterialType);
+            MaterialTypes.Add((MaterialType)MaterialType.Clone());
+            AddedCollection.Add((MaterialType)MaterialType.Clone());
 
             Selected = new MaterialType();
         }

@@ -197,8 +197,8 @@ namespace NationalReserve.ViewModel
             }
 
             SecurityList.IdSecurity = null;
-            SecurityLists.Add(SecurityList);
-            AddedCollection.Add(SecurityList);
+            SecurityLists.Add((SecurityList)SecurityList.Clone());
+            AddedCollection.Add((SecurityList)SecurityList.Clone());
 
             Selected = new SecurityList();
         }

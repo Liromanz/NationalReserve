@@ -175,8 +175,8 @@ namespace NationalReserve.ViewModel
             Human.IdHuman = null;
             if (!SecureData.IsHash(Human.Password))
                 Human.Password = SecureData.Hash(Human.Password);
-            Humans.Add(Human);
-            AddedCollection.Add(Human);
+            Humans.Add((Human)Human.Clone());
+            AddedCollection.Add((Human)Human.Clone());
 
             SelectedHuman = new Human();
         }

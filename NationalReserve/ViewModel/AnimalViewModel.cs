@@ -197,8 +197,8 @@ namespace NationalReserve.ViewModel
             }
 
             Animal.IdAnimal = null;
-            Animals.Add(Animal);
-            AddedCollection.Add(Animal);
+            Animals.Add((Animal)Animal.Clone());
+            AddedCollection.Add((Animal)Animal.Clone());
 
             SelectedAnimal = new Animal();
         }

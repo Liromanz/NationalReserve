@@ -196,8 +196,8 @@ namespace NationalReserve.ViewModel
             }
 
             CheckpointPass.IdCheckpointPass = null;
-            CheckpointPasses.Add(CheckpointPass);
-            AddedCollection.Add(CheckpointPass);
+            CheckpointPasses.Add((CheckpointPass)CheckpointPass.Clone());
+            AddedCollection.Add((CheckpointPass)CheckpointPass.Clone());
 
             Selected = new CheckpointPass();
         }

@@ -200,8 +200,8 @@ namespace NationalReserve.ViewModel
 
             Sponsorship.IdPayment = null;
             Sponsorship.PaymentDate = DateTime.Now;
-            Sponsorships.Add(Sponsorship);
-            AddedCollection.Add(Sponsorship);
+            Sponsorships.Add((Sponsorship)Sponsorship.Clone());
+            AddedCollection.Add((Sponsorship)Sponsorship.Clone());
 
             Selected = new Sponsorship();
         }

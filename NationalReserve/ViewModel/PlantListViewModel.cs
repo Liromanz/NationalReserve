@@ -223,8 +223,8 @@ namespace NationalReserve.ViewModel
             }
 
             PlantList.IdPlant = null;
-            PlantLists.Add(PlantList);
-            AddedCollection.Add(PlantList);
+            PlantLists.Add((PlantList)PlantList.Clone());
+            AddedCollection.Add((PlantList)PlantList.Clone());
 
             Selected = new PlantList();
         }

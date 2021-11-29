@@ -142,8 +142,8 @@ namespace NationalReserve.ViewModel
             }
 
             Checkpoint.IdCheckpoint = null;
-            Checkpoints.Add(Checkpoint);
-            AddedCollection.Add(Checkpoint);
+            Checkpoints.Add((Checkpoint)Checkpoint.Clone());
+            AddedCollection.Add((Checkpoint)Checkpoint.Clone());
 
             Selected = new Checkpoint();
         }

@@ -144,8 +144,8 @@ namespace NationalReserve.ViewModel
             }
 
             PaymentType.Id = null;
-            PaymentTypes.Add(PaymentType);
-            AddedCollection.Add(PaymentType);
+            PaymentTypes.Add((PaymentType)PaymentType.Clone());
+            AddedCollection.Add((PaymentType)PaymentType.Clone());
 
             Selected = new PaymentType();
         }
