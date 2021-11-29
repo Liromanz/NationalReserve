@@ -261,7 +261,7 @@ namespace NationalReserve.ViewModel
 
         public string ValidationErrorMessage()
         {
-            if (Human == null) return String.Empty;
+            if (SecurityList == null) return String.Empty;
 
             if (SecurityList.TimeStart > DateTime.Now) return "Поле \"Дата начала\" не может быть в будущем";
             if (SecurityList.TimeEnd > DateTime.Now) return "Поле \"Дата конца\" не может быть в будущем";

@@ -95,13 +95,37 @@
                                FontSize="14"
                                TextAlignment="Center"
                                Margin="0 5 0 0"/>
-                    <xctk:TimePicker Value="{Binding SecurityList.TimeStart}"/>
+                    <xctk:DateTimePicker>
+                        <xctk:DateTimePicker.Template>
+                            <ControlTemplate>
+                                <Border Height="40" CornerRadius="10" Background="#161D11"  Width="250">
+                                    <xctk:DateTimePicker Value="{Binding SecurityList.TimeStart}"
+                                                         Background="Transparent"
+                                                         BorderThickness="0"
+                                                         Foreground="White"
+                                                         TextAlignment="Left"/>
+                                </Border>
+                            </ControlTemplate>
+                        </xctk:DateTimePicker.Template>
+                    </xctk:DateTimePicker>
                     <TextBlock Text="Дата конца"
                                Foreground="White"
                                FontSize="14"
                                TextAlignment="Center"
                                Margin="0 5 0 0"/>
-                    <xctk:TimePicker Value="{Binding SecurityList.TimeEnd}"/>
+                    <xctk:DateTimePicker>
+                        <xctk:DateTimePicker.Template>
+                            <ControlTemplate>
+                                <Border Height="40" CornerRadius="10" Background="#161D11"  Width="250">
+                                    <xctk:DateTimePicker Value="{Binding SecurityList.TimeEnd}"
+                                                         Background="Transparent"
+                                                         BorderThickness="0"
+                                                         Foreground="White"
+                                                         TextAlignment="Left"/>
+                                </Border>
+                            </ControlTemplate>
+                        </xctk:DateTimePicker.Template>
+                    </xctk:DateTimePicker>
                     <TextBlock Text="Охранник"
                                Foreground="White"
                                FontSize="14"
