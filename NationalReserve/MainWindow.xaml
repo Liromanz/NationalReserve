@@ -67,7 +67,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding PaymentTypeCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
                     <RadioButton Content="КПП"
@@ -114,7 +115,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding MaterialTypeViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
                     <RadioButton Content="Животное"

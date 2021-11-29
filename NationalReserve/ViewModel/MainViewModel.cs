@@ -14,6 +14,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand HumanViewCommand { get; set; }
         public RelayCommand RoleViewCommand { get; set; }
         public RelayCommand MaterialViewCommand { get; set; }
+        public RelayCommand MaterialTypeViewCommand { get; set; }
+        public RelayCommand PaymentTypeCommand { get; set; }
         #endregion
 
         #region Верстки
@@ -25,6 +27,8 @@ namespace NationalReserve.ViewModel
         public HumanViewModel HumanVm { get; set; }
         public RoleViewModel RoleVm { get; set; }
         public MaterialViewModel MaterialVm { get; set; }
+        public MaterialTypeViewModel MaterialTypeVm { get; set; }
+        public PaymentTypeViewModel PaymentTypeVm { get; set; }
         #endregion
 
         private object _currentView;
@@ -48,6 +52,9 @@ namespace NationalReserve.ViewModel
             HumanVm = new HumanViewModel();
             RoleVm = new RoleViewModel();
             MaterialVm = new MaterialViewModel();
+            MaterialTypeVm = new MaterialTypeViewModel();
+            PaymentTypeVm = new PaymentTypeViewModel();
+
             ChangeCurrentView(HumanVm);
 
             AnimalViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalVm); });
@@ -58,6 +65,8 @@ namespace NationalReserve.ViewModel
             HumanViewCommand = new RelayCommand(o => { ChangeCurrentView(HumanVm); });
             RoleViewCommand = new RelayCommand(o => { ChangeCurrentView(RoleVm); });
             MaterialViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialVm); });
+            MaterialTypeViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialTypeVm); });
+            PaymentTypeCommand = new RelayCommand(o => { ChangeCurrentView(PaymentTypeVm); });
         }
 
         private void ChangeCurrentView(object viewToChange)

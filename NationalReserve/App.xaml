@@ -47,6 +47,13 @@
             <DataTemplate DataType="{x:Type viewModel:MaterialViewModel}">
                 <view:MaterialView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:MaterialTypeViewModel}">
+                <view:MaterialTypeView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:PaymentTypeViewModel}">
+                <view:PaymentTypeView />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
