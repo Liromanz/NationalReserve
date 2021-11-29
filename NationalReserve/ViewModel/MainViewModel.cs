@@ -11,6 +11,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand AnimalTypeViewCommand { get; set; }
         public RelayCommand CheckpointViewCommand { get; set; }
         public RelayCommand CheckpointPassViewCommand { get; set; }
+        public RelayCommand SecurityListViewCommand { get; set; }
         public RelayCommand HumanViewCommand { get; set; }
         public RelayCommand RoleViewCommand { get; set; }
         public RelayCommand MaterialViewCommand { get; set; }
@@ -25,6 +26,7 @@ namespace NationalReserve.ViewModel
         public AnimalTypeViewModel AnimalTypeVm { get; set; }
         public CheckpointViewModel CheckpointVm { get; set; }
         public CheckpointPassViewModel CheckpointPassVm { get; set; }
+        public SecurityListViewModel SecurityListVm { get; set; }
         public HumanViewModel HumanVm { get; set; }
         public RoleViewModel RoleVm { get; set; }
         public MaterialViewModel MaterialVm { get; set; }
@@ -51,6 +53,7 @@ namespace NationalReserve.ViewModel
             AnimalTypeVm = new AnimalTypeViewModel();
             CheckpointVm = new CheckpointViewModel();
             CheckpointPassVm = new CheckpointPassViewModel();
+            SecurityListVm = new SecurityListViewModel();
             HumanVm = new HumanViewModel();
             RoleVm = new RoleViewModel();
             MaterialVm = new MaterialViewModel();
@@ -65,6 +68,7 @@ namespace NationalReserve.ViewModel
             AnimalTypeViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalTypeVm); });
             CheckpointViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointVm); });
             CheckpointPassViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointPassVm); });
+            SecurityListViewCommand = new RelayCommand(o => { ChangeCurrentView(SecurityListVm); });
             HumanViewCommand = new RelayCommand(o => { ChangeCurrentView(HumanVm); });
             RoleViewCommand = new RelayCommand(o => { ChangeCurrentView(RoleVm); });
             MaterialViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialVm); });
