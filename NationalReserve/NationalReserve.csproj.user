@@ -40,6 +40,9 @@
     <Compile Update="View\SecurityListView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\SponsorshipView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -79,6 +82,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\SecurityListView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SponsorshipView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Theme\ButtonControlTheme.xaml">

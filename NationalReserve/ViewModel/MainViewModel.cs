@@ -16,6 +16,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand RoleViewCommand { get; set; }
         public RelayCommand MaterialViewCommand { get; set; }
         public RelayCommand MaterialTypeViewCommand { get; set; }
+        public RelayCommand SponsorshipViewCommand { get; set; }
         public RelayCommand PaymentTypeCommand { get; set; }
         public RelayCommand PlantListCommand { get; set; }
         #endregion
@@ -31,6 +32,7 @@ namespace NationalReserve.ViewModel
         public RoleViewModel RoleVm { get; set; }
         public MaterialViewModel MaterialVm { get; set; }
         public MaterialTypeViewModel MaterialTypeVm { get; set; }
+        public SponsorshipViewModel SponsorshipVm { get; set; }
         public PaymentTypeViewModel PaymentTypeVm { get; set; }
         public PlantListViewModel PlantListVm { get; set; }
         #endregion
@@ -58,6 +60,7 @@ namespace NationalReserve.ViewModel
             RoleVm = new RoleViewModel();
             MaterialVm = new MaterialViewModel();
             MaterialTypeVm = new MaterialTypeViewModel();
+            SponsorshipVm = new SponsorshipViewModel();
             PaymentTypeVm = new PaymentTypeViewModel();
             PlantListVm = new PlantListViewModel();
 
@@ -73,6 +76,7 @@ namespace NationalReserve.ViewModel
             RoleViewCommand = new RelayCommand(o => { ChangeCurrentView(RoleVm); });
             MaterialViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialVm); });
             MaterialTypeViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialTypeVm); });
+            SponsorshipViewCommand = new RelayCommand(o => { ChangeCurrentView(SponsorshipVm); });
             PaymentTypeCommand = new RelayCommand(o => { ChangeCurrentView(PaymentTypeVm); });
             PlantListCommand = new RelayCommand(o => { ChangeCurrentView(PlantListVm); });
         }

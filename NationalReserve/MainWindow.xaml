@@ -62,7 +62,8 @@
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"/>
+                                 Style="{StaticResource MenuButtonTheme}"
+                                 Command="{Binding SponsorshipViewCommand}"/>
                     <RadioButton Content="Тип оплаты"
                                  Height="50"
                                  Foreground="White"
