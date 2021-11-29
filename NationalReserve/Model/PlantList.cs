@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class PlantList
+    public partial class PlantList : CloneableObject
     {
         public int? IdPlant { get; set; }
         public string Name { get; set; }

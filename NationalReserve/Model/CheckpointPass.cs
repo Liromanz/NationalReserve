@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class CheckpointPass
+    public partial class CheckpointPass : CloneableObject
     {
         public int? IdCheckpointPass { get; set; }
         public int IdHuman { get; set; }

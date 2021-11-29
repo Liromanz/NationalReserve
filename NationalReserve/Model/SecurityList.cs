@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class SecurityList
+    public partial class SecurityList : CloneableObject
     {
         public int? IdSecurity { get; set; }
         public DateTime TimeStart { get; set; }

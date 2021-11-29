@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class Sponsorship
+    public partial class Sponsorship : CloneableObject
     {
         public int? IdPayment { get; set; }
         public int IdHuman { get; set; }

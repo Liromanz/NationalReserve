@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class StaffDocument
+    public class StaffDocument : CloneableObject
     {
         public int? Id { get; set; }
         public int SerialPass { get; set; }

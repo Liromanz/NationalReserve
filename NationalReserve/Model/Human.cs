@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class Human
+    public partial class Human : CloneableObject
     {
         public int? IdHuman { get; set; }
         public string Login { get; set; }

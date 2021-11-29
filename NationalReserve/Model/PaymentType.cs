@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NationalReserve.View.Core;
 
 #nullable disable
 
 namespace NationalReserve.Model
 {
-    public partial class PaymentType
+    public partial class PaymentType : CloneableObject
     {
         public int? Id { get; set; }
         public string Name { get; set; }
