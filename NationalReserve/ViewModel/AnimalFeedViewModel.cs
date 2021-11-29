@@ -114,7 +114,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _animal = value;
-                Animal.IdType = value?.IdAnimal ?? 1;
+                Animal.IdType = value?.IdAnimal ?? Animal.IdType;
                 OnPropertyChanged();
             }
         }
@@ -137,7 +137,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _supply = value;
-                Animal.IdZone = value?.IdSupply ?? 1;
+                Animal.IdZone = value?.IdSupply ?? Animal.IdZone;
                 OnPropertyChanged();
             }
         }

@@ -113,7 +113,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _human = value;
-                CheckpointPass.IdHuman = value?.IdHuman ?? 1;
+                CheckpointPass.IdHuman = value?.IdHuman ?? CheckpointPass.IdHuman;
                 OnPropertyChanged();
             }
         }
@@ -136,7 +136,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _checkpoint = value;
-                CheckpointPass.IdCheckpoint = value?.IdCheckpoint ?? 1;
+                CheckpointPass.IdCheckpoint = value?.IdCheckpoint ?? CheckpointPass.IdCheckpoint;
                 OnPropertyChanged();
             }
         }

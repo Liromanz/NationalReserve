@@ -117,7 +117,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _zone = value;
-                PlantList.IdZone = value?.IdZone ?? 1;
+                PlantList.IdZone = value?.IdZone ?? PlantList.IdZone;
                 OnPropertyChanged();
             }
         }
@@ -139,7 +139,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _human = value;
-                PlantList.IdHuman = value?.IdHuman ?? 1;
+                PlantList.IdHuman = value?.IdHuman ?? PlantList.IdHuman;
                 OnPropertyChanged();
             }
         }
@@ -161,7 +161,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _supply = value;
-                PlantList.IdSupply = value?.IdSupply ?? 1;
+                PlantList.IdSupply = value?.IdSupply ?? PlantList.IdSupply;
                 OnPropertyChanged();
             }
         }

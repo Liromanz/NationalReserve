@@ -113,7 +113,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _materialType = value;
-                Material.IdType = value?.Id ?? 1;
+                Material.IdType = value?.Id ?? Material.IdType;
                 OnPropertyChanged();
             }
         }

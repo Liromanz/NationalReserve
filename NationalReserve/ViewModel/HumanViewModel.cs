@@ -114,7 +114,7 @@ namespace NationalReserve.ViewModel
             set
             {
                 _role = value;
-                Human.IdRole = value?.Id ?? 2;
+                Human.IdRole = value?.Id ?? Human.IdRole;
                 OnPropertyChanged();
             }
         }
