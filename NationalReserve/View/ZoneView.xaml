@@ -1,0 +1,211 @@
+﻿<UserControl x:Class="NationalReserve.View.ZoneView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NationalReserve.View"
+             xmlns:viewModel="clr-namespace:NationalReserve.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModel:ZoneViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListView ItemsSource="{Binding Zones, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Header="Описание" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Площадь" Width="auto" DisplayMemberBinding="{Binding Square}"/>
+                        <GridViewColumn Header="Спец. зона" Width="auto" DisplayMemberBinding="{Binding IsForStaff}"/>
+                        <GridViewColumn Header="Зона для просмотра" Width="auto" DisplayMemberBinding="{Binding IsForWatch, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Header="КПП №" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint, FallbackValue=-, TargetNullValue=-}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button
+                    Width="130"
+                    Content="Добавить запись"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding AddCommand}"/>
+                <Button
+                    Width="130"
+                    Content="Удалить запись"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding LogicalDeleteCommand}"/>
+                <Button Width="130"
+                        Content="Сохранить всё"
+                        Style="{StaticResource ButtonControlTheme}"
+                        Command="{Binding SaveCommand}"/>
+            </StackPanel>
+
+            <TextBlock Text="Корзина"
+                       Foreground="White"
+                       FontSize="20"
+                       Width="280"
+                       TextAlignment="Center"
+                       Margin="0,0,0,10"
+                       Grid.Row="2"/>
+            <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Header="Описание" Width="auto" DisplayMemberBinding="{Binding Description}"/>
+                        <GridViewColumn Header="Площадь" Width="auto" DisplayMemberBinding="{Binding Square}"/>
+                        <GridViewColumn Header="Спец. зона" Width="auto" DisplayMemberBinding="{Binding IsForStaff}"/>
+                        <GridViewColumn Header="Зона для просмотра" Width="auto" DisplayMemberBinding="{Binding IsForWatch, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Header="КПП №" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint, FallbackValue=-, TargetNullValue=-}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="130"
+                    Content="Восстановить запись"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding LogicalRecoverCommand}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Width="280"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Зона"
+                       Foreground="White"
+                       FontSize="28"
+                       Width="280"
+                       TextAlignment="Center"
+                       Margin="0,0,0,10"/>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                <StackPanel>
+                    <TextBlock Text="Наименование"
+                           Foreground="White"
+                           FontSize="14"
+                           TextAlignment="Center"/>
+                    <TextBox>
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Border CornerRadius="10"
+                                        Background="#161D11"
+                                        Width="250" Height="40">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"></Rectangle>
+                                        <TextBox Margin="1"
+                                                 Text="{Binding Zone.Name, Mode=TwoWay}"
+                                                 BorderThickness="0"
+                                                 Background="Transparent"
+                                                 VerticalContentAlignment="Center"
+                                                 Padding="5"
+                                                 Foreground="White"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBlock Text="Описание"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <TextBox>
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Border CornerRadius="10"
+                                        Background="#161D11"
+                                        Width="250" Height="40">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"></Rectangle>
+                                        <TextBox Margin="1"
+                                                 Text="{Binding Zone.Description, Mode=TwoWay}"
+                                                 BorderThickness="0"
+                                                 Background="Transparent"
+                                                 VerticalContentAlignment="Center"
+                                                 Padding="5"
+                                                 Foreground="White"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <TextBlock Text="Площадь"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <TextBox>
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="{x:Type TextBox}">
+                                <Border CornerRadius="10"
+                                        Background="#161D11"
+                                        Width="250" Height="40">
+                                    <Grid>
+                                        <Rectangle StrokeThickness="1"></Rectangle>
+                                        <TextBox Margin="1"
+                                                 Text="{Binding Zone.Square, Mode=TwoWay}"
+                                                 BorderThickness="0"
+                                                 Background="Transparent"
+                                                 VerticalContentAlignment="Center"
+                                                 Padding="5"
+                                                 Foreground="White"/>
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
+                    <CheckBox Content="Спец. зона" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="120"
+                              Margin="0,10,0,10"
+                              FontSize="14"
+                              IsChecked="{Binding Zone.IsForStaff, Mode=TwoWay}">
+                    </CheckBox>
+                    <CheckBox Content="Зона для просмотра" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="170"
+                              Margin="0,10,0,10"
+                              FontSize="14"
+                              IsChecked="{Binding Zone.IsForWatch, Mode=TwoWay}">
+                    </CheckBox>
+                    <TextBlock Text="КПП"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"
+                               Margin="0 5 0 0"/>
+                    <ComboBox Width="250"
+                              VerticalContentAlignment="Center"
+                              HorizontalAlignment="Center"
+                              Height="40"
+                              Foreground="White"
+                              ItemsSource="{Binding Checkpoints}"
+                              SelectedItem="{Binding Checkpoint, Mode=TwoWay}"  
+                              DisplayMemberPath="Name"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Column="0" Background="#33000000" Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+            <ProgressBar Grid.Row="0" Height="20" IsIndeterminate="True" Orientation="Horizontal" Foreground="#FF276433" />
+            <ProgressBar Grid.Row="1" Height="20" Margin="0 50 0 0" IsIndeterminate="True" Orientation="Horizontal" Foreground="#FF276433" />
+        </Grid>
+    </Grid>
+</UserControl>

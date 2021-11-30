@@ -52,6 +52,9 @@
     <Compile Update="View\SupplyView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\ZoneView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -130,6 +133,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Theme\TextInputTheme.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ZoneView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

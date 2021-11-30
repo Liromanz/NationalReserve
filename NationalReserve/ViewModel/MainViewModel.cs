@@ -12,6 +12,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand CheckpointViewCommand { get; set; }
         public RelayCommand CheckpointPassViewCommand { get; set; }
         public RelayCommand SecurityListViewCommand { get; set; }
+        public RelayCommand ZoneViewCommand { get; set; }
         public RelayCommand HumanViewCommand { get; set; }
         public RelayCommand StaffDocumentCommand { get; set; }
         public RelayCommand RoleViewCommand { get; set; }
@@ -31,6 +32,7 @@ namespace NationalReserve.ViewModel
         public CheckpointViewModel CheckpointVm { get; set; }
         public CheckpointPassViewModel CheckpointPassVm { get; set; }
         public SecurityListViewModel SecurityListVm { get; set; }
+        public ZoneViewModel ZoneVm { get; set; }
         public HumanViewModel HumanVm { get; set; }
         public StaffDocumentViewModel StaffDocumentVm { get; set; }
         public RoleViewModel RoleVm { get; set; }
@@ -62,6 +64,7 @@ namespace NationalReserve.ViewModel
             CheckpointVm = new CheckpointViewModel();
             CheckpointPassVm = new CheckpointPassViewModel();
             SecurityListVm = new SecurityListViewModel();
+            ZoneVm = new ZoneViewModel();
             HumanVm = new HumanViewModel();
             StaffDocumentVm = new StaffDocumentViewModel();
             MaterialVm = new MaterialViewModel();
@@ -80,6 +83,7 @@ namespace NationalReserve.ViewModel
             CheckpointViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointVm); });
             CheckpointPassViewCommand = new RelayCommand(o => { ChangeCurrentView(CheckpointPassVm); });
             SecurityListViewCommand = new RelayCommand(o => { ChangeCurrentView(SecurityListVm); });
+            ZoneViewCommand = new RelayCommand(o => { ChangeCurrentView(ZoneVm); });
             HumanViewCommand = new RelayCommand(o => { ChangeCurrentView(HumanVm); });
             StaffDocumentCommand = new RelayCommand(o => { ChangeCurrentView(StaffDocumentVm); });
             RoleViewCommand = new RelayCommand(o => { ChangeCurrentView(RoleVm); });

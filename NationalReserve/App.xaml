@@ -49,6 +49,9 @@
             <DataTemplate DataType="{x:Type viewModel:SecurityListViewModel}">
                 <view:SecurityListView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:ZoneViewModel}">
+                <view:ZoneView />
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:MaterialViewModel}">
                 <view:MaterialView />
