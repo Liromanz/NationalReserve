@@ -10,5 +10,8 @@
         public const string SuccessCreateMessage = "Данные успешно добавлены!";
         public const string SuccessUpdateMessage = "Данные успешно изменены!";
         public const string SuccessDeleteMessage = "Данные успешно удалены!";
+
+        public const string DeleteQuestionMessage = "Вы точно хотите удалить запись? Данные будут утеряны";
+
     }
 }

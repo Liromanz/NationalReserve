@@ -1,10 +1,11 @@
 ﻿namespace NationalReserve.Helpers.Interface
 {
-    interface ICRUDInterface
+    interface IOneToOneHandler
     {
         void CreateAsync();
-        void ReadAsync();
+        void ReadOneAsync(int id);
         void UpdateAsync();
         void DeleteAsync();
+        string ValidationErrorMessage();
     }
 }
