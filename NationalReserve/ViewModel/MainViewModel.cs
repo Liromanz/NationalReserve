@@ -18,6 +18,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand MaterialViewCommand { get; set; }
         public RelayCommand MaterialTypeViewCommand { get; set; }
         public RelayCommand SupplierViewCommand { get; set; }
+        public RelayCommand SupplyViewCommand { get; set; }
         public RelayCommand SponsorshipViewCommand { get; set; }
         public RelayCommand PaymentTypeCommand { get; set; }
         public RelayCommand PlantListCommand { get; set; }
@@ -36,6 +37,7 @@ namespace NationalReserve.ViewModel
         public MaterialViewModel MaterialVm { get; set; }
         public MaterialTypeViewModel MaterialTypeVm { get; set; }
         public SupplierViewModel SupplierVm { get; set; }
+        public SupplyViewModel SupplyVm { get; set; }
         public SponsorshipViewModel SponsorshipVm { get; set; }
         public PaymentTypeViewModel PaymentTypeVm { get; set; }
         public PlantListViewModel PlantListVm { get; set; }
@@ -65,6 +67,7 @@ namespace NationalReserve.ViewModel
             MaterialVm = new MaterialViewModel();
             MaterialTypeVm = new MaterialTypeViewModel();
             SupplierVm = new SupplierViewModel();
+            SupplyVm = new SupplyViewModel();
             SponsorshipVm = new SponsorshipViewModel();
             PaymentTypeVm = new PaymentTypeViewModel();
             PlantListVm = new PlantListViewModel();
@@ -83,6 +86,7 @@ namespace NationalReserve.ViewModel
             MaterialViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialVm); });
             MaterialTypeViewCommand = new RelayCommand(o => { ChangeCurrentView(MaterialTypeVm); });
             SupplierViewCommand = new RelayCommand(o => { ChangeCurrentView(SupplierVm); });
+            SupplyViewCommand = new RelayCommand(o => { ChangeCurrentView(SupplyVm); });
             SponsorshipViewCommand = new RelayCommand(o => { ChangeCurrentView(SponsorshipVm); });
             PaymentTypeCommand = new RelayCommand(o => { ChangeCurrentView(PaymentTypeVm); });
             PlantListCommand = new RelayCommand(o => { ChangeCurrentView(PlantListVm); });

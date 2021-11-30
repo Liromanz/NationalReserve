@@ -49,6 +49,9 @@
     <Compile Update="View\SupplierView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\SupplyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -97,6 +100,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\SupplierView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\SupplyView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Theme\ButtonControlTheme.xaml">
