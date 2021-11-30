@@ -53,6 +53,9 @@
             <DataTemplate DataType="{x:Type viewModel:MaterialTypeViewModel}">
                 <view:MaterialTypeView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SupplierViewModel}">
+                <view:SupplierView />
+            </DataTemplate>
 
             <DataTemplate DataType="{x:Type viewModel:SponsorshipViewModel}">
                 <view:SponsorshipView />

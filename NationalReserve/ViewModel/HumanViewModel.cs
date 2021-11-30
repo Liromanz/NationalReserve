@@ -245,10 +245,10 @@ namespace NationalReserve.ViewModel
         {
             if (Human == null) return String.Empty;
 
-            if (string.IsNullOrWhiteSpace(Human.Login)) return "Поле \"Логин\" незаполнено";
-            if (string.IsNullOrWhiteSpace(Human.Password)) return "Поле \"Пароль\" незаполнено";
-            if (string.IsNullOrWhiteSpace(Human.FirstName)) return "Поле \"Фамилия\" незаполнено";
-            if (string.IsNullOrWhiteSpace(Human.Name)) return "Поле \"Имя\" незаполнено";
+            if (string.IsNullOrWhiteSpace(Human.Login)) return "Поле \"Логин\" не заполнено";
+            if (string.IsNullOrWhiteSpace(Human.Password)) return "Поле \"Пароль\" не заполнено";
+            if (string.IsNullOrWhiteSpace(Human.FirstName)) return "Поле \"Фамилия\" не заполнено";
+            if (string.IsNullOrWhiteSpace(Human.Name)) return "Поле \"Имя\" не заполнено";
             if (Human.Gender < 0 || Human.Gender > 1) return "Поле \"Пол\" не выбрано";
             if (!Roles.Select(x => x.Id).Contains(Human.IdRole)) return "Поле \"Роль\" не выбрано";
 
