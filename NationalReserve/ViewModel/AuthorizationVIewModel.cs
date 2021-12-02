@@ -20,15 +20,16 @@ namespace NationalReserve.ViewModel
         #region Параметры
 
         private ObservableCollection<Human> _humans;
+        private ObservableCollection<Role> _roles;
 
         private Authorization _authorization;
 
-        public Authorization Authorization    
+        public Authorization Authorization
         {
             get => _authorization;
             set
             {
-                _authorization = value; 
+                _authorization = value;
                 OnPropertyChanged();
             }
         }
@@ -44,22 +45,25 @@ namespace NationalReserve.ViewModel
         {
             Authorization = new Authorization();
             LoginCommand = new RelayCommand(o => { CheckLogin(); });
-            _humans =  await ApiConnector.GetAll<Human>("Humen");
+            _humans = await ApiConnector.GetAll<Human>("Humen");
+            _roles = await ApiConnector.GetAll<Role>("Roles");
         }
 
         private void CheckLogin()
         {
-            if (_humans.FirstOrDefault(x => x.Login == Authorization.Login && x.Password == SecureData.Hash(Authorization.Password)) !=
-                null)
-                OpenMainWindow();
+            var human = _humans.FirstOrDefault(x =>
+                x.Login == Authorization.Login && x.Password == SecureData.Hash(Authorization.Password));
+            if (human != null)
+                OpenMainWindow(human.IdRole);
             else
                 MessageBox.Show(GlobalConstants.LoginPasswordError);
         }
 
-        private void OpenMainWindow()
+        private void OpenMainWindow(int id)
         {
+            Authorization.Role = _roles.FirstOrDefault(x => x.Id == id);
             var currentWindow = Application.Current.MainWindow;
-            Application.Current.MainWindow = new MainWindow();
+            Application.Current.MainWindow = new MainWindow { ViewModel = { Authorizated = Authorization } };
             Application.Current.MainWindow.Show();
             currentWindow.Close();
         }

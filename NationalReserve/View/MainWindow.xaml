@@ -44,11 +44,13 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsHumanVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding HumanViewCommand}"/>
                     <RadioButton Content="Документы сотрудника"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
+                                 Visibility="{Binding Authorizated.Role.IsStaffDocumentsVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding StaffDocumentCommand}"/>
                     <RadioButton Content="Роль"
@@ -56,6 +58,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsRoleVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding RoleViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
@@ -64,12 +67,14 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsSponsorshipVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding SponsorshipViewCommand}"/>
                     <RadioButton Content="Тип оплаты"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsPaymentTypeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding PaymentTypeCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
@@ -78,24 +83,28 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsCheckpointVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding CheckpointViewCommand}"/>
                     <RadioButton Content="Учет прохода через КПП"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsCheckpointPassVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding CheckpointPassViewCommand}"/>
                     <RadioButton Content="Смена в КПП"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsSecurityListVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding SecurityListViewCommand}"/>
                     <RadioButton Content="Зона заповедника"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsZoneVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding ZoneViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
@@ -104,24 +113,29 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsSupplyVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding SupplyViewCommand}"/>
                     <RadioButton Content="Поставщик"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsSupplierVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
+
                                  Command="{Binding SupplierViewCommand}"/>
                     <RadioButton Content="Материал"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsMaterialVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding MaterialViewCommand}"/>
                     <RadioButton Content="Тип материала"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsMaterialTypeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding MaterialTypeViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
@@ -130,18 +144,21 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsAnimalVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding AnimalViewCommand}"/>
                     <RadioButton Content="Тип животного"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsAnimalTypeVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding AnimalTypeViewCommand}"/>
                     <RadioButton Content="Кормежка животного"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsAnimalFeedVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding AnimalFeedViewCommand}"/>
                     <Separator Margin="10,0,10,0"/>
 
@@ -150,6 +167,7 @@
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
+                                 Visibility="{Binding Authorizated.Role.IsPlantListVisible, Converter={StaticResource BooleanToVisibilityConverter}}"
                                  Command="{Binding PlantListCommand}"/>
                 </StackPanel>
             </ScrollViewer>

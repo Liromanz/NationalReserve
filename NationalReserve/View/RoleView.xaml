@@ -28,6 +28,23 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Кормежка животных" Width="auto" DisplayMemberBinding="{Binding IsAnimalFeedVisible}" />
+                        <GridViewColumn Header="Тип животного" Width="auto" DisplayMemberBinding="{Binding IsAnimalTypeVisible}" />
+                        <GridViewColumn Header="Животное" Width="auto" DisplayMemberBinding="{Binding IsAnimalVisible}" />
+                        <GridViewColumn Header="Растения" Width="auto" DisplayMemberBinding="{Binding IsPlantListVisible}" />
+                        <GridViewColumn Header="Проход через КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointPassVisible}" />
+                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointVisible}" />
+                        <GridViewColumn Header="Смена в КПП" Width="auto" DisplayMemberBinding="{Binding IsSecurityListVisible}" />
+                        <GridViewColumn Header="Зона" Width="auto" DisplayMemberBinding="{Binding IsZoneVisible}" />
+                        <GridViewColumn Header="Документы сотрудника" Width="auto" DisplayMemberBinding="{Binding IsStaffDocumentsVisible}" />
+                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IsHumanVisible}" />
+                        <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IsRoleVisible}" />
+                        <GridViewColumn Header="Поставщик" Width="auto" DisplayMemberBinding="{Binding IsSupplierVisible}" />
+                        <GridViewColumn Header="Поставка" Width="auto" DisplayMemberBinding="{Binding IsSupplyVisible}" />
+                        <GridViewColumn Header="Тип материала" Width="auto" DisplayMemberBinding="{Binding IsMaterialTypeVisible}" />
+                        <GridViewColumn Header="Материал" Width="auto" DisplayMemberBinding="{Binding IsMaterialVisible}" />
+                        <GridViewColumn Header="Спонсорство" Width="auto" DisplayMemberBinding="{Binding IsSponsorshipVisible}" />
+                        <GridViewColumn Header="Тип оплаты" Width="auto" DisplayMemberBinding="{Binding IsPaymentTypeVisible}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -59,6 +76,23 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Кормежка животных" Width="auto" DisplayMemberBinding="{Binding IsAnimalFeedVisible}" />
+                        <GridViewColumn Header="Тип животного" Width="auto" DisplayMemberBinding="{Binding IsAnimalTypeVisible}" />
+                        <GridViewColumn Header="Животное" Width="auto" DisplayMemberBinding="{Binding IsAnimalVisible}" />
+                        <GridViewColumn Header="Растения" Width="auto" DisplayMemberBinding="{Binding IsPlantListVisible}" />
+                        <GridViewColumn Header="Проход через КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointPassVisible}" />
+                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointVisible}" />
+                        <GridViewColumn Header="Смена в КПП" Width="auto" DisplayMemberBinding="{Binding IsSecurityListVisible}" />
+                        <GridViewColumn Header="Зона" Width="auto" DisplayMemberBinding="{Binding IsZoneVisible}" />
+                        <GridViewColumn Header="Документы сотрудника" Width="auto" DisplayMemberBinding="{Binding IsStaffDocumentsVisible}" />
+                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IsHumanVisible}" />
+                        <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IsRoleVisible}" />
+                        <GridViewColumn Header="Поставщик" Width="auto" DisplayMemberBinding="{Binding IsSupplierVisible}" />
+                        <GridViewColumn Header="Поставка" Width="auto" DisplayMemberBinding="{Binding IsSupplyVisible}" />
+                        <GridViewColumn Header="Тип материала" Width="auto" DisplayMemberBinding="{Binding IsMaterialTypeVisible}" />
+                        <GridViewColumn Header="Материал" Width="auto" DisplayMemberBinding="{Binding IsMaterialVisible}" />
+                        <GridViewColumn Header="Спонсорство" Width="auto" DisplayMemberBinding="{Binding IsSponsorshipVisible}" />
+                        <GridViewColumn Header="Тип оплаты" Width="auto" DisplayMemberBinding="{Binding IsPaymentTypeVisible}" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -107,6 +141,112 @@
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
+                    <TextBlock Text="Доступ"
+                               Foreground="White"
+                               FontSize="14"
+                               TextAlignment="Center"/>
+                    <CheckBox Content="Кормежка животных" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsAnimalFeedVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Тип животного" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsAnimalTypeVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Животное" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsAnimalVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Растения" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsPlantListVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Проход через КПП" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsCheckpointPassVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="КПП" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsCheckpointVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Смена в КПП" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsSecurityListVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Зона" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsZoneVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Документы сотрудника" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsStaffDocumentsVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Человек" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsHumanVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Роль" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsRoleVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Поставщик" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsSupplierVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Поставка" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsSupplyVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Тип материала" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsMaterialTypeVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Материал" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsMaterialVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Спонсорство" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsSponsorshipVisible, Mode=TwoWay}"/>
+                    <CheckBox Content="Тип оплаты" 
+                              Style="{StaticResource CircleCheckbox}" 
+                              Foreground="White"
+                              Width="200"
+                              FontSize="14"
+                              IsChecked="{Binding Role.IsPaymentTypeVisible, Mode=TwoWay}"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

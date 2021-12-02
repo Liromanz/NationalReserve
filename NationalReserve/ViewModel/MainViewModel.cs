@@ -1,9 +1,10 @@
-﻿using NationalReserve.View.Core;
+﻿using NationalReserve.Model;
+using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
 {
 
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
         #region Команды
         public RelayCommand AnimalViewCommand { get; set; }
@@ -45,6 +46,18 @@ namespace NationalReserve.ViewModel
         public PlantListViewModel PlantListVm { get; set; }
         #endregion
 
+        private Authorization _authorization;
+        public Authorization Authorizated
+        {
+            get => _authorization;
+            set
+            {
+                _authorization = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
         private object _currentView;
         public object CurrentView
         {
@@ -66,6 +79,7 @@ namespace NationalReserve.ViewModel
             SecurityListVm = new SecurityListViewModel();
             ZoneVm = new ZoneViewModel();
             HumanVm = new HumanViewModel();
+            RoleVm = new RoleViewModel();
             StaffDocumentVm = new StaffDocumentViewModel();
             MaterialVm = new MaterialViewModel();
             MaterialTypeVm = new MaterialTypeViewModel();

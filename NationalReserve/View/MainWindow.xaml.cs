@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using NationalReserve.ViewModel;
 
 namespace NationalReserve.View
 {
@@ -9,6 +10,8 @@ namespace NationalReserve.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainViewModel ViewModel => DataContext as MainViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
