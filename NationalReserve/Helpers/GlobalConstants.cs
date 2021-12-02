@@ -6,6 +6,7 @@
 
         public const string ErrorMessage = "Произошла ошибка. Сообщение: ";
         public const string UnsetErrorMessage = "Произошла ошибка при отправке данных.";
+        public const string LoginPasswordError = "Неверный логин или пароль";
 
         public const string SuccessCreateMessage = "Данные успешно добавлены!";
         public const string SuccessUpdateMessage = "Данные успешно изменены!";

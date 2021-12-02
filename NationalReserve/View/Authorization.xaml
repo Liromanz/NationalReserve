@@ -52,7 +52,7 @@
                                 <Grid>
                                     <Rectangle StrokeThickness="1"></Rectangle>
                                     <TextBox Margin="1"
-                                                 Text="{Binding Human.Login, Mode=TwoWay}"
+                                                 Text="{Binding Authorization.Login, Mode=TwoWay}"
                                                  BorderThickness="0"
                                                  Background="Transparent"
                                                  VerticalContentAlignment="Center"
@@ -77,7 +77,7 @@
                                 <Grid>
                                     <Rectangle StrokeThickness="1"></Rectangle>
                                     <TextBox Margin="1"
-                                                 Text="{Binding Human.Password, Mode=TwoWay}"
+                                                 Text="{Binding Authorization.Password, Mode=TwoWay}"
                                                  BorderThickness="0"
                                                  Background="Transparent"
                                                  VerticalContentAlignment="Center"
@@ -91,7 +91,7 @@
                 <Button Width="250" Height="80"
                     Content="Войти"
                     Style="{StaticResource ButtonControlTheme}"
-                    Command="{Binding AddCommand}"/>
+                    Command="{Binding LoginCommand}"/>
             </StackPanel>
         </Grid>
     </Border>
