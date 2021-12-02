@@ -178,11 +178,27 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Width="400"
-                         Height="75"
-                         VerticalContentAlignment="Center"
-                         HorizontalAlignment="Left"
-                         Style="{StaticResource ModernTextBox}"/>
+                <TextBox HorizontalAlignment="Left" Margin="15 0 0 0">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border CornerRadius="10"
+                                    Background="#161D11"
+                                    Width="390" Height="40">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"></Rectangle>
+                                    <TextBox Margin="1"
+                                             Text="{Binding Authorizated.FullName, Mode=TwoWay}"
+                                             BorderThickness="0"
+                                             IsEnabled="False"
+                                             VerticalContentAlignment="Center"
+                                             Background="Transparent"
+                                             Padding="5"
+                                             Foreground="White"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
                 <TextBlock Text="×"
                            Grid.Column="2"
                            FontSize="40"

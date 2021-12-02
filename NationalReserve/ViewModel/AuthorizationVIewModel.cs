@@ -54,14 +54,15 @@ namespace NationalReserve.ViewModel
             var human = _humans.FirstOrDefault(x =>
                 x.Login == Authorization.Login && x.Password == SecureData.Hash(Authorization.Password));
             if (human != null)
-                OpenMainWindow(human.IdRole);
+                OpenMainWindow(human);
             else
                 MessageBox.Show(GlobalConstants.LoginPasswordError);
         }
 
-        private void OpenMainWindow(int id)
+        private void OpenMainWindow(Human human)
         {
-            Authorization.Role = _roles.FirstOrDefault(x => x.Id == id);
+            Authorization.Role = _roles.FirstOrDefault(x => x.Id == human.IdRole);
+            Authorization.FullName = $"{human.FirstName} {human.Name}, {Authorization.Role.Name}";
             var currentWindow = Application.Current.MainWindow;
             Application.Current.MainWindow = new MainWindow { ViewModel = { Authorizated = Authorization } };
             Application.Current.MainWindow.Show();
