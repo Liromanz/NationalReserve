@@ -291,9 +291,11 @@ namespace NationalReserve.ViewModel
 
             if (string.IsNullOrWhiteSpace(PlantList.Name)) return "Поле \"Наименование\" не заполнено";
             if (PlantList.DateGarden > DateTime.Now) return "Поле \"Дата посадки\" не может быть в будущем";
+            if (PlantList.DateGarden.Year < 2010) return "Минимальное значение поля \"Дата посадки\" - 2010 год";
             if (PlantList.Amount <= 0) return "Поле \"Количество\" не может быть отрицательным";
             if (PlantList.DaysToCheck <= 0) return "Поле \"Дни до следующей проверки\" не может быть отрицательным";
             if (PlantList.LastCheck > DateTime.Now) return "Поле \"Последняя проверка\" не может быть в будущем";
+            if (PlantList.LastCheck.Year < 2010) return "Минимальное значение поля \"Последняя проверка\" - 2010 год";
             if (!Zones.Select(x => x.IdZone).Contains(PlantList.IdZone)) return "Поле \"Зона\" не выбрано";
             if (!Humans.Select(x => x.IdHuman).Contains(PlantList.IdHuman)) return "Поле \"Проверяющий\" не выбрано";
             if (!Supplies.Select(x => x.IdSupply).Contains(PlantList.IdSupply)) return "Поле \"Поставщик\" не выбрано";

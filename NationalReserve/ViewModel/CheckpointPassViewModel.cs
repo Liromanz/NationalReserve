@@ -169,7 +169,7 @@ namespace NationalReserve.ViewModel
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
-            Humans = await ApiConnector.GetAll<Human>("Humans");
+            Humans = await ApiConnector.GetAll<Human>("Humen");
             Checkpoints = await ApiConnector.GetAll<Checkpoint>("Checkpoints");
         }
 
@@ -265,6 +265,7 @@ namespace NationalReserve.ViewModel
             if (!Humans.Select(x => x.IdHuman).Contains(CheckpointPass.IdHuman)) return "Поле \"Человек\" не выбрано";
             if (!Checkpoints.Select(x => x.IdCheckpoint).Contains(CheckpointPass.IdCheckpoint)) return "Поле \"КПП\" не выбрано";
             if (CheckpointPass.PassTime > DateTime.Now) return "Поле \"Время прохода\" не может быть в будущем";
+            if (CheckpointPass.PassTime.Year < 2010) return "Минимальное значение поля \"Время прохода\" - 2010 год";
 
             return String.Empty;
         }

@@ -151,7 +151,7 @@
                               Foreground="White"
                               ItemsSource="{Binding Checkpoints}"
                               SelectedItem="{Binding Checkpoint, Mode=TwoWay}"  
-                              DisplayMemberPath="FirstName"/>
+                              DisplayMemberPath="Name"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

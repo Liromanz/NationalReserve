@@ -269,6 +269,8 @@ namespace NationalReserve.ViewModel
             if (!Zones.Select(x => x.IdZone).Contains(Animal.IdZone)) return "Поле \"Зона\" не выбрано";
             if (Animal.DateRegistration > DateTime.Now) return "Поле \"Дата регистрации\" не может быть в будущем";
             if (Animal.LastCheck > DateTime.Now) return "Поле \"Последняя проверка\" не может быть в будущем";
+            if (Animal.DateRegistration.Year < 2010) return "Минимальное значение поля \"Дата регистрации\" - 2010 год";
+            if (Animal.LastCheck.Year < 2010) return "Минимальное значение поля \"Последняя проверка\" - 2010 год";
 
             return String.Empty;
         }

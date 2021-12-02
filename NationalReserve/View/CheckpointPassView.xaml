@@ -127,7 +127,8 @@
                               Height="40"
                               Foreground="White"
                               SelectedIndex="0"
-                              SelectedItem="{Binding CheckpointPass.PassType, Mode=TwoWay}" >
+                              SelectedValue="{Binding CheckpointPass.PassType, Mode=TwoWay}" 
+                              SelectedValuePath="Content">
                         <ComboBoxItem Content="Вход"/>
                         <ComboBoxItem Content="Выход"/>
                     </ComboBox>
@@ -136,7 +137,7 @@
                                FontSize="14"
                                TextAlignment="Center"
                                Margin="0 5 0 0"/>
-                    <DatePicker Text="{Binding CheckpointPass.PassTime}"
+                    <DatePicker SelectedDate="{Binding CheckpointPass.PassTime}"
                                 Style="{StaticResource DatePickerTheme}" FirstDayOfWeek="Monday"/>
                 </StackPanel>
             </ScrollViewer>

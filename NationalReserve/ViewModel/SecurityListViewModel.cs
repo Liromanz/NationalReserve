@@ -265,8 +265,10 @@ namespace NationalReserve.ViewModel
 
             if (SecurityList.TimeStart > DateTime.Now) return "Поле \"Дата начала\" не может быть в будущем";
             if (SecurityList.TimeEnd > DateTime.Now) return "Поле \"Дата конца\" не может быть в будущем";
+            if (SecurityList.TimeStart.Year < 2010) return "Минимальное значение поля \"Дата начала\" - 2010 год";
+            if (SecurityList.TimeEnd.HasValue && SecurityList.TimeEnd.Value.Year < 2010) return "Минимальное значение поля \"Дата конца\" - 2010 год";
             if (!Humans.Select(x => x.IdHuman).Contains(SecurityList.IdHuman)) return "Поле \"Охранник\" не выбрано";
-            if (!Checkpoints.Select(x => x.IdCheckpoint).Contains(SecurityList.IdSecurity)) return "Поле \"КПП\" не выбрано";
+            if (!Checkpoints.Select(x => x.IdCheckpoint).Contains(SecurityList.IdCheckpoint)) return "Поле \"КПП\" не выбрано";
 
             return String.Empty;
         }

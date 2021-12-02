@@ -269,7 +269,9 @@ namespace NationalReserve.ViewModel
             if (!Materials.Select(x => x.IdMaterial).Contains(Supply.IdMaterial)) return "Поле \"Материал\" не выбрано";
             if (Supply.Amount <= 0) return "Поле \"Количество\" не может быть отрицательным или равным нулю";
             if (Supply.Date > DateTime.Now) return "Поле \"Дата поставки\" не может быть в будущем";
-            
+            if (Supply.Date.Year < 2010) return "Минимальное значение поля \"Дата поставки\" - 2010 год";
+
+
             return String.Empty;
         }
 
