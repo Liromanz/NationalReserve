@@ -1,0 +1,517 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
+  <Class Name="NationalReserve.Helpers.ApiConnector">
+    <Position X="35" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEIAAAAAAAAAAAAAAAAAAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>Helpers\ApiConnector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Helpers.DataSender">
+    <Position X="35" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\DataSender.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Helpers.GlobalConstants">
+    <Position X="91.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQAAAAAAAAAAAAQAAAAAAAAAAABAAAABQAAAAAAIAgA=</HashCode>
+      <FileName>Helpers\GlobalConstants.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Helpers.SecureData">
+    <Position X="87.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\SecureData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Animal">
+    <Position X="71.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACCAAAAAAAABAQAAEAQAAQAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Model\Animal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.AnimalFeed">
+    <Position X="76" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAIAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalFeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.AnimalType">
+    <Position X="80.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\AnimalType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Authorization">
+    <Position X="93" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAEAAAAAAAAAAAAAACAAAQAAAAAAA=</HashCode>
+      <FileName>Model\Authorization.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Checkpoint">
+    <Position X="49" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Checkpoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.CheckpointPass">
+    <Position X="53.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAACAEAAAAAAAAAAAAAEIA=</HashCode>
+      <FileName>Model\CheckpointPass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Human">
+    <Position X="58" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAACQAAAAAAQACAAAAAACAAAQAAAAAgg=</HashCode>
+      <FileName>Model\Human.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Material">
+    <Position X="62.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Model\Material.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.MaterialType">
+    <Position X="67" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MaterialType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.National_ReserveContext">
+    <Position X="89.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\National_ReserveContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.PaymentType">
+    <Position X="78.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PaymentType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.PlantList">
+    <Position X="82.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAAAAAAAAAAAAAAEAQAASACAAAAAAACAAAAAAAAgA=</HashCode>
+      <FileName>Model\PlantList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Role">
+    <Position X="46.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAACgQABAQAAAACAAAAABAQgAAEQYACAAEAAggQAAAA=</HashCode>
+      <FileName>Model\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.SecurityList">
+    <Position X="51.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAACAEAAAAAgAQAAAAAAAA=</HashCode>
+      <FileName>Model\SecurityList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Sponsorship">
+    <Position X="55.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAEABAAAAAAAAACACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Sponsorship.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.StaffDocument">
+    <Position X="60.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAA=</HashCode>
+      <FileName>Model\StaffDocument.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Supplier">
+    <Position X="64.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAIAAAAAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\Supplier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Supply">
+    <Position X="69.25" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAACAAAAAAAABCAAAAAIAAAA=</HashCode>
+      <FileName>Model\Supply.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.Model.Zone">
+    <Position X="73.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAEBAAEQAAAEAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\Zone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.View.Converters.BooleanToVisibilityConverter" BaseTypeListCollapsed="true">
+    <Position X="86" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Converters\BooleanToVisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.Core.CloneableObject">
+    <Position X="74.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>View\Core\CloneableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.View.Core.ObservableObject">
+    <Position X="71.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Core\ObservableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.View.Core.RelayCommand" BaseTypeListCollapsed="true">
+    <Position X="94.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAQAAECAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Core\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.AnimalFeedView" BaseTypeListCollapsed="true">
+    <Position X="86" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AnimalFeedView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.AnimalTypeView" BaseTypeListCollapsed="true">
+    <Position X="87.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AnimalTypeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.AnimalView" BaseTypeListCollapsed="true">
+    <Position X="89.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AnimalView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.Authorization" BaseTypeListCollapsed="true">
+    <Position X="94.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Authorization.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.CheckpointPassView" BaseTypeListCollapsed="true">
+    <Position X="87.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CheckpointPassView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.CheckpointVIew" BaseTypeListCollapsed="true">
+    <Position X="89.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\CheckpointVIew.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.HumanView" BaseTypeListCollapsed="true">
+    <Position X="93" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\HumanView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="94.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.MaterialTypeView" BaseTypeListCollapsed="true">
+    <Position X="86" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MaterialTypeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.MaterialView" BaseTypeListCollapsed="true">
+    <Position X="87.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\MaterialView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.PaymentTypeView" BaseTypeListCollapsed="true">
+    <Position X="91.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\PaymentTypeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.PlantListView" BaseTypeListCollapsed="true">
+    <Position X="93" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\PlantListView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.RoleView" BaseTypeListCollapsed="true">
+    <Position X="86" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\RoleView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.SecurityListView" BaseTypeListCollapsed="true">
+    <Position X="89.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\SecurityListView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.SponsorshipView" BaseTypeListCollapsed="true">
+    <Position X="91.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\SponsorshipView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.StaffDocumentView" BaseTypeListCollapsed="true">
+    <Position X="93" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\StaffDocumentView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.SupplierView" BaseTypeListCollapsed="true">
+    <Position X="94.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\SupplierView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.SupplyView" BaseTypeListCollapsed="true">
+    <Position X="86" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\SupplyView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.View.ZoneView" BaseTypeListCollapsed="true">
+    <Position X="87.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ZoneView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.AnimalFeedViewModel">
+    <Position X="52" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAgAABAAYAAkAkCAAAQEAREBIAAIiMAKAAAAYAEFAo=</HashCode>
+      <FileName>ViewModel\AnimalFeedViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.AnimalTypeViewModel">
+    <Position X="59.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAgAQAAAQAAEIkCAAAAEARABIAAICEAKAAAAYAEAAo=</HashCode>
+      <FileName>ViewModel\AnimalTypeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.AnimalViewModel">
+    <Position X="65" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAgAQAAAYAIEMECCBAQAARKJIAAICAAKAAAAYAEEAg=</HashCode>
+      <FileName>ViewModel\AnimalViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.AuthorizationVIewModel">
+    <Position X="69.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAACAAAAAAAIAAAAAAAAAAAAmAAAAABAACAAAA=</HashCode>
+      <FileName>ViewModel\AuthorizationVIewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.ViewModel.CheckpointPassViewModel">
+    <Position X="74.75" Y="4.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AwAoAAAAAQAAEskCAAAAEARABIAAICEAKAAABaQEgAo=</HashCode>
+      <FileName>ViewModel\CheckpointPassViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.ViewModel.CheckpointViewModel">
+    <Position X="80.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAAEskCAAAAEARABIAAICEAKAAAAYAEAAo=</HashCode>
+      <FileName>ViewModel\CheckpointViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.HumanViewModel">
+    <Position X="37.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAoAAQCAQAAEAECEAAAAARABoAAICAAKgABAYQUAAg=</HashCode>
+      <FileName>ViewModel\HumanViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.MainViewModel">
+    <Position X="42.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAgKACCAACggJwSAECAAKBEAACgAAUIAEAAgAA0lM=</HashCode>
+      <FileName>ViewModel\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.ViewModel.MaterialTypeViewModel">
+    <Position X="47" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQMAEAkCAAAAEARQBIAAICEAKAAAAYIEAAo=</HashCode>
+      <FileName>ViewModel\MaterialTypeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.ViewModel.MaterialViewModel">
+    <Position X="54.75" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEAgAAAAAQMAEAkCAAABEARQBIAAICEAKAAAAYIEAAo=</HashCode>
+      <FileName>ViewModel\MaterialViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.ViewModel.PaymentTypeViewModel">
+    <Position X="62.25" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAAEAkCAAAYEARABIABICEAKAAAAYAEAAo=</HashCode>
+      <FileName>ViewModel\PaymentTypeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.PlantListViewModel">
+    <Position X="67.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AUAoAABAAQIIEEkDABAAEARCBIAAICMAKAAAAYQEBAs=</HashCode>
+      <FileName>ViewModel\PlantListViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.RoleViewModel">
+    <Position X="72.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAAEAkCEAAAEARABoAAICEAKAABAYAEAAo=</HashCode>
+      <FileName>ViewModel\RoleViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.SecurityListViewModel">
+    <Position X="77.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAoAAAAAQAAEskCAAAAEARABIgEICEAKAAAAYQEgAo=</HashCode>
+      <FileName>ViewModel\SecurityListViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.SponsorshipViewModel">
+    <Position X="83" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AwAoEAAAAQAAEAkCAAAYEARABIABICEAKAAAAYQEAAo=</HashCode>
+      <FileName>ViewModel\SponsorshipViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.StaffDocumentViewModel">
+    <Position X="39.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAAAAgAAUAEKAAAAQARAAAAAACgAAAAAAIQAAYA=</HashCode>
+      <FileName>ViewModel\StaffDocumentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.SupplierViewModel">
+    <Position X="44.5" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAggABAAQAAEIkCAAAAEARABIAAICEAKAAAAYAEAAo=</HashCode>
+      <FileName>ViewModel\SupplierViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.SupplyViewModel">
+    <Position X="49.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAggABAAQAAEIkCAAABEARABIAAICMAKAAAAYAEBAo=</HashCode>
+      <FileName>ViewModel\SupplyViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.ViewModel.ZoneViewModel">
+    <Position X="57.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAQAAEskCABAAEARCBIAAICEAKAAAAYAEAAo=</HashCode>
+      <FileName>ViewModel\ZoneViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="NationalReserve.App">
+    <Position X="91.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="NationalReserve.Helpers.Interface.IDataHandler">
+    <Position X="86" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAEAAAAAAAAAAABIAAIAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Helpers\Interface\IDataHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="NationalReserve.Helpers.Interface.IOneToOneHandler">
+    <Position X="87.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAEAAAAAAAAAAAAAAAAAgAAAAAAIAAAIA=</HashCode>
+      <FileName>Helpers\Interface\IOneToOneHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
