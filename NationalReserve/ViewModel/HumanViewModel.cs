@@ -73,8 +73,7 @@ namespace NationalReserve.ViewModel
                         _human.Password = SecureData.Hash(value.Password);
                     if (Roles != null && Roles.Any())
                         Role = Roles.FirstOrDefault(x => x.Id == value.IdRole);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _human = value;
                 OnPropertyChanged();
@@ -159,6 +158,7 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<Human>();
 
             Human = new Human();
+            SelectedHuman = new Human();
             Humans = await ApiConnector.GetAll<Human>("Humen");
 
             IsBusy = false;

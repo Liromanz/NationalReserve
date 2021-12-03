@@ -72,8 +72,7 @@ namespace NationalReserve.ViewModel
                         Human = Humans.FirstOrDefault(x => x.IdHuman == value.IdHuman);
                     if (Checkpoints != null && Checkpoints.Any())
                         Checkpoint = Checkpoints.FirstOrDefault(x => x.IdCheckpoint == value.IdCheckpoint);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _checkpointPass = value;
                 OnPropertyChanged();

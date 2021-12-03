@@ -73,8 +73,7 @@ namespace NationalReserve.ViewModel
                 {
                     if (Checkpoints != null && Checkpoints.Any())
                         Checkpoint = Checkpoints.FirstOrDefault(x => x.IdCheckpoint == value.IdCheckpoint);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _zone = value;
                 OnPropertyChanged();

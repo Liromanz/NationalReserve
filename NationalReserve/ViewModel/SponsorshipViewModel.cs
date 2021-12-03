@@ -75,8 +75,7 @@ namespace NationalReserve.ViewModel
                         PaymentType = PaymentTypes.FirstOrDefault(x => x.Id == value.IdHuman);
                     if (Humans != null && Humans.Any())
                         Human = Humans.FirstOrDefault(x => x.IdHuman == value.IdHuman);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _sponsorship = value;
                 OnPropertyChanged();

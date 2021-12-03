@@ -75,8 +75,7 @@ namespace NationalReserve.ViewModel
                         Supplier = Suppliers.FirstOrDefault(x => x.IdSupplier == value.IdSupplier);
                     if (Materials != null && Materials.Any())
                         Material = Materials.FirstOrDefault(x => x.IdMaterial == value.IdMaterial);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _supply = value;
                 OnPropertyChanged();

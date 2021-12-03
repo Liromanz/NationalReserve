@@ -72,8 +72,7 @@ namespace NationalReserve.ViewModel
                 {
                     if (MaterialTypes != null && MaterialTypes.Any())
                         MaterialType = MaterialTypes.FirstOrDefault(x => x.Id == value.IdType);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _material = value;
                 OnPropertyChanged();

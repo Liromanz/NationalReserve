@@ -73,8 +73,7 @@ namespace NationalReserve.ViewModel
                         AnimalType = AnimalTypes.FirstOrDefault(x => x.Id == value.IdAnimal);
                     if (Zones != null && Zones.Any())
                         Zone = Zones.FirstOrDefault(x => x.IdZone == value.IdZone);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _animal = value;
                 OnPropertyChanged();

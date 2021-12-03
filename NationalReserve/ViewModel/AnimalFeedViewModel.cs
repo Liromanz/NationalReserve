@@ -73,8 +73,7 @@ namespace NationalReserve.ViewModel
                         Animal = Animals.FirstOrDefault(x => x.IdAnimal == value.IdAnimal);
                     if (Supplies != null && Supplies.Any())
                         Supply = Supplies.FirstOrDefault(x => x.IdSupply == value.IdSupply);
-                    else
-                        UpdatedCollection.Add(value);
+                    UpdatedCollection.Add(value);
                 }
                 _animalFeed = value;
                 OnPropertyChanged();
