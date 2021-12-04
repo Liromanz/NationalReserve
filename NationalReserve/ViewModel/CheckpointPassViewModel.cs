@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using NationalReserve.Helpers;
+using NationalReserve.Helpers.Interface;
 using NationalReserve.Model;
 using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
 {
-    public class CheckpointPassViewModel : ObservableObject
+    public class CheckpointPassViewModel : ObservableObject, IDataHandler
     {
         #region Команды
         public RelayCommand AddCommand { get; set; }
