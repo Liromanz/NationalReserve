@@ -10,7 +10,7 @@
         WindowStyle="None"
         Background="Transparent"
 
-        AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
 
     <Window.DataContext>
         <viewModel:AuthorizationVIewModel/>

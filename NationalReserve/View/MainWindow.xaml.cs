@@ -23,5 +23,13 @@ namespace NationalReserve.View
             var helper = new HelperWindow();
             helper.ShowDialog();
         }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }

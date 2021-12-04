@@ -25,5 +25,13 @@ namespace NationalReserve.View
         }
 
         private void CloseDialog(object sender, MouseButtonEventArgs e) => Close();
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net.Mime;
 using System.Windows;
 using NationalReserve.Helpers;
 using NationalReserve.Model;
@@ -45,8 +44,8 @@ namespace NationalReserve.ViewModel
         {
             Authorization = new Authorization();
             LoginCommand = new RelayCommand(o => { CheckLogin(); });
-            _humans = await ApiConnector.GetAll<Human>("Humen");
-            _roles = await ApiConnector.GetAll<Role>("Roles");
+            _humans = await ApiConnector.GetAll<Human>("Humen") ?? new ObservableCollection<Human>();
+            _roles = await ApiConnector.GetAll<Role>("Roles") ?? new ObservableCollection<Role>();
         }
 
         private void CheckLogin()
