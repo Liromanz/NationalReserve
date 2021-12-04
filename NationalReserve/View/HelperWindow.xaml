@@ -1,0 +1,134 @@
+﻿<Window x:Class="NationalReserve.View.HelperWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NationalReserve.View"
+        xmlns:viewModel="clr-namespace:NationalReserve.ViewModel"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Height="350" Width="650"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+
+    <Border
+            CornerRadius="20" Background="#FF344429">
+        <Grid Margin="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="     Для начала работы с приложением необходимо выбрать одну из таблиц в левом списке. По центру приложения откроется выбранная таблица. В ней находится таблица с рабочими данными, таблица-корзина и поля для ввода новых данных."
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       Foreground="White"
+                       FontSize="13"
+                       TextWrapping="Wrap"/>
+            <TextBlock Text="     Для добавления данных необходимо заполнить шаблон. Шаблон состоит из полей для ввода (зеленые прямоугольники), списков (прямоугольники с стрелкой вниз), флагов (серых квадратов) и выбора даты (зеленых прямоугольников с тремя стрелками или одним календарем). После заполнения необходимо нажать на кнопку «Добавить запись»"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       Foreground="White"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       FontSize="13"
+                       TextWrapping="Wrap"/>
+            <TextBlock Text="     Для изменения необходимо выбрать поле из верхней таблицы. Данные появятся в полях для ввода, где их можно изменить. После изменения необходимо нажать в любую некликабельную область программы для сохранения"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       Foreground="White"
+                       Grid.Row="2"
+                       Grid.ColumnSpan="2"
+                       FontSize="13" 
+                       TextWrapping="Wrap"/>
+            <TextBlock Text="     Для удаления необходимо выбрать поле из верхней таблицы и нажать на кнопку «Удалить запись». Запись перенесется в нижнюю таблицу и может быть восстановлена. Для восстановления необходимо выбрать запись из нижней таблицы и нажать на кнопку «Удалить запись»."
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       Foreground="White"
+                       Grid.Row="3"
+                       Grid.ColumnSpan="2"
+                       FontSize="13"
+                       TextWrapping="Wrap"/>
+            <TextBlock Text="     Для сохранения всех данных необходимо нажать на кнопку «Сохранить всё». Только после этого все сделанные изменения отправятся на сервер, будьте внимательны!"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       Foreground="White"
+                       Grid.Row="4"
+                       Grid.ColumnSpan="2"
+                       FontSize="13"
+                       TextWrapping="Wrap"/>
+            <TextBlock Text="×"
+                       FontSize="32"
+                       Width="40"
+                       Grid.Column="1"
+                       HorizontalAlignment="Right"
+                       TextAlignment="Center"
+                       VerticalAlignment="Top"
+                       Background="Transparent" 
+                       Foreground="DarkGray"
+                       MouseDown="CloseDialog"/>
+            <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+                <TextBox>
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border CornerRadius="10"
+                                    Background="#161D11"
+                                    Width="150" Height="40">
+                                <Grid>
+                                    <Rectangle StrokeThickness="1"></Rectangle>
+                                    <TextBox Margin="1"
+                                             FontSize="11"
+                                             Text="Я - текстовое поле!"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             VerticalContentAlignment="Center"
+                                             Padding="5"
+                                             Foreground="White"/>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+                <ComboBox Width="165"
+                          VerticalContentAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Height="40"
+                          BorderThickness="0"
+                          Foreground="White"
+                          SelectedIndex="0">
+                    <ComboBoxItem Content="Я - список!"/>
+                    <ComboBoxItem Content="У меня два элемента"/>
+                </ComboBox>
+                <CheckBox Content="Я - флаг" 
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Style="{StaticResource CircleCheckbox}" 
+                          Foreground="White"
+                          Width="100"
+                          Margin="15,10,0,10"
+                          FontSize="11">
+                </CheckBox>
+                <xctk:DateTimePicker>
+                    <xctk:DateTimePicker.Template>
+                        <ControlTemplate>
+                            <Border Height="40" CornerRadius="10" Background="#161D11"  Width="190">
+                                <xctk:DateTimePicker Background="Transparent"
+                                                     BorderThickness="0"
+                                                     Foreground="White"
+                                                     TextAlignment="Left"/>
+                            </Border>
+                        </ControlTemplate>
+                    </xctk:DateTimePicker.Template>
+                </xctk:DateTimePicker>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

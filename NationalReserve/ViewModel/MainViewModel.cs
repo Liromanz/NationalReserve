@@ -57,6 +57,18 @@ namespace NationalReserve.ViewModel
             }
         }
 
+        private bool _nothingSelected;
+
+        public bool NothingSelected
+        {
+            get { return _nothingSelected; }
+            set
+            {
+                _nothingSelected = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private object _currentView;
         public object CurrentView
@@ -71,6 +83,8 @@ namespace NationalReserve.ViewModel
 
         public MainViewModel()
         {
+            NothingSelected = true;
+
             AnimalVm = new AnimalViewModel();
             AnimalFeedVm = new AnimalFeedViewModel();
             AnimalTypeVm = new AnimalTypeViewModel();
@@ -88,8 +102,6 @@ namespace NationalReserve.ViewModel
             SponsorshipVm = new SponsorshipViewModel();
             PaymentTypeVm = new PaymentTypeViewModel();
             PlantListVm = new PlantListViewModel();
-
-            ChangeCurrentView(HumanVm);
 
             AnimalViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalVm); });
             AnimalFeedViewCommand = new RelayCommand(o => { ChangeCurrentView(AnimalFeedVm); });
@@ -113,6 +125,7 @@ namespace NationalReserve.ViewModel
         private void ChangeCurrentView(object viewToChange)
         {
             CurrentView = viewToChange;
+            NothingSelected = false;
         }
     }
 }

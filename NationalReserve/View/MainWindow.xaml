@@ -199,6 +199,16 @@
                         </ControlTemplate>
                     </TextBox.Template>
                 </TextBox>
+
+                <TextBlock Text="?"
+                           Grid.Column="1"
+                           FontSize="28"
+                           Width="50"
+                           TextAlignment="Center"
+                           Padding="0,17,0,0"
+                           Background="Transparent" 
+                           Foreground="DarkGray"
+                           MouseDown="ShowHelp"/>
                 <TextBlock Text="×"
                            Grid.Column="2"
                            FontSize="40"
@@ -210,6 +220,10 @@
                            MouseDown="CloseApplication"/>
             </Grid>
 
+            <TextBlock Grid.Row="1" Grid.Column="1" TextAlignment="Center" VerticalAlignment="Center" 
+                       Text="Выберите одну таблицу из списка справа чтобы начать работу с ней" Foreground="White"
+                       FontSize="14"
+                       Visibility="{Binding NothingSelected, Converter={StaticResource BooleanToVisibilityConverter}}"/>
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="10,10,0,10"

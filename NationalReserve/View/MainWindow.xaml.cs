@@ -17,5 +17,11 @@ namespace NationalReserve.View
             InitializeComponent();
         }
         private void CloseApplication(object sender, MouseButtonEventArgs e) => Environment.Exit(0);
+
+        private void ShowHelp(object sender, MouseButtonEventArgs e)
+        {
+            var helper = new HelperWindow();
+            helper.ShowDialog();
+        }
     }
 }
