@@ -3,7 +3,7 @@
   <Class Name="NationalReserve.Helpers.ApiConnector">
     <Position X="35" Y="15" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAEIAAAAAAAAAAAAAAAAAAAEAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAEIAAAAAAAAAAAAAAAAAAAEAAAgAAAAAgAAA=</HashCode>
       <FileName>Helpers\ApiConnector.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -220,7 +220,7 @@
   <Class Name="NationalReserve.View.Authorization" BaseTypeListCollapsed="true">
     <Position X="94.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\Authorization.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -252,7 +252,7 @@
   <Class Name="NationalReserve.View.MainWindow" BaseTypeListCollapsed="true">
     <Position X="94.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAQAAAAAAAAAAIAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>View\MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -382,6 +382,7 @@
       <HashCode>AwAoAAAAAQAAEskCAAAAEARABIAAICEAKAAABaQEgAo=</HashCode>
       <FileName>ViewModel\CheckpointPassViewModel.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="NationalReserve.ViewModel.CheckpointViewModel">
     <Position X="80.5" Y="4.5" Width="1.75" />
@@ -402,7 +403,7 @@
   <Class Name="NationalReserve.ViewModel.MainViewModel">
     <Position X="42.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QAEAgKACCAACggJwSAECAAKBEAACgAAUIAEAAgAA0lM=</HashCode>
+      <HashCode>QAEAgKBSCAACggJwSAECAAKBEAACgAAUIAEAAgAA0lM=</HashCode>
       <FileName>ViewModel\MainViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -498,6 +499,14 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="NationalReserve.View.HelperWindow" Collapsed="true">
+    <Position X="1.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>View\HelperWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="NationalReserve.Helpers.Interface.IDataHandler">
     <Position X="86" Y="13.5" Width="1.5" />

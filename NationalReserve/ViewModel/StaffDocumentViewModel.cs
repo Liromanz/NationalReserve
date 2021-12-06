@@ -103,9 +103,7 @@ namespace NationalReserve.ViewModel
         public async void ReadOneAsync(int id)
         {
             IsBusy = true;
-            var staffAll = await ApiConnector.GetAll<StaffDocument>("StaffDocuments");
-            StaffDocuments = new ObservableCollection<StaffDocument>(staffAll.Where(x => x.Id == id));
-            StaffDocument = StaffDocuments.FirstOrDefault();
+            StaffDocument = await ApiConnector.GetOne<StaffDocument>("StaffDocuments", id);
             if (StaffDocument == null)
                 StaffDocument = new StaffDocument();
             else

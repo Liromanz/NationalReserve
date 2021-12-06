@@ -19,7 +19,7 @@ namespace NationalReserve.View
             Environment.Exit(0);
         }
 
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        private void DragWindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {

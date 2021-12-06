@@ -15,6 +15,14 @@ namespace NationalReserve.Helpers
             return null;
         }
 
+        public static async Task<T> GetOne<T>(string tableName, int id)
+        {
+            string response = await GetRequest(tableName+ "/" +id);
+            if (!response.Contains(GlobalConstants.ErrorMessage))
+                return (T)JsonConvert.DeserializeObject(response, typeof(T));
+            return default;
+        }
+
         public static async Task<string> AddData<T>(string tableName, object modelValue)
         {
             var json = JsonConvert.SerializeObject(modelValue);

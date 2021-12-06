@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         Background="Transparent"
 
-        AllowsTransparency="True" WindowStartupLocation="CenterScreen" MouseDown="Window_MouseDown">
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" MouseDown="DragWindowMouseDown">
 
     <Window.DataContext>
         <viewModel:MainViewModel/>
