@@ -12,7 +12,7 @@ namespace NationalReserve.Model
         public int IdMaterial { get; set; }
         public int Amount { get; set; }
         public DateTime Date { get; set; }
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

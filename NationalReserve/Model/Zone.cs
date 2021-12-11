@@ -13,7 +13,7 @@ namespace NationalReserve.Model
         public int IsForStaff { get; set; }
         public int IsForWatch { get; set; }
         public int IdCheckpoint { get; set; }
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

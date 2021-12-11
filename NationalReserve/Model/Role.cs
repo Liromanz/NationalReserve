@@ -25,7 +25,7 @@ namespace NationalReserve.Model
         public bool IsSupplierVisible { get; set; }
         public bool IsSupplyVisible { get; set; }
         public bool IsZoneVisible { get; set; }
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

@@ -12,7 +12,7 @@ namespace NationalReserve.Model
         public int IdCheckpoint { get; set; }
         public string PassType { get; set; }
         public DateTime PassTime { get; set; }
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }

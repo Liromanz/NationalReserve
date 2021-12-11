@@ -10,7 +10,7 @@ namespace NationalReserve.Model
         public int IdSupply { get; set; }
         public int IdAnimal { get; set; }
         public int Amount { get; set; }
-        public int IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
     }
 }
