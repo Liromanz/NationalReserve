@@ -4,6 +4,7 @@
     {
         void ReadAsync();
         void AddObject();
+        void PhysicalDelete();
         void LogicalDelete();
         void LogicalRecover();
         void SaveAsync();

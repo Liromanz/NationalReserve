@@ -6,16 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using NationalReserve.Helpers;
+using NationalReserve.Helpers.Interface;
 using NationalReserve.Model;
 using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
 {
-    public class MaterialTypeViewModel : ObservableObject
+    public class MaterialTypeViewModel : ObservableObject, IDataHandler
     {
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -116,6 +118,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
         }
@@ -149,6 +152,15 @@ namespace NationalReserve.ViewModel
             AddedCollection.Add((MaterialType)MaterialType.Clone());
 
             Selected = new MaterialType();
+        }
+
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("AnimalTypes", Deleted.Id.Value);
+                MessageBox.Show($"{Deleted.Name}: {deleteMessage}\n");
+            }
         }
 
         public void LogicalDelete()
