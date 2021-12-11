@@ -129,7 +129,9 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<MaterialType>();
 
             MaterialType = new MaterialType();
-            MaterialTypes = await ApiConnector.GetAll<MaterialType>("MaterialTypes");
+            var fullTableList = await ApiConnector.GetAll<MaterialType>("MaterialTypes");
+            MaterialTypes = new ObservableCollection<MaterialType>(fullTableList.Where(x=> !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<MaterialType>(fullTableList.Where(x=> x.IsDeleted));
 
             IsBusy = false;
         }
@@ -153,6 +155,7 @@ namespace NationalReserve.ViewModel
         {
             if (Selected?.Id != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 MaterialTypes.Remove(Selected);
 
@@ -164,7 +167,9 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = false;
                 MaterialTypes.Add(Deleted);
+                UpdatedCollection.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
         }
@@ -189,11 +194,6 @@ namespace NationalReserve.ViewModel
                 {
                     var updateMessage = await ApiConnector.UpdateData("MaterialTypes", updated, updated.Id.Value);
                     allMessageBuilder.Append($"{updated.Name}: {updateMessage}\n");
-                }
-                foreach (var deleted in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("MaterialTypes", deleted.Id.Value);
-                    allMessageBuilder.Append($"{deleted.Name}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();
