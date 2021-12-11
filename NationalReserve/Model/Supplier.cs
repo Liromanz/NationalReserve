@@ -10,5 +10,7 @@ namespace NationalReserve.Model
         public string Name { get; set; }
         public string Phone { get; set; }
         public string City { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

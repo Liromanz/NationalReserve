@@ -171,7 +171,9 @@ namespace NationalReserve.ViewModel
 
             Checkpoints = await ApiConnector.GetAll<Checkpoint>("Checkpoints");
             var listHumans = await ApiConnector.GetAll<Human>("Humen");
-            Humans = new ObservableCollection<Human>(listHumans.Where(x=> x.IsStaff == 1));
+            Humans = listHumans != null ?
+                new ObservableCollection<Human>(listHumans.Where(x=> x.IsStaff == 1)) :
+                new ObservableCollection<Human>();
         }
 
         #region DataHandler

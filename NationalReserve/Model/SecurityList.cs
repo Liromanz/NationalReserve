@@ -12,5 +12,7 @@ namespace NationalReserve.Model
         public DateTime? TimeEnd { get; set; }
         public int IdHuman { get; set; }
         public int IdCheckpoint { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

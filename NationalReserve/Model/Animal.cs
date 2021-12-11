@@ -16,5 +16,7 @@ namespace NationalReserve.Model
         public DateTime DateRegistration { get; set; }
         public int IdZone { get; set; }
         public DateTime LastCheck { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

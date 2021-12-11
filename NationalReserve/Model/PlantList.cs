@@ -16,5 +16,7 @@ namespace NationalReserve.Model
         public int DaysToCheck { get; set; }
         public DateTime LastCheck { get; set; }
         public int IdSupply { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

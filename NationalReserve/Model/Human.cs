@@ -15,5 +15,7 @@ namespace NationalReserve.Model
         public int Gender { get; set; }
         public int IdRole { get; set; }
         public int IsStaff { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

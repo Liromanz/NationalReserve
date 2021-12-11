@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:NationalReserve"
              xmlns:viewModel="clr-namespace:NationalReserve.ViewModel"
              xmlns:view="clr-namespace:NationalReserve.View"
-             StartupUri="View/Authorization.xaml">
+             StartupUri="View/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

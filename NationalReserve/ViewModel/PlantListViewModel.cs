@@ -196,7 +196,9 @@ namespace NationalReserve.ViewModel
 
             Zones = await ApiConnector.GetAll<Zone>("Zones");
             var listHumans = await ApiConnector.GetAll<Human>("Humen");
-            Humans = new ObservableCollection<Human>(listHumans.Where(x => x.IsStaff == 1));
+            Humans = listHumans != null ?
+                new ObservableCollection<Human>(listHumans.Where(x => x.IsStaff == 1)) :
+                new ObservableCollection<Human>();
             Supplies = await ApiConnector.GetAll<Supply>("Supplies");
         }
 

@@ -10,6 +10,8 @@ namespace NationalReserve.Model
         public int SerialPass { get; set; }
         public int NumberPass { get; set; }
         public long BankNumber { get; set; }
+        public int IsDeleted { get; set; }
+
 
     }
 }

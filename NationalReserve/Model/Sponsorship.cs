@@ -12,5 +12,7 @@ namespace NationalReserve.Model
         public int IdType { get; set; }
         public decimal Amount { get; set; }
         public DateTime PaymentDate { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

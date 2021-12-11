@@ -10,5 +10,7 @@ namespace NationalReserve.Model
         public string Name { get; set; }
         public decimal CostPerOne { get; set; }
         public int IdType { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }

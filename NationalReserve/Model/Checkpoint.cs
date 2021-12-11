@@ -8,5 +8,7 @@ namespace NationalReserve.Model
     {
         public int? IdCheckpoint { get; set; }
         public string Name { get; set; }
+        public int IsDeleted { get; set; }
+
     }
 }
