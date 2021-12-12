@@ -27,7 +27,9 @@
             <ListView ItemsSource="{Binding Checkpoints, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}"  >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -58,7 +60,9 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}"  >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -15,7 +15,7 @@ namespace NationalReserve.View
     public partial class RoleView : UserControl
     {
         private GridViewColumnHeader _sortedColumn;
-        private bool isAscending;
+        private bool _isAscending;
         public RoleViewModel ViewModel => DataContext as RoleViewModel;
         public RoleView()
         {
@@ -32,16 +32,16 @@ namespace NationalReserve.View
             GridViewColumnHeader column = sender as GridViewColumnHeader;
 
             string sortBy = column.Tag.ToString();
-            if (_sortedColumn == column && !isAscending)
+            if (_sortedColumn == column && !_isAscending)
             {
-                isAscending = true;
+                _isAscending = true;
                 ViewModel.Roles = new ObservableCollection<Role>(
                     ViewModel.Roles.OrderBy(x => x.GetType().GetProperty(sortBy).GetValue(x, null)));
             }
             else
             {
                 _sortedColumn = column;
-                isAscending = false;
+                _isAscending = false;
                 ViewModel.Roles = new ObservableCollection<Role>(
                     ViewModel.Roles.OrderByDescending(x => x.GetType().GetProperty(sortBy).GetValue(x, null)));
             }

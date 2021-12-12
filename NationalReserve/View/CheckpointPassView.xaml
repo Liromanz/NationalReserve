@@ -27,10 +27,18 @@
             <ListView ItemsSource="{Binding CheckpointPasses, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IdHuman}" />
-                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}"/>
-                        <GridViewColumn Header="Тип прохода" Width="auto" DisplayMemberBinding="{Binding PassType}"/>
-                        <GridViewColumn Header="Время прохода потомство" Width="auto" DisplayMemberBinding="{Binding PassTime}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}" >
+                            <GridViewColumnHeader Content="Человек" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}">
+                            <GridViewColumnHeader Content="КПП" Tag="IdCheckpoint" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding PassType}">
+                            <GridViewColumnHeader Content="Тип прохода" Tag="PassType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding PassTime}">
+                            <GridViewColumnHeader Content="Время прохода потомство" Tag="PassTime" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -61,10 +69,18 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IdHuman}" />
-                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}"/>
-                        <GridViewColumn Header="Тип прохода" Width="auto" DisplayMemberBinding="{Binding PassType}"/>
-                        <GridViewColumn Header="Время прохода потомство" Width="auto" DisplayMemberBinding="{Binding PassTime}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}" >
+                            <GridViewColumnHeader Content="Человек" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}">
+                            <GridViewColumnHeader Content="КПП" Tag="IdCheckpoint" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding PassType}">
+                            <GridViewColumnHeader Content="Тип прохода" Tag="PassType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding PassTime}">
+                            <GridViewColumnHeader Content="Время прохода потомство" Tag="PassTime" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

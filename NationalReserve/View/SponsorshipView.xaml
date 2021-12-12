@@ -27,10 +27,18 @@
             <ListView ItemsSource="{Binding Sponsorships, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Спонсор №" Width="auto" DisplayMemberBinding="{Binding IdHuman}" />
-                        <GridViewColumn Header="Тип оплаты №" Width="auto" DisplayMemberBinding="{Binding IdType}"/>
-                        <GridViewColumn Header="Сумма" Width="auto" DisplayMemberBinding="{Binding Amount}"/>
-                        <GridViewColumn Header="Дата транзакции" Width="auto" DisplayMemberBinding="{Binding PaymentDate}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}" >
+                            <GridViewColumnHeader Content="Спонсор №" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdType}">
+                            <GridViewColumnHeader Content="Тип оплаты №" Tag="IdType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumnHeader Content="Сумма" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding PaymentDate}">
+                            <GridViewColumnHeader Content="Дата транзакции" Tag="PaymentDate" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -61,10 +69,18 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Спонсор №" Width="auto" DisplayMemberBinding="{Binding IdHuman}" />
-                        <GridViewColumn Header="Тип оплаты №" Width="auto" DisplayMemberBinding="{Binding IdType}"/>
-                        <GridViewColumn Header="Сумма" Width="auto" DisplayMemberBinding="{Binding Amount}"/>
-                        <GridViewColumn Header="Дата транзакции" Width="auto" DisplayMemberBinding="{Binding PaymentDate}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}" >
+                            <GridViewColumnHeader Content="Спонсор №" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdType}">
+                            <GridViewColumnHeader Content="Тип оплаты №" Tag="IdType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumnHeader Content="Сумма" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding PaymentDate}">
+                            <GridViewColumnHeader Content="Дата транзакции" Tag="PaymentDate" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

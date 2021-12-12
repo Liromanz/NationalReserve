@@ -27,9 +27,15 @@
             <ListView ItemsSource="{Binding AnimalFeeds, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Поставка №" Width="auto" DisplayMemberBinding="{Binding IdSupply}" />
-                        <GridViewColumn Header="Животное №" Width="auto" DisplayMemberBinding="{Binding IdAnimal}"/>
-                        <GridViewColumn Header="Количество корма" Width="auto" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdSupply}" >
+                            <GridViewColumnHeader Content="Поставка №" Tag="IdSupply" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdAnimal}">
+                            <GridViewColumnHeader Content="Животное №" Tag="IdAnimal" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumnHeader Content="Количество корма" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -60,9 +66,15 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Поставка №" Width="auto" DisplayMemberBinding="{Binding IdSupply}" />
-                        <GridViewColumn Header="Животное №" Width="auto" DisplayMemberBinding="{Binding IdAnimal}"/>
-                        <GridViewColumn Header="Количество корма" Width="auto" DisplayMemberBinding="{Binding Amount}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdSupply}" >
+                            <GridViewColumnHeader Content="Поставка №" Tag="IdSupply" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdAnimal}">
+                            <GridViewColumnHeader Content="Животное №" Tag="IdAnimal" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumnHeader Content="Количество корма" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

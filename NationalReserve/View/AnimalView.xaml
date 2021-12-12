@@ -27,14 +27,30 @@
             <ListView ItemsSource="{Binding Animals, Mode=TwoWay}" SelectedItem="{Binding SelectedAnimal, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Имя" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Тип" Width="auto" DisplayMemberBinding="{Binding IdType}"/>
-                        <GridViewColumn Header="Возраст" Width="auto" DisplayMemberBinding="{Binding Age}"/>
-                        <GridViewColumn Header="Имеет потомство" Width="auto" DisplayMemberBinding="{Binding HasFamily}"/>
-                        <GridViewColumn Header="Болен" Width="auto" DisplayMemberBinding="{Binding IsSick}" />
-                        <GridViewColumn Header="Дата регистрации" Width="auto" DisplayMemberBinding="{Binding DateRegistration}" />
-                        <GridViewColumn Header="Зона" Width="auto" DisplayMemberBinding="{Binding IdZone}" />
-                        <GridViewColumn Header="Последняя проверка" Width="auto" DisplayMemberBinding="{Binding LastCheck}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}" >
+                            <GridViewColumnHeader Content="Имя" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdType}">
+                            <GridViewColumnHeader Content="Тип" Tag="IdType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Age}">
+                            <GridViewColumnHeader Content="Возраст" Tag="Age" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding HasFamily}">
+                            <GridViewColumnHeader Content="Имеет потомство" Tag="HasFamily" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSick}">
+                            <GridViewColumnHeader Content="Болен" Tag="IsSick" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding DateRegistration}" >
+                            <GridViewColumnHeader Content="Дата регистрации" Tag="DateRegistration" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdZone}">
+                            <GridViewColumnHeader Content="Зона" Tag="IdZone" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastCheck}" >
+                            <GridViewColumnHeader Content="Последняя проверка" Tag="LastCheck" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -65,14 +81,30 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding DeletedAnimal}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Имя" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Тип" Width="auto" DisplayMemberBinding="{Binding IdType}"/>
-                        <GridViewColumn Header="Возраст" Width="auto" DisplayMemberBinding="{Binding Age}"/>
-                        <GridViewColumn Header="Имеет потомство" Width="auto" DisplayMemberBinding="{Binding HasFamily}"/>
-                        <GridViewColumn Header="Болен" Width="auto" DisplayMemberBinding="{Binding IsSick}" />
-                        <GridViewColumn Header="Дата регистрации" Width="auto" DisplayMemberBinding="{Binding DateRegistration}" />
-                        <GridViewColumn Header="Зона" Width="auto" DisplayMemberBinding="{Binding IdZone}" />
-                        <GridViewColumn Header="Последняя проверка" Width="auto" DisplayMemberBinding="{Binding LastCheck}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}" >
+                            <GridViewColumnHeader Content="Имя" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdType}">
+                            <GridViewColumnHeader Content="Тип" Tag="IdType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Age}">
+                            <GridViewColumnHeader Content="Возраст" Tag="Age" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding HasFamily}">
+                            <GridViewColumnHeader Content="Имеет потомство" Tag="HasFamily" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSick}">
+                            <GridViewColumnHeader Content="Болен" Tag="IsSick" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding DateRegistration}" >
+                            <GridViewColumnHeader Content="Дата регистрации" Tag="DateRegistration" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdZone}">
+                            <GridViewColumnHeader Content="Зона" Tag="IdZone" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastCheck}" >
+                            <GridViewColumnHeader Content="Последняя проверка" Tag="LastCheck" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

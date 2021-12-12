@@ -28,10 +28,18 @@
             <ListView ItemsSource="{Binding SecurityLists, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Дата начала" Width="auto" DisplayMemberBinding="{Binding TimeStart, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Дата конца" Width="auto" DisplayMemberBinding="{Binding TimeEnd}"/>
-                        <GridViewColumn Header="Охранник №" Width="auto" DisplayMemberBinding="{Binding IdHuman}"/>
-                        <GridViewColumn Header="КПП №" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding TimeStart, FallbackValue=-, TargetNullValue=-}" >
+                            <GridViewColumnHeader Content="Дата начала" Tag="TimeStart" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding TimeEnd}">
+                            <GridViewColumnHeader Content="Дата конца" Tag="TimeEnd" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}">
+                            <GridViewColumnHeader Content="Охранник №" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}">
+                            <GridViewColumnHeader Content="КПП №" Tag="IdCheckpoint" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -62,10 +70,18 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Дата начала" Width="auto" DisplayMemberBinding="{Binding TimeStart, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Дата конца" Width="auto" DisplayMemberBinding="{Binding TimeEnd}"/>
-                        <GridViewColumn Header="Охранник №" Width="auto" DisplayMemberBinding="{Binding IdHuman}"/>
-                        <GridViewColumn Header="КПП №" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding TimeStart, FallbackValue=-, TargetNullValue=-}" >
+                            <GridViewColumnHeader Content="Дата начала" Tag="TimeStart" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding TimeEnd}">
+                            <GridViewColumnHeader Content="Дата конца" Tag="TimeEnd" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}">
+                            <GridViewColumnHeader Content="Охранник №" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdCheckpoint}">
+                            <GridViewColumnHeader Content="КПП №" Tag="IdCheckpoint" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

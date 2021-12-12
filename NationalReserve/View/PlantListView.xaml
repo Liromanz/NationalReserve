@@ -28,14 +28,30 @@
             <ListView ItemsSource="{Binding PlantLists, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Зона №" Width="auto" DisplayMemberBinding="{Binding IdZone}"/>
-                        <GridViewColumn Header="Проверяющий №" Width="auto" DisplayMemberBinding="{Binding IdHuman}"/>
-                        <GridViewColumn Header="Дата посадки" Width="auto" DisplayMemberBinding="{Binding DateGarden}"/>
-                        <GridViewColumn Header="Количество" Width="auto" DisplayMemberBinding="{Binding Amount, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Дни до следующей проверки" Width="auto" DisplayMemberBinding="{Binding DaysToCheck, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Последняя проверка" Width="auto" DisplayMemberBinding="{Binding LastCheck, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Поставка №" Width="auto" DisplayMemberBinding="{Binding IdSupply, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdZone}">
+                            <GridViewColumnHeader Content="Зона №" Tag="IdZone" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}">
+                            <GridViewColumnHeader Content="Проверяющий №" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding DateGarden}">
+                            <GridViewColumnHeader Content="Дата посадки" Tag="DateGarden" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount, FallbackValue=-, TargetNullValue=-}" >
+                            <GridViewColumnHeader Content="Количество" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding DaysToCheck, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Дни до следующей проверки" Tag="DaysToCheck" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastCheck, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Последняя проверка" Tag="LastCheck" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdSupply, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Поставка №" Tag="IdSupply" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -66,14 +82,30 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Зона №" Width="auto" DisplayMemberBinding="{Binding IdZone}"/>
-                        <GridViewColumn Header="Проверяющий №" Width="auto" DisplayMemberBinding="{Binding IdHuman}"/>
-                        <GridViewColumn Header="Дата посадки" Width="auto" DisplayMemberBinding="{Binding DateGarden}"/>
-                        <GridViewColumn Header="Количество" Width="auto" DisplayMemberBinding="{Binding Amount, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Дни до следующей проверки" Width="auto" DisplayMemberBinding="{Binding DaysToCheck, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Последняя проверка" Width="auto" DisplayMemberBinding="{Binding LastCheck, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Поставка №" Width="auto" DisplayMemberBinding="{Binding IdSupply, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdZone}">
+                            <GridViewColumnHeader Content="Зона №" Tag="IdZone" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdHuman}">
+                            <GridViewColumnHeader Content="Проверяющий №" Tag="IdHuman" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding DateGarden}">
+                            <GridViewColumnHeader Content="Дата посадки" Tag="DateGarden" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount, FallbackValue=-, TargetNullValue=-}" >
+                            <GridViewColumnHeader Content="Количество" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding DaysToCheck, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Дни до следующей проверки" Tag="DaysToCheck" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastCheck, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Последняя проверка" Tag="LastCheck" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdSupply, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Поставка №" Tag="IdSupply" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

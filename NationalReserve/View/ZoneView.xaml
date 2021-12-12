@@ -27,12 +27,24 @@
             <ListView ItemsSource="{Binding Zones, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Описание" Width="auto" DisplayMemberBinding="{Binding Description}"/>
-                        <GridViewColumn Header="Площадь" Width="auto" DisplayMemberBinding="{Binding Square}"/>
-                        <GridViewColumn Header="Спец. зона" Width="auto" DisplayMemberBinding="{Binding IsForStaff}"/>
-                        <GridViewColumn Header="Зона для просмотра" Width="auto" DisplayMemberBinding="{Binding IsForWatch, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="КПП №" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Description}">
+                            <GridViewColumnHeader Content="Описание" Tag="Description" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Square}">
+                            <GridViewColumnHeader Content="Площадь" Tag="Square" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsForStaff}">
+                            <GridViewColumnHeader Content="Спец. зона" Tag="IsForStaff" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsForWatch, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Зона для просмотра" Tag="IsForWatch" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdCheckpoint, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="КПП №" Tag="IdCheckpoint" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -63,12 +75,24 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Описание" Width="auto" DisplayMemberBinding="{Binding Description}"/>
-                        <GridViewColumn Header="Площадь" Width="auto" DisplayMemberBinding="{Binding Square}"/>
-                        <GridViewColumn Header="Спец. зона" Width="auto" DisplayMemberBinding="{Binding IsForStaff}"/>
-                        <GridViewColumn Header="Зона для просмотра" Width="auto" DisplayMemberBinding="{Binding IsForWatch, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="КПП №" Width="auto" DisplayMemberBinding="{Binding IdCheckpoint, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Description}">
+                            <GridViewColumnHeader Content="Описание" Tag="Description" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Square}">
+                            <GridViewColumnHeader Content="Площадь" Tag="Square" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsForStaff}">
+                            <GridViewColumnHeader Content="Спец. зона" Tag="IsForStaff" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsForWatch, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Зона для просмотра" Tag="IsForWatch" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdCheckpoint, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="КПП №" Tag="IdCheckpoint" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

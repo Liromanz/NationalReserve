@@ -26,14 +26,30 @@
             <ListView ItemsSource="{Binding Humans, Mode=TwoWay}" SelectedItem="{Binding SelectedHuman, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Логин" Width="auto" DisplayMemberBinding="{Binding Login, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Пароль" Width="auto" DisplayMemberBinding="{Binding Password}"/>
-                        <GridViewColumn Header="Фамилия" Width="auto" DisplayMemberBinding="{Binding FirstName}"/>
-                        <GridViewColumn Header="Имя" Width="auto" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Отчество" Width="auto" DisplayMemberBinding="{Binding LastName, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Пол" Width="auto" DisplayMemberBinding="{Binding Gender, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Является сотрудником" Width="auto" DisplayMemberBinding="{Binding IsStaff, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IdRole, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Login, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Логин" Tag="Login" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Password}">
+                            <GridViewColumnHeader Content="Пароль" Tag="Password" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding FirstName}">
+                            <GridViewColumnHeader Content="Фамилия" Tag="FirstName" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                            <GridViewColumnHeader Content="Имя" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastName, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Отчество" Tag="LastName" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Gender, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Пол" Tag="Gender" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsStaff, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Является сотрудником" Tag="IsStaff" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdRole, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Роль" Tag="IdRole" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -64,14 +80,30 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding DeletedHuman}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Логин" Width="auto" DisplayMemberBinding="{Binding Login, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Пароль" Width="auto" DisplayMemberBinding="{Binding Password}"/>
-                        <GridViewColumn Header="Фамилия" Width="auto" DisplayMemberBinding="{Binding FirstName}"/>
-                        <GridViewColumn Header="Имя" Width="auto" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Отчество" Width="auto" DisplayMemberBinding="{Binding LastName, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Пол" Width="auto" DisplayMemberBinding="{Binding Gender, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Является сотрудником" Width="auto" DisplayMemberBinding="{Binding IsStaff, FallbackValue=-, TargetNullValue=-}" />
-                        <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IdRole, FallbackValue=-, TargetNullValue=-}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Login, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Логин" Tag="Login" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Password}">
+                            <GridViewColumnHeader Content="Пароль" Tag="Password" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding FirstName}">
+                            <GridViewColumnHeader Content="Фамилия" Tag="FirstName" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                            <GridViewColumnHeader Content="Имя" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding LastName, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Отчество" Tag="LastName" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Gender, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Пол" Tag="Gender" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsStaff, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Является сотрудником" Tag="IsStaff" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdRole, FallbackValue=-, TargetNullValue=-}">
+                            <GridViewColumnHeader Content="Роль" Tag="IdRole" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

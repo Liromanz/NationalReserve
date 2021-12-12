@@ -14,7 +14,7 @@ namespace NationalReserve.View
     public partial class AnimalTypeView : UserControl
     {
         private GridViewColumnHeader _sortedColumn;
-        private bool isAscending;
+        private bool _isAscending;
         public AnimalTypeViewModel ViewModel => DataContext as AnimalTypeViewModel;
         public AnimalTypeView()
         {
@@ -32,16 +32,16 @@ namespace NationalReserve.View
             GridViewColumnHeader column = sender as GridViewColumnHeader;
 
             string sortBy = column.Tag.ToString();
-            if (_sortedColumn == column && !isAscending)
+            if (_sortedColumn == column && !_isAscending)
             {
-                isAscending = true;
+                _isAscending = true;
                 ViewModel.AnimalTypes = new ObservableCollection<AnimalType>(
                     ViewModel.AnimalTypes.OrderBy(x => x.GetType().GetProperty(sortBy).GetValue(x, null)));
             }
             else
             {
                 _sortedColumn = column;
-                isAscending = false;
+                _isAscending = false;
                 ViewModel.AnimalTypes = new ObservableCollection<AnimalType>(
                     ViewModel.AnimalTypes.OrderByDescending(x => x.GetType().GetProperty(sortBy).GetValue(x, null)));
             }

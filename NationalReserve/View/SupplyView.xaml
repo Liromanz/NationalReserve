@@ -28,10 +28,18 @@
             <ListView ItemsSource="{Binding Supplies, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Поставщик №" Width="auto" DisplayMemberBinding="{Binding IdSupply}" />
-                        <GridViewColumn Header="Материал №" Width="auto" DisplayMemberBinding="{Binding IdMaterial}"/>
-                        <GridViewColumn Header="Количество" Width="auto" DisplayMemberBinding="{Binding Amount}"/>
-                        <GridViewColumn Header="Дата поставки" Width="auto" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdSupply}">
+                            <GridViewColumnHeader Content="Поставщик №" Tag="IdSupply" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdMaterial}">
+                            <GridViewColumnHeader Content="Материал №" Tag="IdMaterial" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumnHeader Content="Количество" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Date}">
+                            <GridViewColumnHeader Content="Дата поставки" Tag="Date" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -62,10 +70,18 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Поставщик №" Width="auto" DisplayMemberBinding="{Binding IdSupply}" />
-                        <GridViewColumn Header="Материал №" Width="auto" DisplayMemberBinding="{Binding IdMaterial}"/>
-                        <GridViewColumn Header="Количество" Width="auto" DisplayMemberBinding="{Binding Amount}"/>
-                        <GridViewColumn Header="Дата поставки" Width="auto" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdSupply}">
+                            <GridViewColumnHeader Content="Поставщик №" Tag="IdSupply" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdMaterial}">
+                            <GridViewColumnHeader Content="Материал №" Tag="IdMaterial" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Amount}">
+                            <GridViewColumnHeader Content="Количество" Tag="Amount" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Date}">
+                            <GridViewColumnHeader Content="Дата поставки" Tag="Date" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

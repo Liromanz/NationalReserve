@@ -25,10 +25,18 @@
             <ListView ItemsSource="{Binding StaffDocuments, Mode=TwoWay}" SelectedItem="{Binding StaffDocument, Mode=OneWayToSource}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Сотрудник №" Width="auto" DisplayMemberBinding="{Binding Id}" />
-                        <GridViewColumn Header="Серия паспорта" Width="auto" DisplayMemberBinding="{Binding SerialPass}" />
-                        <GridViewColumn Header="Номер паспорта" Width="auto" DisplayMemberBinding="{Binding NumberPass}" />
-                        <GridViewColumn Header="Банковский счет" Width="auto" DisplayMemberBinding="{Binding BankNumber}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Id}">
+                            <GridViewColumnHeader Content="Сотрудник №" Tag="Id" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding SerialPass}">
+                            <GridViewColumnHeader Content="Серия паспорта" Tag="SerialPass" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding NumberPass}" >
+                            <GridViewColumnHeader Content="Номер паспорта" Tag="NumberPass" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding BankNumber}" >
+                            <GridViewColumnHeader Content="Банковский счет" Tag="BankNumber" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

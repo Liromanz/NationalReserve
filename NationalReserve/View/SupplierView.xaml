@@ -28,9 +28,15 @@
             <ListView ItemsSource="{Binding Suppliers, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Телефон" Width="auto" DisplayMemberBinding="{Binding Phone}" />
-                        <GridViewColumn Header="Город" Width="auto" DisplayMemberBinding="{Binding City}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Phone}">
+                            <GridViewColumnHeader Content="Телефон" Tag="Phone" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding City}">
+                            <GridViewColumnHeader Content="Город" Tag="City" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -61,9 +67,15 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Телефон" Width="auto" DisplayMemberBinding="{Binding Phone}" />
-                        <GridViewColumn Header="Город" Width="auto" DisplayMemberBinding="{Binding City}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Phone}">
+                            <GridViewColumnHeader Content="Телефон" Tag="Phone" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding City}">
+                            <GridViewColumnHeader Content="Город" Tag="City" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

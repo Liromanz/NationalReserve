@@ -27,9 +27,15 @@
             <ListView ItemsSource="{Binding Materials, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Тип материала №" Width="auto" DisplayMemberBinding="{Binding IdType}"/>
-                        <GridViewColumn Header="Цена за единицу" Width="auto" DisplayMemberBinding="{Binding CostPerOne}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdType}">
+                            <GridViewColumnHeader Content="Тип материала №" Tag="IdType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding CostPerOne}">
+                            <GridViewColumnHeader Content="Цена за единицу" Tag="CostPerOne" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -60,9 +66,15 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Тип материала №" Width="auto" DisplayMemberBinding="{Binding IdType}"/>
-                        <GridViewColumn Header="Цена за единицу" Width="auto" DisplayMemberBinding="{Binding CostPerOne}"/>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}">
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IdType}">
+                            <GridViewColumnHeader Content="Тип материала №" Tag="IdType" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding CostPerOne}">
+                            <GridViewColumnHeader Content="Цена за единицу" Tag="CostPerOne" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
