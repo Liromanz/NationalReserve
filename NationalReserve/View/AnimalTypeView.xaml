@@ -24,10 +24,12 @@
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding AnimalTypes, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
+            <ListView x:Name="MainListView" ItemsSource="{Binding AnimalTypes, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn  Width="auto" DisplayMemberBinding="{Binding Name}" >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -24,27 +24,63 @@
                 <RowDefinition Height="0.5*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ListView ItemsSource="{Binding Roles, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
+            <ListView x:Name="MainListView" ItemsSource="{Binding Roles, Mode=TwoWay}" SelectedItem="{Binding Selected, Mode=OneWayToSource}" MouseRightButtonDown="MouseRightButtonDownCommand">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Кормежка животных" Width="auto" DisplayMemberBinding="{Binding IsAnimalFeedVisible}" />
-                        <GridViewColumn Header="Тип животного" Width="auto" DisplayMemberBinding="{Binding IsAnimalTypeVisible}" />
-                        <GridViewColumn Header="Животное" Width="auto" DisplayMemberBinding="{Binding IsAnimalVisible}" />
-                        <GridViewColumn Header="Растения" Width="auto" DisplayMemberBinding="{Binding IsPlantListVisible}" />
-                        <GridViewColumn Header="Проход через КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointPassVisible}" />
-                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointVisible}" />
-                        <GridViewColumn Header="Смена в КПП" Width="auto" DisplayMemberBinding="{Binding IsSecurityListVisible}" />
-                        <GridViewColumn Header="Зона" Width="auto" DisplayMemberBinding="{Binding IsZoneVisible}" />
-                        <GridViewColumn Header="Документы сотрудника" Width="auto" DisplayMemberBinding="{Binding IsStaffDocumentsVisible}" />
-                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IsHumanVisible}" />
-                        <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IsRoleVisible}" />
-                        <GridViewColumn Header="Поставщик" Width="auto" DisplayMemberBinding="{Binding IsSupplierVisible}" />
-                        <GridViewColumn Header="Поставка" Width="auto" DisplayMemberBinding="{Binding IsSupplyVisible}" />
-                        <GridViewColumn Header="Тип материала" Width="auto" DisplayMemberBinding="{Binding IsMaterialTypeVisible}" />
-                        <GridViewColumn Header="Материал" Width="auto" DisplayMemberBinding="{Binding IsMaterialVisible}" />
-                        <GridViewColumn Header="Спонсорство" Width="auto" DisplayMemberBinding="{Binding IsSponsorshipVisible}" />
-                        <GridViewColumn Header="Тип оплаты" Width="auto" DisplayMemberBinding="{Binding IsPaymentTypeVisible}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}" >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsAnimalFeedVisible}">
+                            <GridViewColumnHeader Content="Кормежка животных" Tag="IsAnimalFeedVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsAnimalTypeVisible}">
+                            <GridViewColumnHeader Content="Тип животного" Tag="IsAnimalTypeVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsAnimalVisible}">
+                            <GridViewColumnHeader Content="Животное" Tag="IsAnimalVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsPlantListVisible}" >
+                            <GridViewColumnHeader Content="Растения" Tag="IsPlantListVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsCheckpointPassVisible}" >
+                            <GridViewColumnHeader Content="Проход через КПП" Tag="IsCheckpointPassVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsCheckpointVisible}" >
+                            <GridViewColumnHeader Content="КПП" Tag="IsCheckpointVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSecurityListVisible}" >
+                            <GridViewColumnHeader Content="Смена в КПП" Tag="IsSecurityListVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsZoneVisible}">
+                            <GridViewColumnHeader Content="Зона" Tag="IsZoneVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsStaffDocumentsVisible}">
+                            <GridViewColumnHeader Content="Документы сотрудника" Tag="IsStaffDocumentsVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsHumanVisible}" >
+                            <GridViewColumnHeader Content="Человек" Tag="IsHumanVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsRoleVisible}" >
+                            <GridViewColumnHeader Content="Роль" Tag="IsRoleVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSupplierVisible}" >
+                            <GridViewColumnHeader Content="Поставщик" Tag="IsSupplierVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSupplyVisible}" >
+                            <GridViewColumnHeader Content="Поставка" Tag="IsSupplyVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsMaterialTypeVisible}" >
+                            <GridViewColumnHeader Content="Тип материала" Tag="IsMaterialTypeVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsMaterialVisible}">
+                            <GridViewColumnHeader Content="Материал" Tag="IsMaterialVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSponsorshipVisible}" >
+                            <GridViewColumnHeader Content="Спонсорство" Tag="IsSponsorshipVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsPaymentTypeVisible}" >
+                            <GridViewColumnHeader Content="Тип оплаты" Tag="IsPaymentTypeVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -75,24 +111,60 @@
             <ListView ItemsSource="{Binding DeletedCollection}" SelectedItem="{Binding Deleted}" Grid.Row="3">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Наименование" Width="auto" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header="Кормежка животных" Width="auto" DisplayMemberBinding="{Binding IsAnimalFeedVisible}" />
-                        <GridViewColumn Header="Тип животного" Width="auto" DisplayMemberBinding="{Binding IsAnimalTypeVisible}" />
-                        <GridViewColumn Header="Животное" Width="auto" DisplayMemberBinding="{Binding IsAnimalVisible}" />
-                        <GridViewColumn Header="Растения" Width="auto" DisplayMemberBinding="{Binding IsPlantListVisible}" />
-                        <GridViewColumn Header="Проход через КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointPassVisible}" />
-                        <GridViewColumn Header="КПП" Width="auto" DisplayMemberBinding="{Binding IsCheckpointVisible}" />
-                        <GridViewColumn Header="Смена в КПП" Width="auto" DisplayMemberBinding="{Binding IsSecurityListVisible}" />
-                        <GridViewColumn Header="Зона" Width="auto" DisplayMemberBinding="{Binding IsZoneVisible}" />
-                        <GridViewColumn Header="Документы сотрудника" Width="auto" DisplayMemberBinding="{Binding IsStaffDocumentsVisible}" />
-                        <GridViewColumn Header="Человек" Width="auto" DisplayMemberBinding="{Binding IsHumanVisible}" />
-                        <GridViewColumn Header="Роль" Width="auto" DisplayMemberBinding="{Binding IsRoleVisible}" />
-                        <GridViewColumn Header="Поставщик" Width="auto" DisplayMemberBinding="{Binding IsSupplierVisible}" />
-                        <GridViewColumn Header="Поставка" Width="auto" DisplayMemberBinding="{Binding IsSupplyVisible}" />
-                        <GridViewColumn Header="Тип материала" Width="auto" DisplayMemberBinding="{Binding IsMaterialTypeVisible}" />
-                        <GridViewColumn Header="Материал" Width="auto" DisplayMemberBinding="{Binding IsMaterialVisible}" />
-                        <GridViewColumn Header="Спонсорство" Width="auto" DisplayMemberBinding="{Binding IsSponsorshipVisible}" />
-                        <GridViewColumn Header="Тип оплаты" Width="auto" DisplayMemberBinding="{Binding IsPaymentTypeVisible}" />
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding Name}" >
+                            <GridViewColumnHeader Content="Наименование" Tag="Name" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsAnimalFeedVisible}">
+                            <GridViewColumnHeader Content="Кормежка животных" Tag="IsAnimalFeedVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsAnimalTypeVisible}">
+                            <GridViewColumnHeader Content="Тип животного" Tag="IsAnimalTypeVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsAnimalVisible}">
+                            <GridViewColumnHeader Content="Животное" Tag="IsAnimalVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsPlantListVisible}" >
+                            <GridViewColumnHeader Content="Растения" Tag="IsPlantListVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsCheckpointPassVisible}" >
+                            <GridViewColumnHeader Content="Проход через КПП" Tag="IsCheckpointPassVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsCheckpointVisible}" >
+                            <GridViewColumnHeader Content="КПП" Tag="IsCheckpointVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSecurityListVisible}" >
+                            <GridViewColumnHeader Content="Смена в КПП" Tag="IsSecurityListVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsZoneVisible}">
+                            <GridViewColumnHeader Content="Зона" Tag="IsZoneVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsStaffDocumentsVisible}">
+                            <GridViewColumnHeader Content="Документы сотрудника" Tag="IsStaffDocumentsVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsHumanVisible}" >
+                            <GridViewColumnHeader Content="Человек" Tag="IsHumanVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsRoleVisible}" >
+                            <GridViewColumnHeader Content="Роль" Tag="IsRoleVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSupplierVisible}" >
+                            <GridViewColumnHeader Content="Поставщик" Tag="IsSupplierVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSupplyVisible}" >
+                            <GridViewColumnHeader Content="Поставка" Tag="IsSupplyVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsMaterialTypeVisible}" >
+                            <GridViewColumnHeader Content="Тип материала" Tag="IsMaterialTypeVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsMaterialVisible}">
+                            <GridViewColumnHeader Content="Материал" Tag="IsMaterialVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsSponsorshipVisible}" >
+                            <GridViewColumnHeader Content="Спонсорство" Tag="IsSponsorshipVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
+                        <GridViewColumn Width="auto" DisplayMemberBinding="{Binding IsPaymentTypeVisible}" >
+                            <GridViewColumnHeader Content="Тип оплаты" Tag="IsPaymentTypeVisible" Click="ColumnSorting"/>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
