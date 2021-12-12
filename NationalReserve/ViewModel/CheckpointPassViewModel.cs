@@ -15,6 +15,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -166,6 +167,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -182,7 +184,9 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<CheckpointPass>();
 
             CheckpointPass = new CheckpointPass();
-            CheckpointPasses = await ApiConnector.GetAll<CheckpointPass>("CheckpointPasses");
+            var fullTableList = await ApiConnector.GetAll<CheckpointPass>("CheckpointPasses");
+            CheckpointPasses = new ObservableCollection<CheckpointPass>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<CheckpointPass>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -201,22 +205,33 @@ namespace NationalReserve.ViewModel
 
             Selected = new CheckpointPass();
         }
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("CheckpointPasses", Deleted.IdCheckpointPass.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+                ReadAsync();
+            }
+        }
 
         public void LogicalDelete()
         {
             if (Selected?.IdCheckpointPass != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 CheckpointPasses.Remove(Selected);
 
                 CheckpointPass = new CheckpointPass();
             }
         }
-
         public void LogicalRecover()
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = false;
+                UpdatedCollection.Add(Deleted);
                 CheckpointPasses.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
@@ -242,11 +257,6 @@ namespace NationalReserve.ViewModel
                 {
                     var updateMessage = await ApiConnector.UpdateData("CheckpointPasses", updated, updated.IdCheckpointPass.Value);
                     allMessageBuilder.Append($"{updateMessage}\n");
-                }
-                foreach (var deleted in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("CheckpointPasses", deleted.IdCheckpointPass.Value);
-                    allMessageBuilder.Append($"{deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();

@@ -17,6 +17,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -143,6 +144,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -158,7 +160,9 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<Zone>();
 
             Zone = new Zone();
-            Zones = await ApiConnector.GetAll<Zone>("Zones");
+            var fullTableList = await ApiConnector.GetAll<Zone>("Zones");
+            Zones = new ObservableCollection<Zone>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<Zone>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -177,11 +181,20 @@ namespace NationalReserve.ViewModel
 
             Selected = new Zone();
         }
-
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("Zones", Deleted.IdZone.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+                ReadAsync();
+            }
+        }
         public void LogicalDelete()
         {
             if (Selected?.IdZone != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 Zones.Remove(Selected);
 
@@ -193,6 +206,8 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = false;
+                UpdatedCollection.Add(Deleted);
                 Zones.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }

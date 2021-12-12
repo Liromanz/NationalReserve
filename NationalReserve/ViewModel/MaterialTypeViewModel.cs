@@ -158,8 +158,9 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
-                var deleteMessage = await ApiConnector.DeleteData("AnimalTypes", Deleted.Id.Value);
+                var deleteMessage = await ApiConnector.DeleteData("MaterialTypes", Deleted.Id.Value);
                 MessageBox.Show($"{Deleted.Name}: {deleteMessage}\n");
+                ReadAsync();
             }
         }
 
@@ -180,8 +181,8 @@ namespace NationalReserve.ViewModel
             if (Deleted != null)
             {
                 Deleted.IsDeleted = false;
-                MaterialTypes.Add(Deleted);
                 UpdatedCollection.Add(Deleted);
+                MaterialTypes.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
         }

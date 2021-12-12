@@ -16,6 +16,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -142,6 +143,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -157,7 +159,10 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<Material>();
 
             Material = new Material();
-            Materials = await ApiConnector.GetAll<Material>("Materials");
+
+            var fullTableList = await ApiConnector.GetAll<Material>("Materials");
+            Materials = new ObservableCollection<Material>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<Material>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -176,11 +181,20 @@ namespace NationalReserve.ViewModel
 
             Selected = new Material();
         }
-
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("Materials", Deleted.IdMaterial.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+                ReadAsync();
+            }
+        }
         public void LogicalDelete()
         {
             if (Selected?.IdType != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 Materials.Remove(Selected);
 
@@ -192,6 +206,8 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = false;
+                UpdatedCollection.Add(Deleted);
                 Materials.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
@@ -217,11 +233,6 @@ namespace NationalReserve.ViewModel
                 {
                     var updateMessage = await ApiConnector.UpdateData("Materials", updated, updated.IdMaterial.Value);
                     allMessageBuilder.Append($"{updated.Name}: {updateMessage}\n");
-                }
-                foreach (var deleted in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("Materials", deleted.IdMaterial.Value);
-                    allMessageBuilder.Append($"{deleted.Name}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();

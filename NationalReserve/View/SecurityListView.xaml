@@ -74,6 +74,10 @@
                     Content="Восстановить запись"
                     Style="{StaticResource ButtonControlTheme}"
                     Command="{Binding LogicalRecoverCommand}"/>
+                <Button Width="130"
+                        Content="Уничтожить запись"
+                        Style="{StaticResource ButtonControlTheme}"
+                        Command="{Binding PhysicalDeleteCommand}"/>
             </StackPanel>
         </Grid>
         <Grid Width="280"

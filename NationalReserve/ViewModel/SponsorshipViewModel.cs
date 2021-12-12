@@ -17,6 +17,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -168,6 +169,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -184,7 +186,9 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<Sponsorship>();
 
             Sponsorship = new Sponsorship();
-            Sponsorships = await ApiConnector.GetAll<Sponsorship>("Sponsorships");
+            var fullTableList = await ApiConnector.GetAll<Sponsorship>("Sponsorships");
+            Sponsorships = new ObservableCollection<Sponsorship>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<Sponsorship>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -204,11 +208,20 @@ namespace NationalReserve.ViewModel
 
             Selected = new Sponsorship();
         }
-
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("Sponsorships", Deleted.IdPayment.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+                ReadAsync();
+            }
+        }
         public void LogicalDelete()
         {
             if (Selected?.IdPayment != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 Sponsorships.Remove(Selected);
 
@@ -220,6 +233,8 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = false;
+                UpdatedCollection.Add(Deleted);
                 Sponsorships.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
@@ -245,11 +260,6 @@ namespace NationalReserve.ViewModel
                 {
                     var updateMessage = await ApiConnector.UpdateData("Sponsorships", updated, updated.IdPayment.Value);
                     allMessageBuilder.Append($"Сумма:{updated.Amount}: {updateMessage}\n");
-                }
-                foreach (var deleted in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("Sponsorships", deleted.IdPayment.Value);
-                    allMessageBuilder.Append($"Сумма:{deleted.Amount}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();

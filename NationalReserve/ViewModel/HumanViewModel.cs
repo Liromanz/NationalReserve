@@ -15,6 +15,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -143,6 +144,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -159,7 +161,10 @@ namespace NationalReserve.ViewModel
 
             Human = new Human();
             SelectedHuman = new Human();
-            Humans = await ApiConnector.GetAll<Human>("Humen");
+
+            var fullTableList = await ApiConnector.GetAll<Human>("Humen");
+            Humans = new ObservableCollection<Human>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<Human>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -180,11 +185,20 @@ namespace NationalReserve.ViewModel
 
             SelectedHuman = new Human();
         }
-
+        public async void PhysicalDelete()
+        {
+            if (DeletedHuman!= null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("Humen", DeletedHuman.IdHuman.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+                ReadAsync();
+            }
+        }
         public void LogicalDelete()
         {
             if (SelectedHuman?.IdHuman != null)
             {
+                SelectedHuman.IsDeleted = true;
                 DeletedCollection.Add(SelectedHuman);
                 Humans.Remove(SelectedHuman);
 
@@ -196,6 +210,8 @@ namespace NationalReserve.ViewModel
         {
             if (DeletedHuman != null)
             {
+                DeletedHuman.IsDeleted = false;
+                UpdatedCollection.Add(DeletedHuman);
                 Humans.Add(DeletedHuman);
                 DeletedCollection.Remove(DeletedHuman);
             }
@@ -225,11 +241,6 @@ namespace NationalReserve.ViewModel
                         updatedHuman.Password = SecureData.Hash(updatedHuman.Password);
                     var updateMessage = await ApiConnector.UpdateData("Humen", updatedHuman, updatedHuman.IdHuman.Value);
                     allMessageBuilder.Append($"{updatedHuman.FirstName} {updatedHuman.Name}: {updateMessage}\n");
-                }
-                foreach (var deletedHuman in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("Humen", deletedHuman.IdHuman.Value);
-                    allMessageBuilder.Append($"{deletedHuman.FirstName} {deletedHuman.Name}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();

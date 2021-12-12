@@ -17,6 +17,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -168,6 +169,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -184,7 +186,9 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<Supply>();
 
             Supply = new Supply();
-            Supplies = await ApiConnector.GetAll<Supply>("Supplies");
+            var fullTableList = await ApiConnector.GetAll<Supply>("Supplies");
+            Supplies = new ObservableCollection<Supply>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<Supply>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -203,11 +207,20 @@ namespace NationalReserve.ViewModel
 
             Selected = new Supply();
         }
-
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("Supplies", Deleted.IdSupply.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+                ReadAsync();
+            }
+        }
         public void LogicalDelete()
         {
             if (Selected?.IdSupply != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 Supplies.Remove(Selected);
 
@@ -219,6 +232,8 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = false;
+                UpdatedCollection.Add(Deleted);
                 Supplies.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
@@ -244,11 +259,6 @@ namespace NationalReserve.ViewModel
                 {
                     var updateMessage = await ApiConnector.UpdateData("Supplies", updated, updated.IdSupply.Value);
                     allMessageBuilder.Append($"Поставка №:{updated.IdSupply}: {updateMessage}\n");
-                }
-                foreach (var deleted in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("Supplies", deleted.IdSupply.Value);
-                    allMessageBuilder.Append($"Поставка №:{deleted.IdSupply}: {deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();

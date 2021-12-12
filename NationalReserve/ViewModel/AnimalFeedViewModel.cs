@@ -15,6 +15,7 @@ namespace NationalReserve.ViewModel
         #region Команды
         public RelayCommand AddCommand { get; set; }
         public RelayCommand SaveCommand { get; set; }
+        public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
 
@@ -166,6 +167,7 @@ namespace NationalReserve.ViewModel
         {
             AddCommand = new RelayCommand(o => { AddObject(); });
             SaveCommand = new RelayCommand(o => { SaveAsync(); });
+            PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
 
@@ -182,7 +184,9 @@ namespace NationalReserve.ViewModel
             DeletedCollection = new ObservableCollection<AnimalFeed>();
 
             AnimalFeed = new AnimalFeed();
-            AnimalFeeds = await ApiConnector.GetAll<AnimalFeed>("AnimalFeeds");
+            var fullTableList = await ApiConnector.GetAll<AnimalFeed>("AnimalFeeds");
+            AnimalFeeds = new ObservableCollection<AnimalFeed>(fullTableList.Where(x => !x.IsDeleted));
+            DeletedCollection = new ObservableCollection<AnimalFeed>(fullTableList.Where(x => x.IsDeleted));
 
             IsBusy = false;
         }
@@ -202,10 +206,20 @@ namespace NationalReserve.ViewModel
             Selected = new AnimalFeed();
         }
 
+        public async void PhysicalDelete()
+        {
+            if (Deleted != null)
+            {
+                var deleteMessage = await ApiConnector.DeleteData("AnimalFeed", Deleted.IdFeed.Value);
+                MessageBox.Show($"{deleteMessage}\n");
+            }
+        }
+
         public void LogicalDelete()
         {
             if (Selected?.IdFeed != null)
             {
+                Selected.IsDeleted = true;
                 DeletedCollection.Add(Selected);
                 AnimalFeeds.Remove(Selected);
 
@@ -217,7 +231,9 @@ namespace NationalReserve.ViewModel
         {
             if (Deleted != null)
             {
+                Deleted.IsDeleted = true;
                 AnimalFeeds.Add(Deleted);
+                UpdatedCollection.Add(Deleted);
                 DeletedCollection.Remove(Deleted);
             }
         }
@@ -242,11 +258,6 @@ namespace NationalReserve.ViewModel
                 {
                     var updateMessage = await ApiConnector.UpdateData("AnimalFeeds", updated, updated.IdFeed.Value);
                     allMessageBuilder.Append($"{updateMessage}\n");
-                }
-                foreach (var deleted in DeletedCollection)
-                {
-                    var deleteMessage = await ApiConnector.DeleteData("AnimalFeeds", deleted.IdFeed.Value);
-                    allMessageBuilder.Append($"{deleteMessage}\n");
                 }
                 MessageBox.Show(allMessageBuilder.ToString());
                 ReadAsync();
