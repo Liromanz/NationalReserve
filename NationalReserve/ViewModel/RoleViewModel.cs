@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -119,6 +122,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
         }
 
         #region CRUD
@@ -195,7 +200,6 @@ namespace NationalReserve.ViewModel
                 StringBuilder allMessageBuilder = new StringBuilder();
                 foreach (var added in AddedCollection)
                 {
-
                     var addMessage = await ApiConnector.AddData<Role>("Roles", added);
                     allMessageBuilder.Append($"{added.Name}: {addMessage}\n");
                 }
@@ -212,6 +216,56 @@ namespace NationalReserve.ViewModel
                 IsBusy = false;
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
+        }
+
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in Roles)
+                exportList.Add($"{item.Id}, {item.Name}, {item.IsAnimalFeedVisible}, {item.IsAnimalVisible}, " +
+                               $"{item.IsAnimalTypeVisible}, {item.IsCheckpointVisible}, {item.IsCheckpointPassVisible}, " +
+                               $"{item.IsHumanVisible}, {item.IsMaterialVisible}, {item.IsMaterialTypeVisible}, " +
+                               $"{item.IsPaymentTypeVisible}, {item.IsPlantListVisible}, {item.IsRoleVisible}, " +
+                               $"{item.IsSecurityListVisible}, {item.IsSponsorshipVisible}, {item.IsStaffDocumentsVisible}, " +
+                               $"{item.IsSupplierVisible}, {item.IsSupplyVisible}, {item.IsZoneVisible}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "Roles");
+        }
+
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(20);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new Role
+                    {
+                        Id = null,
+                        Name = items[1],
+                        IsAnimalFeedVisible = Convert.ToBoolean(items[2]),
+                        IsAnimalVisible = Convert.ToBoolean(items[3]),
+                        IsAnimalTypeVisible = Convert.ToBoolean(items[4]),
+                        IsCheckpointVisible = Convert.ToBoolean(items[5]),
+                        IsCheckpointPassVisible = Convert.ToBoolean(items[6]),
+                        IsHumanVisible = Convert.ToBoolean(items[7]),
+                        IsMaterialVisible = Convert.ToBoolean(items[8]),
+                        IsMaterialTypeVisible = Convert.ToBoolean(items[9]),
+                        IsPaymentTypeVisible = Convert.ToBoolean(items[10]),
+                        IsPlantListVisible = Convert.ToBoolean(items[11]),
+                        IsRoleVisible = Convert.ToBoolean(items[12]),
+                        IsSecurityListVisible = Convert.ToBoolean(items[13]),
+                        IsSponsorshipVisible = Convert.ToBoolean(items[14]),
+                        IsStaffDocumentsVisible = Convert.ToBoolean(items[15]),
+                        IsSupplierVisible = Convert.ToBoolean(items[16]),
+                        IsSupplyVisible = Convert.ToBoolean(items[17]),
+                        IsZoneVisible = Convert.ToBoolean(items[18]),
+                        IsDeleted = Convert.ToBoolean(items[19])
+                    };
+                    AddedCollection.Add(item);
+                    Roles.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
 
         public string ValidationErrorMessage()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -170,6 +173,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Animals = await ApiConnector.GetAll<Animal>("Animals");
             Supplies = await ApiConnector.GetAll<Supply>("Supplies");
@@ -268,7 +273,35 @@ namespace NationalReserve.ViewModel
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
         }
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in AnimalFeeds)
+                exportList.Add($"{item.IdFeed}, {item.IdSupply}, {item.IdAnimal}, {item.Amount}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "AnimalFeeds");
+        }
 
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(5);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new AnimalFeed
+                    {
+                        IdFeed = null,
+                        IdSupply = Convert.ToInt32(items[1]),
+                        IdAnimal = Convert.ToInt32(items[2]),
+                        Amount = Convert.ToInt32(items[3]),
+                        IsDeleted = Convert.ToBoolean(items[4])
+                    };
+                    AddedCollection.Add(item);
+                    AnimalFeeds.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
         public string ValidationErrorMessage()
         {
             if (AnimalFeed == null) return String.Empty;
