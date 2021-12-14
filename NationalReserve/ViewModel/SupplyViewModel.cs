@@ -20,6 +20,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -172,6 +174,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Suppliers = await ApiConnector.GetAll<Supplier>("Suppliers");
             Materials = await ApiConnector.GetAll<Material>("Materials");
@@ -269,7 +273,37 @@ namespace NationalReserve.ViewModel
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
         }
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in Supplies)
+                exportList.Add($"{item.IdSupply}, {item.IdSupplier}, {item.IdMaterial}, {item.Amount}, " +
+                               $"{item.Date}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "Supplies");
+        }
 
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(6);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new Supply
+                    {
+                        IdSupply = null,
+                        IdSupplier = Convert.ToInt32(items[1]),
+                        IdMaterial = Convert.ToInt32(items[2]),
+                        Amount = Convert.ToInt32(items[3]),
+                        Date = Convert.ToDateTime(items[4]),
+                        IsDeleted = Convert.ToBoolean(items[5])
+                    };
+                    AddedCollection.Add(item);
+                    Supplies.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
         public string ValidationErrorMessage()
         {
             if (Supply == null) return String.Empty;

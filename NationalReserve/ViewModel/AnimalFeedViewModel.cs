@@ -273,6 +273,7 @@ namespace NationalReserve.ViewModel
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
         }
+
         public void ExportTable()
         {
             List<string> exportList = new List<string>();
@@ -302,6 +303,7 @@ namespace NationalReserve.ViewModel
             }
             catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
+
         public string ValidationErrorMessage()
         {
             if (AnimalFeed == null) return String.Empty;

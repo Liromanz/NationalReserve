@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -170,6 +173,9 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
+
 
             AnimalTypes = await ApiConnector.GetAll<AnimalType>("AnimalTypes");
             Zones = await ApiConnector.GetAll<Zone>("Zones");
@@ -266,6 +272,43 @@ namespace NationalReserve.ViewModel
                 IsBusy = false;
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
+        }
+
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in Animals)
+                exportList.Add($"{item.IdAnimal}, {item.Name}, {item.IdType}, {item.Age}, " +
+                               $"{item.HasFamily}, {item.IsSick}, {item.DateRegistration}, " +
+                               $"{item.IdZone}, {item.LastCheck}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "Animals");
+        }
+
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(9);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new Animal
+                    {
+                        IdAnimal = null,
+                        Name = items[0],
+                        IdType = Convert.ToInt32(items[1]),
+                        Age = Convert.ToInt32(items[2]),
+                        HasFamily = Convert.ToInt32(items[3]),
+                        IsSick = Convert.ToInt32(items[4]),
+                        DateRegistration = Convert.ToDateTime(items[5]),
+                        IdZone = Convert.ToInt32(items[6]),
+                        LastCheck = Convert.ToDateTime(items[7]),
+                        IsDeleted = Convert.ToBoolean(items[8])
+                    };
+                    AddedCollection.Add(item);
+                    Animals.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
 
         public string ValidationErrorMessage()

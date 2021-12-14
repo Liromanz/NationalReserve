@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -119,6 +122,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
         }
 
         #region CRUD
@@ -213,6 +218,34 @@ namespace NationalReserve.ViewModel
                 IsBusy = false;
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
+        }
+
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in Checkpoints)
+                exportList.Add($"{item.IdCheckpoint}, {item.Name}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "Checkpoints");
+        }
+
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(3);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new Checkpoint
+                    {
+                        IdCheckpoint = null,
+                        Name = items[1],
+                        IsDeleted = Convert.ToBoolean(items[2])
+                    };
+                    AddedCollection.Add(item);
+                    Checkpoints.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
 
         public string ValidationErrorMessage()

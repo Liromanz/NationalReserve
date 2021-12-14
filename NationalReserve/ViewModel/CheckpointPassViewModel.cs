@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -170,6 +173,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Humans = await ApiConnector.GetAll<Human>("Humen");
             Checkpoints = await ApiConnector.GetAll<Checkpoint>("Checkpoints");
@@ -266,6 +271,37 @@ namespace NationalReserve.ViewModel
                 IsBusy = false;
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
+        }
+
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in CheckpointPasses)
+                exportList.Add($"{item.IdCheckpointPass}, {item.IdHuman}, {item.IdCheckpoint}, {item.PassType}, {item.PassTime}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "CheckpointPasses");
+        }
+
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(6);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new CheckpointPass
+                    {
+                        IdCheckpointPass = null,
+                        IdHuman = Convert.ToInt32(items[1]),
+                        IdCheckpoint = Convert.ToInt32(items[2]),
+                        PassType = items[3],
+                        PassTime = Convert.ToDateTime(items[4]),
+                        IsDeleted = Convert.ToBoolean(items[5]),
+                    };
+                    AddedCollection.Add(item);
+                    CheckpointPasses.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
 
         public string ValidationErrorMessage()

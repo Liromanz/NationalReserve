@@ -20,6 +20,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -195,6 +197,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Zones = await ApiConnector.GetAll<Zone>("Zones");
             var listHumans = await ApiConnector.GetAll<Human>("Humen");
@@ -296,7 +300,42 @@ namespace NationalReserve.ViewModel
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
         }
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in PlantLists)
+                exportList.Add($"{item.IdPlant}, {item.Name}, {item.IdZone}, {item.IdHuman}, " +
+                               $"{item.DateGarden}, {item.Amount}, {item.DaysToCheck}, " +
+                               $"{item.LastCheck}, {item.IdSupply}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "PlantLists");
+        }
 
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(10);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new PlantList
+                    {
+                        IdPlant = null,
+                        Name = items[1],
+                        IdZone = Convert.ToInt32(items[2]),
+                        IdHuman = Convert.ToInt32(items[3]),
+                        DateGarden = Convert.ToDateTime(items[4]),
+                        Amount = Convert.ToInt32(items[5]),
+                        DaysToCheck = Convert.ToInt32(items[6]),
+                        LastCheck = Convert.ToDateTime(items[7]),
+                        IdSupply = Convert.ToInt32(items[8]),
+                        IsDeleted = Convert.ToBoolean(items[9])
+                    };
+                    AddedCollection.Add(item);
+                    PlantLists.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
         public string ValidationErrorMessage()
         {
             if (Human == null) return String.Empty;

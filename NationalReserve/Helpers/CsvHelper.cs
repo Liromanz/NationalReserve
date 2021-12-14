@@ -47,7 +47,7 @@ namespace NationalReserve.Helpers
             }
 
             var result = CSVValidation(csvMatrix, propertyAmount);
-            if (result == null)
+            if (result != null)
                 MessageBox.Show(result);
             return csvMatrix;
         }

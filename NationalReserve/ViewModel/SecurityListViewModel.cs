@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -170,6 +173,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Checkpoints = await ApiConnector.GetAll<Checkpoint>("Checkpoints");
             var listHumans = await ApiConnector.GetAll<Human>("Humen");
@@ -269,7 +274,37 @@ namespace NationalReserve.ViewModel
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
         }
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in SecurityLists)
+                exportList.Add($"{item.IdSecurity}, {item.TimeStart}, {item.TimeEnd}, {item.IdHuman}, " +
+                               $"{item.IdCheckpoint}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "SecurityLists");
+        }
 
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(6);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new SecurityList
+                    {
+                        IdSecurity = null,
+                        TimeStart = Convert.ToDateTime(items[1]),
+                        TimeEnd = Convert.ToDateTime(items[2]),
+                        IdHuman = Convert.ToInt32(items[3]),
+                        IdCheckpoint = Convert.ToInt32(items[4]),
+                        IsDeleted = Convert.ToBoolean(items[5])
+                    };
+                    AddedCollection.Add(item);
+                    SecurityLists.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
         public string ValidationErrorMessage()
         {
             if (SecurityList == null) return String.Empty;

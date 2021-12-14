@@ -18,6 +18,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand AddCommand { get; set; }
         public RelayCommand EditCommand { get; set; }
         public RelayCommand DeleteCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -93,6 +95,8 @@ namespace NationalReserve.ViewModel
             AddCommand = new RelayCommand(o => { CreateAsync(); });
             EditCommand = new RelayCommand(o => { UpdateAsync(); });
             DeleteCommand = new RelayCommand(o => { DeleteAsync(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Humans = await ApiConnector.GetAll<Human>("Humen");
             IsBusy = false;
@@ -190,7 +194,32 @@ namespace NationalReserve.ViewModel
                 IsBusy = false;
             }
         }
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in StaffDocuments)
+                exportList.Add($"{item.Id}, {item.SerialPass}, {item.NumberPass}, {item.BankNumber}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "StaffDocuments");
+        }
 
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(5).FirstOrDefault();
+            try
+            {
+                var item = new StaffDocument
+                {
+                    Id = Convert.ToInt32(imported[1]),
+                    SerialPass = Convert.ToInt32(imported[1]),
+                    NumberPass = Convert.ToInt32(imported[2]),
+                    BankNumber = Convert.ToInt32(imported[3]),
+                    IsDeleted = Convert.ToBoolean(imported[4])
+                };
+                StaffDocument = item;
+                CreateAsync();
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
         public string ValidationErrorMessage()
         {
             if (StaffDocument == null) return String.Empty;

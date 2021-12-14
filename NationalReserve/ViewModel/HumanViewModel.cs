@@ -3,6 +3,7 @@ using NationalReserve.Helpers.Interface;
 using NationalReserve.Model;
 using NationalReserve.View.Core;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace NationalReserve.ViewModel
         public RelayCommand PhysicalDeleteCommand { get; set; }
         public RelayCommand LogicalDeleteCommand { get; set; }
         public RelayCommand LogicalRecoverCommand { get; set; }
+        public RelayCommand ExportCommand { get; set; }
+        public RelayCommand ImportCommand { get; set; }
 
         #endregion
 
@@ -147,6 +150,8 @@ namespace NationalReserve.ViewModel
             PhysicalDeleteCommand = new RelayCommand(o => { PhysicalDelete(); });
             LogicalDeleteCommand = new RelayCommand(o => { LogicalDelete(); });
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
+            ExportCommand = new RelayCommand(o => { ExportTable(); });
+            ImportCommand = new RelayCommand(o => { ImportTable(); });
 
             Roles = await ApiConnector.GetAll<Role>("Roles");
         }
@@ -187,7 +192,7 @@ namespace NationalReserve.ViewModel
         }
         public async void PhysicalDelete()
         {
-            if (DeletedHuman!= null)
+            if (DeletedHuman != null)
             {
                 var deleteMessage = await ApiConnector.DeleteData("Humen", DeletedHuman.IdHuman.Value);
                 MessageBox.Show($"{deleteMessage}\n");
@@ -250,6 +255,42 @@ namespace NationalReserve.ViewModel
                 IsBusy = false;
                 MessageBox.Show(GlobalConstants.ErrorMessage + e.Message);
             }
+        }
+        public void ExportTable()
+        {
+            List<string> exportList = new List<string>();
+            foreach (var item in Humans)
+                exportList.Add($"{item.IdHuman}, {item.Login}, {item.Password}, {item.FirstName}, " +
+                               $"{item.Name}, {item.LastName}, {item.Gender}, {item.IdRole}, " +
+                               $"{item.IsStaff}, {item.IsDeleted}");
+            CsvHelper.WriteCSV(exportList, "Humans");
+        }
+
+        public void ImportTable()
+        {
+            var imported = CsvHelper.ReadCSV(10);
+            try
+            {
+                foreach (var items in imported)
+                {
+                    var item = new Human
+                    {
+                        IdHuman = null,
+                        Login = items[1],
+                        Password = items[2],
+                        FirstName = items[3],
+                        Name = items[4],
+                        LastName = items[5],
+                        Gender = Convert.ToInt32(items[6]),
+                        IdRole = Convert.ToInt32(items[7]),
+                        IsStaff = Convert.ToInt32(items[8]),
+                        IsDeleted = Convert.ToBoolean(items[9])
+                    };
+                    AddedCollection.Add(item);
+                    Humans.Add(item);
+                }
+            }
+            catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
 
         public string ValidationErrorMessage()
