@@ -7,7 +7,6 @@
 
         public string FullName { get; set; }
         public Role Role { get; set; }
-        public bool IsDeleted { get; set; }
 
     }
 }
