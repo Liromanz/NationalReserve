@@ -38,6 +38,12 @@
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Экспортировать в..." Command="{Binding ExportCommand}"/>
+                        <MenuItem Header="Импортировать из..." Command="{Binding ImportCommand}"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
             </ListView>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button
