@@ -8,6 +8,8 @@
         void LogicalDelete();
         void LogicalRecover();
         void SaveAsync();
+        void ExportTable();
+        void ImportTable();
         string ValidationErrorMessage();
     }
 }

@@ -25,6 +25,9 @@
     <Compile Update="View\CheckpointVIew.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\DiagrammWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\HelperWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -63,6 +66,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\DiagrammWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\HelperWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

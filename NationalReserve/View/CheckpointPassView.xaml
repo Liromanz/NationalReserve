@@ -106,6 +106,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Учет прохода КПП"
                        Foreground="White"
@@ -165,8 +166,13 @@
                                Margin="0 5 0 0"/>
                     <DatePicker SelectedDate="{Binding CheckpointPass.PassTime}"
                                 Style="{StaticResource DatePickerTheme}" FirstDayOfWeek="Monday"/>
+
                 </StackPanel>
             </ScrollViewer>
+            <Button Width="130" Grid.Row="2"
+                    Content="Диаграммы"
+                    Style="{StaticResource ButtonControlTheme}"
+                    Command="{Binding DiagrammCommand}"/>
         </Grid>
         <Grid Grid.Column="0" Background="#33000000" Visibility="{Binding Path=IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Grid.RowDefinitions>

@@ -7,6 +7,7 @@ using System.Windows;
 using NationalReserve.Helpers;
 using NationalReserve.Helpers.Interface;
 using NationalReserve.Model;
+using NationalReserve.View;
 using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
@@ -21,6 +22,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand LogicalRecoverCommand { get; set; }
         public RelayCommand ExportCommand { get; set; }
         public RelayCommand ImportCommand { get; set; }
+        public RelayCommand DiagrammCommand { get; set; }
 
         #endregion
 
@@ -175,6 +177,7 @@ namespace NationalReserve.ViewModel
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
             ExportCommand = new RelayCommand(o => { ExportTable(); });
             ImportCommand = new RelayCommand(o => { ImportTable(); });
+            DiagrammCommand = new RelayCommand(o => { ShowDiagramm(); });
 
             Humans = await ApiConnector.GetAll<Human>("Humen");
             Checkpoints = await ApiConnector.GetAll<Checkpoint>("Checkpoints");
@@ -302,6 +305,12 @@ namespace NationalReserve.ViewModel
                 }
             }
             catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
+
+        private void ShowDiagramm()
+        {
+            DiagrammWindow diagramm = new DiagrammWindow();
+            diagramm.ShowDialog();
         }
 
         public string ValidationErrorMessage()

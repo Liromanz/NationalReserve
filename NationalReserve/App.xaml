@@ -76,6 +76,10 @@
             <DataTemplate DataType="{x:Type viewModel:PlantListViewModel}">
                 <view:PlantListView />
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:DiagrammViewModel}">
+                <view:DiagrammWindow />
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
