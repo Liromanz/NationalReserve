@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using NationalReserve.ViewModel;
 
 namespace NationalReserve.View
 {
@@ -9,6 +10,7 @@ namespace NationalReserve.View
     /// </summary>
     public partial class Authorization : Window
     {
+        public AuthorizationVIewModel ViewModel => DataContext as AuthorizationVIewModel;
         public Authorization()
         {
             InitializeComponent();
@@ -25,6 +27,12 @@ namespace NationalReserve.View
             {
                 DragMove();
             }
+        }
+
+        private void LoginThroughEnter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                ViewModel.CheckLogin();
         }
     }
 }

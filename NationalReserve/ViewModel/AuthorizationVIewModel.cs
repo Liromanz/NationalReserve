@@ -48,7 +48,7 @@ namespace NationalReserve.ViewModel
             _roles = await ApiConnector.GetAll<Role>("Roles") ?? new ObservableCollection<Role>();
         }
 
-        private void CheckLogin()
+        public void CheckLogin()
         {
             var human = _humans.FirstOrDefault(x =>
                 x.Login == Authorization.Login && x.Password == SecureData.Hash(Authorization.Password));

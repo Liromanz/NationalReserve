@@ -52,12 +52,13 @@
                                 <Grid>
                                     <Rectangle StrokeThickness="1"></Rectangle>
                                     <TextBox Margin="1"
-                                                 Text="{Binding Authorization.Login, Mode=TwoWay}"
-                                                 BorderThickness="0"
-                                                 Background="Transparent"
-                                                 VerticalContentAlignment="Center"
-                                                 Padding="5"
-                                                 Foreground="White"/>
+                                             TabIndex="0"
+                                             Text="{Binding Authorization.Login, Mode=TwoWay}"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             VerticalContentAlignment="Center"
+                                             Padding="5"
+                                             Foreground="White" KeyDown="LoginThroughEnter"/>
                                 </Grid>
                             </Border>
                         </ControlTemplate>
@@ -77,18 +78,20 @@
                                 <Grid>
                                     <Rectangle StrokeThickness="1"></Rectangle>
                                     <TextBox Margin="1"
-                                                 Text="{Binding Authorization.Password, Mode=TwoWay}"
-                                                 BorderThickness="0"
-                                                 Background="Transparent"
-                                                 VerticalContentAlignment="Center"
-                                                 Padding="5"
-                                                 Foreground="White"/>
+                                             TabIndex="2"
+                                             Text="{Binding Authorization.Password, Mode=TwoWay}"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             VerticalContentAlignment="Center"
+                                             Padding="5"
+                                             Foreground="White" KeyDown="LoginThroughEnter"/>
                                 </Grid>
                             </Border>
                         </ControlTemplate>
                     </TextBox.Template>
                 </TextBox>
                 <Button Width="250" Height="80"
+                        
                     Content="Войти"
                     Style="{StaticResource ButtonControlTheme}"
                     Command="{Binding LoginCommand}"/>
