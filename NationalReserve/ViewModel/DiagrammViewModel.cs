@@ -1,15 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Documents;
 using System.Windows.Media;
 using LiveCharts;
 using LiveCharts.Configurations;
 using LiveCharts.Wpf;
-using NationalReserve.Helpers;
-using NationalReserve.Model;
 using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
