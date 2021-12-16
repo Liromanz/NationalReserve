@@ -9,6 +9,7 @@ namespace NationalReserve.View
     /// </summary>
     public partial class DiagrammWindow : Window
     {
+        public DiagrammViewModel ViewModel => DataContext as DiagrammViewModel;
         public DiagrammWindow()
         {
             InitializeComponent();

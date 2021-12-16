@@ -1,5 +1,9 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Media;
 using LiveCharts;
 using LiveCharts.Configurations;
@@ -13,10 +17,9 @@ namespace NationalReserve.ViewModel
     public class DiagrammViewModel : ObservableObject
     {
         private SeriesCollection _values;
-
         public SeriesCollection Values
         {
-            get { return _values; }
+            get => _values;
             set
             {
                 _values = value;
@@ -24,22 +27,27 @@ namespace NationalReserve.ViewModel
             }
         }
 
-        public DiagrammViewModel()
+        private string _diagrammName;
+        public string DiagrammName
         {
-            Init();
+            get => _diagrammName;
+            set
+            {
+                _diagrammName = value;
+                OnPropertyChanged();
+            }
         }
 
-        private async void Init()
-        {
-            var fullTableList = await ApiConnector.GetAll<CheckpointPass>("CheckpointPasses");
-            var AxisY = fullTableList.Select(x => x.PassTime.Day);
-            var AxisX = fullTableList.Select(x => x.PassTime.Day).ToHashSet().OrderBy(x => x);
+        public string AxisXName { get; set; }
+        public string AxisYName { get; set; }
 
+        public void MakeDiagramm(IEnumerable<int> valuesX, IEnumerable<int> valuesY)
+        {
             var values = new ChartValues<Point>();
 
-            foreach (var x in AxisX)
+            foreach (var x in valuesX)
             {
-                var point = new Point { X = x, Y = AxisY.Count(y => y == x) };
+                var point = new Point { X = x, Y = valuesY.Count(y => y == x) };
                 values.Add(point);
             }
             Values = new SeriesCollection

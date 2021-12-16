@@ -8,6 +8,7 @@ namespace NationalReserve.Helpers
     {
         public static string Hash(string data)
         {
+            if (data == null) return "";
             using (var md5 = new MD5CryptoServiceProvider())
             {
                 var bytedString = Encoding.UTF8.GetBytes(data);

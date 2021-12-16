@@ -8,6 +8,7 @@ using System.Windows;
 using NationalReserve.Helpers;
 using NationalReserve.Helpers.Interface;
 using NationalReserve.Model;
+using NationalReserve.View;
 using NationalReserve.View.Core;
 
 namespace NationalReserve.ViewModel
@@ -22,6 +23,7 @@ namespace NationalReserve.ViewModel
         public RelayCommand LogicalRecoverCommand { get; set; }
         public RelayCommand ExportCommand { get; set; }
         public RelayCommand ImportCommand { get; set; }
+        public RelayCommand DiagrammCommand { get; set; }
 
         #endregion
 
@@ -176,6 +178,7 @@ namespace NationalReserve.ViewModel
             LogicalRecoverCommand = new RelayCommand(o => { LogicalRecover(); });
             ExportCommand = new RelayCommand(o => { ExportTable(); });
             ImportCommand = new RelayCommand(o => { ImportTable(); });
+            DiagrammCommand = new RelayCommand(o => { ShowDiagramm(); });
 
             Humans = await ApiConnector.GetAll<Human>("Humen");
             PaymentTypes = await ApiConnector.GetAll<PaymentType>("PaymentTypes");
@@ -304,6 +307,20 @@ namespace NationalReserve.ViewModel
                 }
             }
             catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
+        }
+        private async void ShowDiagramm()
+        {
+            DiagrammWindow diagramm = new DiagrammWindow();
+            diagramm.ViewModel.DiagrammName = "Деньги спонсоров";
+            diagramm.ViewModel.AxisXName = "Номер спонсора";
+            diagramm.ViewModel.AxisYName = "Деньги";
+
+            var fullTableList = await ApiConnector.GetAll<Sponsorship>("Sponsorships");
+            diagramm.ViewModel.MakeDiagramm(
+                fullTableList.Select(x => x.IdHuman).ToHashSet().OrderBy(x => x),
+                fullTableList.GroupBy(y => y.IdHuman).Select(y => y.Sum(z => (int)z.Amount)));
+
+            diagramm.Show();
         }
         public string ValidationErrorMessage()
         {

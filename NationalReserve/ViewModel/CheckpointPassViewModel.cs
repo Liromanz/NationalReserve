@@ -307,10 +307,19 @@ namespace NationalReserve.ViewModel
             catch (Exception e) { MessageBox.Show(GlobalConstants.ErrorMessage + e.Message); }
         }
 
-        private void ShowDiagramm()
+        private async void ShowDiagramm()
         {
             DiagrammWindow diagramm = new DiagrammWindow();
-            diagramm.ShowDialog();
+            diagramm.ViewModel.DiagrammName = "Количество проходов по дням в месяце";
+            diagramm.ViewModel.AxisXName = "Дни";
+            diagramm.ViewModel.AxisYName = "Количество";
+
+            var fullTableList = await ApiConnector.GetAll<CheckpointPass>("CheckpointPasses");
+            diagramm.ViewModel.MakeDiagramm(
+                fullTableList.Select(x => x.PassTime.Day).ToHashSet().OrderBy(x => x),
+                fullTableList.Select(x => x.PassTime.Day));
+
+            diagramm.Show();
         }
 
         public string ValidationErrorMessage()
