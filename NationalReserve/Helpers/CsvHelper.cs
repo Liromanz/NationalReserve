@@ -52,7 +52,7 @@ namespace NationalReserve.Helpers
         public static string CSVValidation(List<string[]> itemToCheck, int amount)
         {
             if (!itemToCheck.Any()) return "Файл пустой";
-            if (itemToCheck.First().Length == amount) return "Выбранный файл не подходит для этой таблицы";
+            if (itemToCheck.First().Length != amount) return "Выбранный файл не подходит для этой таблицы";
             return null;
         }
     }
